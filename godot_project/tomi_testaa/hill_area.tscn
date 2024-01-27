@@ -147,3 +147,6 @@ shape = ExtResource("12_0b2l2")
 [connection signal="body_entered" from="TheGame/GoalArea" to="TheGame/GoalArea" method="_on_body_entered"]
 
 [editable path="Sled"]
+
+[editable path="Hook"]
+[editable path="level1"]
