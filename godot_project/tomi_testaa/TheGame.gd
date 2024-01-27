@@ -1,4 +1,5 @@
 extends Node
+class_name TheGame
 
 @export var start_pos_offset = Vector3.UP
 @onready var goal: GoalArea = $GoalArea

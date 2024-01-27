@@ -97,7 +97,6 @@ stream = ExtResource("4_0akp1")
 volume_db = -20.0
 
 [node name="pulkka" type="MeshInstance3D" parent="SledModel/SledVisual" groups=["Player"]]
-
 mesh = SubResource("ArrayMesh_d1alu")
 skeleton = NodePath("")
 

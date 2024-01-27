@@ -53,7 +53,7 @@ func _physics_process(delta):
 		apply_central_force(force * delta)
 
 	if abs(jump_input) > 1:
-		apply_central_impulse(Vector3(0, jump_input, 0))
+		apply_central_impulse(Vector3(0, jump_input, 0) - transform.basis.z*jump_input)
 		jump_input = 0
 
 func _process(delta):

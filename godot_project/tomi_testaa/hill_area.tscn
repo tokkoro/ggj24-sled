@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=23 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="PackedScene" uid="uid://cq833rrl7e2qe" path="res://sled/sled.tscn" id="1_pmsqt"]
@@ -6,16 +6,14 @@
 [ext_resource type="Script" path="res://tomi_testaa/CountDownLabels.gd" id="4_kjjsv"]
 [ext_resource type="PackedScene" uid="uid://bw8q8fcqh4wil" path="res://rikun_kansio/Hook.tscn" id="5_kv3ey"]
 [ext_resource type="FontFile" uid="uid://odt5k5dsdlao" path="res://Fonts/Destruck.ttf" id="5_rmhmo"]
-[ext_resource type="Material" path="res://tomi_testaa/count_down_label_material.tres" id="5_sgs8b"]
+[ext_resource type="Material" uid="uid://bdqffmtj76632" path="res://tomi_testaa/count_down_label_material.tres" id="5_sgs8b"]
 [ext_resource type="PackedScene" uid="uid://sew1cgydyonh" path="res://models/level1.glb" id="6_o6naf"]
-[ext_resource type="PackedScene" path="res://tomi_testaa/goal.tscn" id="7_dvuml"]
-[ext_resource type="PackedScene" path="res://tomi_testaa/the_game.tscn" id="8_61eb4"]
 [ext_resource type="Script" path="res://tomi_testaa/Goal.gd" id="7_1fp6q"]
-[ext_resource type="PackedScene" uid="uid://djwms37mv03jo" path="res://tomi_testaa/the_game.tscn" id="8_61eb4"]
+[ext_resource type="Script" path="res://tomi_testaa/TheGame.gd" id="8_115im"]
 [ext_resource type="Shape3D" uid="uid://c6dwwlfow03tf" path="res://tomi_testaa/goal_box_shape.tres" id="12_0b2l2"]
 [ext_resource type="Script" path="res://tomi_testaa/InterpolatedCameraBetter.gd" id="12_u5t8h"]
-[ext_resource type="PackedScene" uid="uid://d321yu0pfgq3c" path="res://rikun_kansio/pointer.tscn" id="12_vi5oh"]
-[ext_resource type="PackedScene" uid="uid://b3siv2p6giv7c" path="res://rikun_kansio/world_environment.tscn" id="13_rxptn"]
+[ext_resource type="PackedScene" path="res://rikun_kansio/pointer.tscn" id="12_vi5oh"]
+[ext_resource type="PackedScene" path="res://rikun_kansio/world_environment.tscn" id="13_rxptn"]
 
 [sub_resource type="TextMesh" id="TextMesh_nq84k"]
 material = ExtResource("5_sgs8b")
@@ -66,13 +64,15 @@ shadow_opacity = 0.74
 
 [node name="Sled" parent="." instance=ExtResource("1_pmsqt")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 107.296, 104.794, -197.482)
+acceleration = 40.0
 sphere_offset = Vector3(0, -1, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.7735, -60.0348)
 current = true
 script = ExtResource("12_u5t8h")
-offset = Vector3(0, 3, 4)
+lerp_speed = 4.0
+offset = Vector3(0, 6, 8)
 target = NodePath("../Sled/SledModel")
 
 [node name="CountDownLabels" type="Node3D" parent="Camera3D"]
@@ -123,12 +123,8 @@ surface_material_override/0 = ExtResource("2_2c064")
 
 [node name="level1" parent="." instance=ExtResource("6_o6naf")]
 
-[node name="TheGame" parent="." instance=ExtResource("8_61eb4")]
-
-
-[node name="Pointer" parent="." instance=ExtResource("12_vi5oh")]
-
-[node name="WorldEnvironment" parent="." instance=ExtResource("13_rxptn")]
+[node name="TheGame" type="Node" parent="."]
+script = ExtResource("8_115im")
 
 [node name="GoalArea" type="Area3D" parent="TheGame"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3, -5)
@@ -139,10 +135,13 @@ script = ExtResource("7_1fp6q")
 [node name="GoalDebugVisu" type="MeshInstance3D" parent="TheGame/GoalArea"]
 cast_shadow = 0
 mesh = SubResource("BoxMesh_ioh6s")
-skeleton = NodePath("../../level1/hint_goal")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TheGame/GoalArea"]
 shape = ExtResource("12_0b2l2")
+
+[node name="Pointer" parent="." instance=ExtResource("12_vi5oh")]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("13_rxptn")]
 
 [connection signal="body_entered" from="TheGame/GoalArea" to="TheGame/GoalArea" method="_on_body_entered"]
 
