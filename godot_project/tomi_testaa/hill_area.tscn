@@ -40,12 +40,18 @@ shadow_enabled = true
 [node name="Sled" parent="." instance=ExtResource("1_pmsqt")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 18.0538, -68.0348)
 
+[node name="MeshInstance3D" parent="Sled/CollisionShape3D" index="0"]
+visible = true
+
+[node name="Ninjarope" parent="Sled" index="2"]
+visible = true
+
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.0538, -60.0348)
 current = true
 script = ExtResource("12_u5t8h")
 offset = Vector3(0, 3, 4)
-target = NodePath("../Sled/ShedModel")
+target = NodePath("../Sled/SledModel")
 
 [node name="Hill2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -57.0455, 0)
@@ -58,6 +64,5 @@ mesh = SubResource("BoxMesh_hdxx0")
 surface_material_override/0 = ExtResource("2_2c064")
 
 [node name="Hook" parent="." instance=ExtResource("5_kv3ey")]
-visible = false
 
 [editable path="Sled"]
