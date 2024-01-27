@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bw8q8fcqh4wil"]
 
-[ext_resource type="ArrayMesh" uid="uid://cntmk5q4i3ox1" path="res://romppeet/romppeet_ankkuri.res" id="1_wl5um"]
+[ext_resource type="ArrayMesh" path="res://romppeet/romppeet_ankkuri.res" id="1_wl5um"]
 
 [node name="Hook" type="Node3D"]
 
