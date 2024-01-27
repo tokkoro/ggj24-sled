@@ -1,6 +1,18 @@
-extends MeshInstance3D
+extends Area3D
+class_name GoalArea
 
+@onready var collision_shape_node:CollisionShape3D = $CollisionShape3D
+@onready var goal_visu:MeshInstance3D = $GoalDebugVisu
 
-func _on_Area_body_entered(body):
+func set_size_pos_rot(size: Vector3, pos: Vector3, rot: Vector3):
+	var shape: BoxShape3D = collision_shape_node.shape
+	shape.size = size
+	global_rotation = rot
+	global_position = pos
+	var mesh : BoxMesh = goal_visu.mesh
+	mesh.size = size
+	
+
+func _on_body_entered(body: Node3D):
 	if body.is_in_group("Player"):
 		print("Finished")

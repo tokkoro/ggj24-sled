@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=21 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="PackedScene" uid="uid://cq833rrl7e2qe" path="res://sled/sled.tscn" id="1_pmsqt"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://sew1cgydyonh" path="res://models/level1.glb" id="6_o6naf"]
 [ext_resource type="PackedScene" path="res://tomi_testaa/goal.tscn" id="7_dvuml"]
 [ext_resource type="PackedScene" path="res://tomi_testaa/the_game.tscn" id="8_61eb4"]
+[ext_resource type="Script" path="res://tomi_testaa/Goal.gd" id="7_1fp6q"]
+[ext_resource type="PackedScene" uid="uid://djwms37mv03jo" path="res://tomi_testaa/the_game.tscn" id="8_61eb4"]
+[ext_resource type="Shape3D" uid="uid://c6dwwlfow03tf" path="res://tomi_testaa/goal_box_shape.tres" id="12_0b2l2"]
 [ext_resource type="Script" path="res://tomi_testaa/InterpolatedCameraBetter.gd" id="12_u5t8h"]
 [ext_resource type="PackedScene" uid="uid://d321yu0pfgq3c" path="res://rikun_kansio/pointer.tscn" id="12_vi5oh"]
 [ext_resource type="PackedScene" uid="uid://b3siv2p6giv7c" path="res://rikun_kansio/world_environment.tscn" id="13_rxptn"]
@@ -40,6 +43,16 @@ size = Vector3(1000, 2, 1000)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hdxx0"]
 size = Vector3(1000, 2, 1000)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igoq7"]
+transparency = 1
+albedo_color = Color(0.909804, 0.596078, 0.160784, 0.380392)
+emission_enabled = true
+emission = Color(0.686275, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ioh6s"]
+material = SubResource("StandardMaterial3D_igoq7")
+size = Vector3(47.77, 14.63, 14)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_i4vgj")
@@ -90,6 +103,12 @@ mesh = SubResource("TextMesh_j5h7i")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("5_sgs8b")
 
+[node name="time" type="MeshInstance3D" parent="Camera3D/CountDownLabels"]
+visible = false
+mesh = SubResource("TextMesh_j5h7i")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_sgs8b")
+
 [node name="Hill2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -57.0455, 0)
 
@@ -104,13 +123,27 @@ surface_material_override/0 = ExtResource("2_2c064")
 
 [node name="level1" parent="." instance=ExtResource("6_o6naf")]
 
-[node name="Goal" parent="level1/hint_goal" index="0" instance=ExtResource("7_dvuml")]
-
 [node name="TheGame" parent="." instance=ExtResource("8_61eb4")]
+
 
 [node name="Pointer" parent="." instance=ExtResource("12_vi5oh")]
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("13_rxptn")]
 
+[node name="GoalArea" type="Area3D" parent="TheGame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3, -5)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("7_1fp6q")
+
+[node name="GoalDebugVisu" type="MeshInstance3D" parent="TheGame/GoalArea"]
+cast_shadow = 0
+mesh = SubResource("BoxMesh_ioh6s")
+skeleton = NodePath("../../level1/hint_goal")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TheGame/GoalArea"]
+shape = ExtResource("12_0b2l2")
+
+[connection signal="body_entered" from="TheGame/GoalArea" to="TheGame/GoalArea" method="_on_body_entered"]
+
 [editable path="Sled"]
-[editable path="level1"]

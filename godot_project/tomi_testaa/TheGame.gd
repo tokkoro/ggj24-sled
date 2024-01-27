@@ -1,6 +1,7 @@
 extends Node
 
 @export var start_pos_offset = Vector3.UP
+@onready var goal: GoalArea = $GoalArea
 var start_node: Node3D
 var end_node: Node3D
 var player: Sled
@@ -37,10 +38,16 @@ func _process(delta):
 func game_start():
 	var root = get_tree().current_scene
 	start_node = root.find_child("hint_start")
-	end_node = root.find_child("hint_end")
+	print("Gind end knode")
+	end_node = root.find_child("hint_goal")
 	player = root.find_child("Sled")
 	count_down_label = root.find_child("CountDownLabels")
+	
+	
+	print("set goals")
+	goal.set_size_pos_rot(end_node.scale*2, end_node.global_position, end_node.global_rotation)
 
+	print("goals set")
 	camera = get_viewport().get_camera_3d()
 	# move player to start
 	move_player_to_start()
@@ -55,6 +62,4 @@ func generate_goal():
 func move_player_to_start():
 	player.stop(start_node.global_rotation)
 	player.global_position = start_node.global_position + start_pos_offset
-
-	
 

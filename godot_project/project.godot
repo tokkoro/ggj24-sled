@@ -67,6 +67,10 @@ reset={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_2="PLAYER"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
