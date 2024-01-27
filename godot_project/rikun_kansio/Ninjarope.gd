@@ -1,7 +1,7 @@
 extends MeshInstance3D
 class_name Ninjarope
 
-@onready var player = $".."
+@onready var player = $"../../.."
 var hook: Node3D = null
 
 var target: Node3D = null
@@ -15,7 +15,6 @@ func _ready():
 
 func _input(event):
 	if event is InputEventMouseButton:
-		print(event)
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				# raycast from camera to mouse
