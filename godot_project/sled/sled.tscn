@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cq833rrl7e2qe"]
+[gd_scene load_steps=9 format=3 uid="uid://cq833rrl7e2qe"]
 
 [ext_resource type="Script" path="res://sled/sled.gd" id="1_gnc3m"]
 [ext_resource type="PackedScene" uid="uid://cs0lgiem5a10p" path="res://sled/model.glb" id="1_mvf0i"]
 [ext_resource type="Shader" path="res://sled/debug_my_balls.gdshader" id="3_1g2vh"]
+[ext_resource type="PackedScene" uid="uid://3rkk4v2efisb" path="res://rikun_kansio/ninjarope.tscn" id="3_cja6s"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sh2yx"]
 bounce = 0.3
@@ -49,3 +50,5 @@ visible = false
 cast_shadow = 0
 gi_mode = 0
 mesh = SubResource("SphereMesh_wvwl8")
+
+[node name="Ninjarope" parent="." instance=ExtResource("3_cja6s")]

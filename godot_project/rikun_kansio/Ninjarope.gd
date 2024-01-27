@@ -15,6 +15,7 @@ func _ready():
 
 func _input(event):
 	if event is InputEventMouseButton:
+		print(event)
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				# raycast from camera to mouse
@@ -71,6 +72,3 @@ func _process(delta):
 	var hook_attachment_point_offset := hook.global_basis.z * 0.7
 	var shader_material : ShaderMaterial = mesh.surface_get_material(0)
 	shader_material.set_shader_parameter("target_pos", hook.global_position + hook_attachment_point_offset - global_position)
-
-	
-

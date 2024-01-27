@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=10 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="PackedScene" uid="uid://cq833rrl7e2qe" path="res://sled/sled.tscn" id="1_pmsqt"]
 [ext_resource type="Material" uid="uid://d0tvqnt0gn0k7" path="res://tomi_testaa/lumi_material.tres" id="2_2c064"]
+[ext_resource type="PackedScene" uid="uid://bw8q8fcqh4wil" path="res://rikun_kansio/Hook.tscn" id="5_kv3ey"]
 [ext_resource type="Script" path="res://tomi_testaa/InterpolatedCameraBetter.gd" id="12_u5t8h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v76dk"]
@@ -55,5 +56,7 @@ shape = SubResource("BoxShape3D_fivm5")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Hill2"]
 mesh = SubResource("BoxMesh_hdxx0")
 surface_material_override/0 = ExtResource("2_2c064")
+
+[node name="Hook" parent="." instance=ExtResource("5_kv3ey")]
 
 [editable path="Sled"]
