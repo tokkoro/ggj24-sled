@@ -3,7 +3,6 @@ extends RigidBody3D
 
 @onready var sled_mesh = $SledModel
 @onready var ground_ray = $SledModel/GroundDetector
-@onready var sled_mesh_body = $SledModel/SledVisual/Mesh1
 
 @export_group("Sled's properties")
 @export var acceleration = 35.0
@@ -25,6 +24,7 @@ var jump_cost = -0.3
 
 func _physics_process(delta):
 	sled_mesh.position = position + sphere_offset
+	sled_mesh.rotation = rotation
 	if ground_ray.is_colliding():
 		apply_central_force(-sled_mesh.global_transform.basis.z * speed_input)
 	if abs(jump_input) > 1:
@@ -44,14 +44,11 @@ func _process(delta):
 		speed_input = Input.get_axis("break", "accelerate") * acceleration
 		var n = ground_ray.get_collision_normal()
 		var xform = align_with_y(sled_mesh.global_transform, n)
-		sled_mesh.global_transform = sled_mesh.global_transform.interpolate_with(xform, 10.0 * delta)
 	
 	if linear_velocity.length() > turn_stop_limit:
-		var new_basis = sled_mesh.global_transform.basis.rotated(sled_mesh.global_transform.basis.y, turn_input)
-		sled_mesh.global_transform.basis = sled_mesh.global_transform.basis.slerp(new_basis, turning_speed * delta)
-		sled_mesh.global_transform = sled_mesh.global_transform.orthonormalized()
-		# tiltti
 		var t = -turn_input * linear_velocity.length() / body_tilt
+		apply_torque_impulse(global_basis.y * -t * delta * 100)
+		# tiltti
 		sled_mesh.rotation.z = lerp(sled_mesh.rotation.z, t, 5.0 * delta)
 
 func align_with_y(xform, new_y):

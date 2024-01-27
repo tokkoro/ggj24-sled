@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://3rkk4v2efisb" path="res://rikun_kansio/ninjarope.tscn" id="3_cja6s"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sh2yx"]
+friction = 0.1
 bounce = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5h3vt"]
@@ -64,9 +65,11 @@ height = 2.0
 
 [node name="Sled" type="RigidBody3D"]
 collision_layer = 2
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 physics_material_override = SubResource("PhysicsMaterial_sh2yx")
 gravity_scale = 5.0
-angular_damp = 10.0
+angular_damp = 13.425
 script = ExtResource("1_gnc3m")
 sphere_offset = Vector3(0, -0.738, 0)
 
@@ -81,7 +84,7 @@ target_position = Vector3(0, -0.3, 0)
 [node name="SledVisual" type="Node3D" parent="SledModel"]
 
 [node name="Ninjarope" parent="SledModel/SledVisual" instance=ExtResource("3_cja6s")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0.738434, -4.37114e-08)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.192977, -1.00821)
 
 [node name="pulkka" type="MeshInstance3D" parent="SledModel/SledVisual"]
 mesh = SubResource("ArrayMesh_d1alu")
