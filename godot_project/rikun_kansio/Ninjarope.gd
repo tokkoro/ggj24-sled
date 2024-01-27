@@ -2,6 +2,7 @@ extends MeshInstance3D
 class_name Ninjarope
 
 @onready var player: Sled = $"../../.."
+@export var hook_rest_pos: Node3D
 @export var hook: Node3D
 @export var pointer: Node3D
 
@@ -100,12 +101,12 @@ func _physics_process(delta):
 			extra_impulse = Vector3()
 		var shortening_per_second := 1.0
 		original_length = max(min_shortened_length, original_length - delta * shortening_per_second)
-
+		
+		hook.global_position = lerp(hook.global_position, real_target_global, 0.5)
 	else:
-		hook.global_rotation = lerp(hook.global_rotation, global_rotation, 0.7)
-		real_target_global += -global_basis.z
+		hook.global_rotation = lerp(hook.global_rotation, player.global_rotation, 0.7)
+		hook.global_position = lerp(hook.global_position, hook_rest_pos.global_position, 0.75)
 
-	hook.global_position = lerp(hook.global_position, real_target_global, 0.5)
 
 	var hook_attachment_point_offset := hook.global_basis.z * 0.7
 	var shader_material : ShaderMaterial = mesh.surface_get_material(0)

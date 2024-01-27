@@ -5,6 +5,7 @@ class_name Sled
 @onready var sled_mesh = $SledModel
 @onready var ground_ray = $SledModel/GroundDetector
 @onready var ground_ray_for_normal = $SledModel/GroundNormalDetector
+@onready var animator: SlederAnimator = $SledModel/SledVisual/Pulkkailija_origo
 
 @export_group("Sled's properties")
 @export var acceleration = 35.0
@@ -59,7 +60,7 @@ func _physics_process(delta):
 func _process(delta):
 	if can_jump < 0.1:
 		can_jump += delta
-	turn_input = Input.get_axis("turn_right","turn_left") * deg_to_rad(turning)
+	turn_input = Input.get_axis("turn_right", "turn_left") * deg_to_rad(turning)
 	if not can_move:
 		return
 	if ground_ray.is_colliding():
@@ -73,6 +74,9 @@ func _process(delta):
 	sled_mesh.rotation.z = lerp(sled_mesh.rotation.z, -t * 40, 5.0 * delta)
 	if linear_velocity.length() > turn_stop_limit:
 		apply_torque_impulse(global_basis.y * -t * delta * 100 * max(1.0, linear_velocity.length()))
+	# Animate
+	animator.set_turning(Input.get_axis("turn_right", "turn_left"))
+	animator.set_acceleration(Input.get_axis("break", "accelerate"))
 
 func align_with_y(xform, new_y):
 	xform.basis.y = new_y
