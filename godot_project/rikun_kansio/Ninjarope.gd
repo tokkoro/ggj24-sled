@@ -3,6 +3,7 @@ class_name Ninjarope
 
 @onready var player: Sled = $"../../.."
 var hook: Node3D = null
+var pointer: Node3D = null
 
 var target: Node3D = null
 var target_offset := Vector3(10, -1, 10)
@@ -13,7 +14,20 @@ var extra_impulse_cooldwon := 0.0
 
 func _ready():
 	hook = get_tree().current_scene.find_child("Hook")
+	pointer = get_tree().current_scene.find_child("Pointer")
 	hook.position = Vector3(0,-100,0)
+
+func get_mouse_hit() -> Dictionary:
+	var viewport := get_viewport()
+	var mouse_position := viewport.get_mouse_position()
+	var camera := viewport.get_camera_3d()
+	var space_state := get_world_3d().direct_space_state
+	var start := camera.project_ray_origin(mouse_position);
+	var end := start + camera.project_ray_normal(mouse_position) * 1000;
+	var query := PhysicsRayQueryParameters3D.create(start, end)
+	query.collision_mask = 1 # put all ropeable things on collision_layer 1
+	query.exclude.append(player.get_rid())
+	return space_state.intersect_ray(query)
 
 func _input(event):
 	if not player.can_move:
@@ -21,18 +35,7 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
 			if event.pressed:
-				# raycast from camera to mouse
-				var viewport := get_viewport()
-				var mouse_position := viewport.get_mouse_position()
-				var camera := viewport.get_camera_3d()
-
-				var space_state := get_world_3d().direct_space_state
-				var start := camera.project_ray_origin(mouse_position);
-				var end := camera.project_ray_normal(mouse_position) * 1000;
-				var query := PhysicsRayQueryParameters3D.create(start, end)
-				query.collision_mask = 1 # put all ropeable things on collision_layer 1
-				query.exclude.append(player.get_rid())
-				var result := space_state.intersect_ray(query)
+				var result : Dictionary = get_mouse_hit()
 				var mouse_position_3D:Vector3 = result.get("position", Vector3(0,10,0))
 				var target_object = result.get("collider", null)
 				if target_object:
@@ -47,6 +50,12 @@ func _input(event):
 					#print(hook.global_position)
 
 func _process(delta):
+	if pointer:
+		var result : Dictionary = get_mouse_hit()
+		var pos = result.get("position", Vector3(0, 10000.0, 0))
+		pointer.global_position = pos
+		pointer.basis.y = result.get("normal", Vector3(0,1,0))
+
 	extra_impulse_cooldwon = min(1.0, extra_impulse_cooldwon + delta / 3.0)
 	if not Input.is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_LEFT):
 		target = null
@@ -67,7 +76,7 @@ func _process(delta):
 		original_length = min(len, original_length)
 		var force : float = min(pow(max(max(0.1, len - original_length) * snap_back_force_multiplier_squared, 0.0), 1.0) * snap_back_force_multiplier, anti_explosion_max_force) * delta
 
-		player.apply_impulse(dir * force + extra_impulse * extra_impulse_cooldwon, global_position - player.global_position)
+		player.apply_impulse(dir * force + extra_impulse * extra_impulse_cooldwon, (global_position - player.global_position) * 0.3)
 		if extra_impulse.length_squared() > 0.0:
 			extra_impulse_cooldwon = 0.0
 			extra_impulse = Vector3()
