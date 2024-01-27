@@ -7,17 +7,17 @@
 [ext_resource type="Script" path="res://tomi_testaa/CountDownLabels.gd" id="4_kjjsv"]
 [ext_resource type="PackedScene" uid="uid://bw8q8fcqh4wil" path="res://rikun_kansio/Hook.tscn" id="5_kv3ey"]
 [ext_resource type="AudioStream" uid="uid://blmpud0otcam8" path="res://sounds/boing.wav" id="5_qasfm"]
-[ext_resource type="Material" uid="uid://bdqffmtj76632" path="res://tomi_testaa/count_down_label_material.tres" id="5_sgs8b"]
+[ext_resource type="Material" path="res://tomi_testaa/count_down_label_material.tres" id="5_sgs8b"]
 [ext_resource type="AudioStream" uid="uid://cg67r5wg6cjs5" path="res://sounds/ping.ogg" id="6_8jhb8"]
 [ext_resource type="Shader" path="res://sled/debug_my_balls.gdshader" id="6_t8g3j"]
 [ext_resource type="Script" path="res://tomi_testaa/Goal.gd" id="7_1fp6q"]
 [ext_resource type="Script" path="res://tomi_testaa/TheGame.gd" id="8_115im"]
-[ext_resource type="AudioStream" uid="uid://l71a2758d1k7" path="res://sounds/humm.ogg" id="10_aqsud"]
-[ext_resource type="Shape3D" uid="uid://c6dwwlfow03tf" path="res://tomi_testaa/goal_box_shape.tres" id="12_0b2l2"]
+[ext_resource type="Shape3D" path="res://tomi_testaa/goal_box_shape.tres" id="12_0b2l2"]
 [ext_resource type="Script" path="res://tomi_testaa/InterpolatedCameraBetter.gd" id="12_u5t8h"]
-[ext_resource type="PackedScene" path="res://rikun_kansio/pointer.tscn" id="12_vi5oh"]
+[ext_resource type="PackedScene" uid="uid://d321yu0pfgq3c" path="res://rikun_kansio/pointer.tscn" id="12_vi5oh"]
 [ext_resource type="Script" path="res://tomi_testaa/pulsing_time.gd" id="13_2k2q3"]
 [ext_resource type="PackedScene" uid="uid://c84j0x5s5gxwp" path="res://rikun_kansio/maailman_kalustus.tscn" id="18_w2y4b"]
+[ext_resource type="AudioStream" uid="uid://d4f4loyx5o2iq" path="res://sounds/ai2_v2.ogg" id="18_wqwna"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sh2yx"]
 friction = 0.1
@@ -241,12 +241,6 @@ mesh = SubResource("BoxMesh_ioh6s")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TheGame/GoalArea"]
 shape = ExtResource("12_0b2l2")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TheGame"]
-stream = ExtResource("10_aqsud")
-volume_db = -10.0
-pitch_scale = 0.8
-autoplay = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ojc11")
 
@@ -260,6 +254,10 @@ test_mode = false
 delete_props = false
 path_name = "level0_path"
 intended_path_thickness = 20.0
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_wqwna")
+autoplay = true
 
 [connection signal="body_entered" from="TheGame/GoalArea" to="TheGame/GoalArea" method="_on_body_entered"]
 
