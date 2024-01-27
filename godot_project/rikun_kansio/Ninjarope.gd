@@ -8,6 +8,7 @@ var target: Node3D = null
 var target_offset := Vector3(10, -1, 10)
 var target_pos := Vector3()
 var original_length : float
+var extra_impulse := Vector3()
 
 func _ready():
 	hook = get_tree().current_scene.find_child("Hook")
@@ -39,6 +40,7 @@ func _input(event):
 					original_length = (mouse_position_3D - global_position).length()
 					hook.look_at_from_position(global_position, mouse_position_3D)
 					hook.global_position = mouse_position_3D
+					extra_impulse = ((mouse_position_3D - global_position) * Vector3(1,0,1)).normalized() * 5
 					#print(hook.global_position)
 
 func _process(delta):
@@ -59,10 +61,12 @@ func _process(delta):
 		const min_length := 1.3
 
 		var force : float = min(pow(max(max(0.1, len - original_length) * snap_back_force_multiplier_squared, 0.0), 1.0) * snap_back_force_multiplier, anti_explosion_max_force) * delta
-		player.apply_impulse(dir * force, global_position - player.global_position)
+		player.apply_impulse(dir * force + extra_impulse, global_position - player.global_position)
+		print(extra_impulse)
+		extra_impulse = Vector3()
 		var shortening_per_second := 0.5
 		original_length = max(min_length, original_length - delta * shortening_per_second)
-		print(len)
+		
 	else:
 		hook.global_rotation = lerp(hook.global_rotation, global_rotation, 0.7)
 		real_target_global += -global_basis.z
