@@ -58,5 +58,6 @@ mesh = SubResource("BoxMesh_hdxx0")
 surface_material_override/0 = ExtResource("2_2c064")
 
 [node name="Hook" parent="." instance=ExtResource("5_kv3ey")]
+visible = false
 
 [editable path="Sled"]

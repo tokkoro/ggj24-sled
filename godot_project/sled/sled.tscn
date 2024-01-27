@@ -52,3 +52,4 @@ gi_mode = 0
 mesh = SubResource("SphereMesh_wvwl8")
 
 [node name="Ninjarope" parent="." instance=ExtResource("3_cja6s")]
+visible = false
