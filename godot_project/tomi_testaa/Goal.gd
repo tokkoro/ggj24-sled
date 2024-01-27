@@ -17,4 +17,5 @@ func set_size_pos_rot(size: Vector3, pos: Vector3, rot: Vector3):
 func _on_body_entered(body: Node3D):
 	if body.is_in_group("Player"):
 		print("Finished")
+		the_game.on_goal()
 		the_game.move_player_to_start()

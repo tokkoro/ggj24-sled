@@ -84,6 +84,10 @@ top_level = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.183868, 0)
 target_position = Vector3(0, -0.3, 0)
 
+[node name="GroundNormalDetector" type="RayCast3D" parent="SledModel" groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.183868, 0)
+target_position = Vector3(0, -2, 0)
+
 [node name="SledVisual" type="Node3D" parent="SledModel" groups=["Player"]]
 
 [node name="Ninjarope" parent="SledModel/SledVisual" groups=["Player"] instance=ExtResource("3_cja6s")]

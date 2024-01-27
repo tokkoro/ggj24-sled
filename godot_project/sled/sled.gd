@@ -4,6 +4,7 @@ class_name Sled
 
 @onready var sled_mesh = $SledModel
 @onready var ground_ray = $SledModel/GroundDetector
+@onready var ground_ray_for_normal = $SledModel/GroundNormalDetector
 
 @export_group("Sled's properties")
 @export var acceleration = 35.0
@@ -42,7 +43,7 @@ func _physics_process(delta):
 			camera = get_viewport().get_camera_3d()
 		camera.force_move()
 
-	var n = ground_ray.get_collision_normal()
+	var n = ground_ray_for_normal.get_collision_normal()
 	var xform = align_with_y(sled_mesh.global_transform, n)
 	graphics_up = graphics_up.slerp(xform.basis.y, 10.0 * delta)
 	sled_mesh.position = position + sphere_offset

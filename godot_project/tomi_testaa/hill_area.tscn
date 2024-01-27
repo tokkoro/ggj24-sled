@@ -2,10 +2,8 @@
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="PackedScene" uid="uid://cq833rrl7e2qe" path="res://sled/sled.tscn" id="1_pmsqt"]
-[ext_resource type="Material" uid="uid://d0tvqnt0gn0k7" path="res://tomi_testaa/lumi_material.tres" id="2_2c064"]
 [ext_resource type="Script" path="res://tomi_testaa/CountDownLabels.gd" id="4_kjjsv"]
 [ext_resource type="PackedScene" uid="uid://bw8q8fcqh4wil" path="res://rikun_kansio/Hook.tscn" id="5_kv3ey"]
-[ext_resource type="FontFile" uid="uid://odt5k5dsdlao" path="res://Fonts/Destruck.ttf" id="5_rmhmo"]
 [ext_resource type="Material" uid="uid://bdqffmtj76632" path="res://tomi_testaa/count_down_label_material.tres" id="5_sgs8b"]
 [ext_resource type="PackedScene" uid="uid://sew1cgydyonh" path="res://models/level1.glb" id="6_o6naf"]
 [ext_resource type="Script" path="res://tomi_testaa/Goal.gd" id="7_1fp6q"]
@@ -24,29 +22,26 @@
 [sub_resource type="TextMesh" id="TextMesh_nq84k"]
 material = ExtResource("5_sgs8b")
 text = "1"
-font = ExtResource("5_rmhmo")
 
 [sub_resource type="TextMesh" id="TextMesh_y3pbh"]
 material = ExtResource("5_sgs8b")
 text = "2
 "
-font = ExtResource("5_rmhmo")
 
 [sub_resource type="TextMesh" id="TextMesh_hsqlu"]
 material = ExtResource("5_sgs8b")
 text = "3"
-font = ExtResource("5_rmhmo")
 
 [sub_resource type="TextMesh" id="TextMesh_j5h7i"]
 material = ExtResource("5_sgs8b")
 text = "GO!"
-font = ExtResource("5_rmhmo")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fivm5"]
-size = Vector3(1000, 2, 1000)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hy66e"]
+emission_enabled = true
+emission = Color(0, 0.0862745, 0.458824, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_hdxx0"]
-size = Vector3(1000, 2, 1000)
+[sub_resource type="TextMesh" id="TextMesh_aiufe"]
+material = SubResource("StandardMaterial3D_hy66e")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igoq7"]
 transparency = 1
@@ -82,7 +77,7 @@ offset = Vector3(0, 6, 8)
 target = NodePath("../Sled/SledModel")
 
 [node name="CountDownLabels" type="Node3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.791874)
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0.202169, -0.791874)
 script = ExtResource("4_kjjsv")
 
 [node name="l1" type="MeshInstance3D" parent="Camera3D/CountDownLabels"]
@@ -109,21 +104,10 @@ mesh = SubResource("TextMesh_j5h7i")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("5_sgs8b")
 
-[node name="time" type="MeshInstance3D" parent="Camera3D/CountDownLabels"]
-visible = false
-mesh = SubResource("TextMesh_j5h7i")
-skeleton = NodePath("../..")
+[node name="time" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.52, 0, 0, 0, 0.395411, -0.337713, 0, 0.337713, 0.395411, 0, 0.517, -0.792)
+mesh = SubResource("TextMesh_aiufe")
 surface_material_override/0 = ExtResource("5_sgs8b")
-
-[node name="Hill2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -57.0455, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hill2"]
-shape = SubResource("BoxShape3D_fivm5")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Hill2"]
-mesh = SubResource("BoxMesh_hdxx0")
-surface_material_override/0 = ExtResource("2_2c064")
 
 [node name="Hook" parent="." instance=ExtResource("5_kv3ey")]
 
