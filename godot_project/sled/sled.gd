@@ -44,7 +44,7 @@ func _physics_process(delta):
 
 	var n = ground_ray_for_normal.get_collision_normal()
 	var xform = align_with_y(sled_mesh.global_transform, n)
-	graphics_up = graphics_up.slerp(xform.basis.y, 10.0 * delta)
+	graphics_up = graphics_up.slerp(xform.basis.y.normalized(), 10.0 * delta)
 	sled_mesh.position = position + sphere_offset
 	sled_mesh.global_basis.y = graphics_up.normalized()
 	sled_mesh.rotation.y = rotation.y
@@ -69,11 +69,10 @@ func _process(delta):
 			jump_input = jump_power
 		speed_input = Input.get_axis("break", "accelerate") * acceleration
 
+	var t = -turn_input / body_tilt
+	sled_mesh.rotation.z = lerp(sled_mesh.rotation.z, -t * 40, 5.0 * delta)
 	if linear_velocity.length() > turn_stop_limit:
-		var t = -turn_input * linear_velocity.length() / body_tilt
-		apply_torque_impulse(global_basis.y * -t * delta * 100)
-		# tiltti
-		sled_mesh.rotation.z = lerp(sled_mesh.rotation.z, t, 5.0 * delta)
+		apply_torque_impulse(global_basis.y * -t * delta * 100 * max(1.0, linear_velocity.length()))
 
 func align_with_y(xform, new_y):
 	xform.basis.y = new_y
