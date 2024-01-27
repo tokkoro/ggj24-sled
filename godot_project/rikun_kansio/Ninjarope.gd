@@ -9,6 +9,7 @@ var target_offset := Vector3(10, -1, 10)
 var target_pos := Vector3()
 var original_length : float
 var extra_impulse := Vector3()
+var extra_impulse_cooldwon := 0.0
 
 func _ready():
 	hook = get_tree().current_scene.find_child("Hook")
@@ -30,23 +31,24 @@ func _input(event):
 				query.collision_mask = 1 # put all ropeable things on collision_layer 1
 				query.exclude.append(player.get_rid())
 				var result := space_state.intersect_ray(query)
-				
 				var mouse_position_3D:Vector3 = result.get("position", Vector3(0,10,0))
 				var target_object = result.get("collider", null)
 				if target_object:
 					# hit something, save the hit offset to that something, and attach the hook there
 					target_offset = (mouse_position_3D - target_object.global_position)
 					target = target_object
-					original_length = (mouse_position_3D - global_position).length()
+					const min_length := 10.0
+					original_length = max(min_length, (mouse_position_3D - global_position).length())
 					hook.look_at_from_position(global_position, mouse_position_3D)
 					hook.global_position = mouse_position_3D
-					extra_impulse = ((mouse_position_3D - global_position) * Vector3(1,0,1)).normalized() * 5
+					extra_impulse = ((mouse_position_3D - global_position) * Vector3(1,0,1)).normalized()
 					#print(hook.global_position)
 
 func _process(delta):
+	extra_impulse_cooldwon = min(1.0, extra_impulse_cooldwon + delta / 3.0)
 	if not Input.is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_LEFT):
 		target = null
-	
+
 	var real_target := Vector3()
 	var real_target_global := global_position
 	if target:
@@ -58,19 +60,23 @@ func _process(delta):
 		const snap_back_force_multiplier_squared := 5
 		const snap_back_force_multiplier := 20
 		const anti_explosion_max_force := 500
-		const min_length := 1.3
-
+		const min_shortened_length := 1.3
+		print(len - original_length)
+		original_length = min(len, original_length)
 		var force : float = min(pow(max(max(0.1, len - original_length) * snap_back_force_multiplier_squared, 0.0), 1.0) * snap_back_force_multiplier, anti_explosion_max_force) * delta
-		player.apply_impulse(dir * force + extra_impulse, global_position - player.global_position)
-		print(extra_impulse)
-		extra_impulse = Vector3()
-		var shortening_per_second := 0.5
-		original_length = max(min_length, original_length - delta * shortening_per_second)
-		
+		print(force, ", ", len - original_length)
+		player.apply_impulse(dir * force + extra_impulse * extra_impulse_cooldwon, global_position - player.global_position)
+		if extra_impulse.length_squared() > 0.0:
+			print(extra_impulse_cooldwon)
+			extra_impulse_cooldwon = 0.0
+			extra_impulse = Vector3()
+		var shortening_per_second := 1.0
+		original_length = max(min_shortened_length, original_length - delta * shortening_per_second)
+
 	else:
 		hook.global_rotation = lerp(hook.global_rotation, global_rotation, 0.7)
 		real_target_global += -global_basis.z
-	
+
 	hook.global_position = lerp(hook.global_position, real_target_global, 0.5)
 
 	var hook_attachment_point_offset := hook.global_basis.z * 0.7
