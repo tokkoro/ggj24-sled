@@ -5,16 +5,27 @@ extends Node3D
 var generate_props := false
 
 @export
+var test_mode := false
+
+@export
 var delete_props := false
 
 @export
 var random_seed := 0
+
+@export
+var path_name := "level0_path"
+
+@export
+var intended_path_thickness := 20.0
 
 const props := [ "res://rompe_scenet/huussi.tscn", "res://rompe_scenet/kivi_1.tscn", "res://rompe_scenet/kivi_2.tscn", "res://rompe_scenet/kivi_3.tscn", "res://rompe_scenet/kivi_4.tscn", "res://rompe_scenet/kuusi.tscn", "res://rompe_scenet/lehtipuu.tscn", "res://rompe_scenet/manty.tscn" ]
 
 @onready var prosit = $"../Propsit"
 
 func _generate():
+	var intended_path : Path3D = find_child(path_name)
+	var curve : Curve3D = intended_path.curve
 	seed(random_seed)
 	var space_state := get_world_3d().direct_space_state
 	
@@ -36,9 +47,19 @@ func _generate():
 		if not result:
 			continue
 
+		var pos : Vector3 = result["position"] + Vector3.DOWN * 0.1
+		var closest_point := curve.get_closest_point(pos - intended_path.global_position) + intended_path.global_position
+		var dist_from_curve : float = (closest_point - pos).length()
+		if dist_from_curve < intended_path_thickness:
+			if test_mode:
+				var node := shapes[shape_index].instantiate()
+				prosit.add_child(node)
+				node.global_position = closest_point
+			continue
+		
 		var node := shapes[shape_index].instantiate()
 		prosit.add_child(node)
-		node.global_position = result["position"] + Vector3.DOWN * 0.1
+		node.global_position = pos
 
 func _process(delta):
 	if generate_props:
