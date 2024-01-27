@@ -7,7 +7,7 @@ var levels = [
 	preload("res://models/level0.glb"), 
 	preload("res://models/level1.glb"),
 	preload("res://models/level2.glb"),
-	null, # "preload(res://models/level3.glb"),
+	preload("res://models/level3.glb"),
 ]
 var root_level = preload("res://tomi_testaa/hill_area.tscn")
 
