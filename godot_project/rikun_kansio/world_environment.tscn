@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3siv2p6giv7c"]
+
+[sub_resource type="Sky" id="Sky_0gakm"]
+
+[sub_resource type="Environment" id="Environment_ojc11"]
+sky = SubResource("Sky_0gakm")
+ambient_light_source = 3
+ambient_light_color = Color(0.698039, 0.862745, 0.890196, 1)
+ambient_light_energy = 2.51
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.698039, 0.862745, 0.890196, 1)
+volumetric_fog_density = 0.0359
+volumetric_fog_albedo = Color(0.698039, 0.862745, 0.890196, 1)
+volumetric_fog_emission = Color(1, 1, 1, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_ojc11")
