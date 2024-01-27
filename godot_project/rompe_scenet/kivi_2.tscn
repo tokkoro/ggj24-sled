@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ldj8qdr5ff7x"]
+
+[ext_resource type="ArrayMesh" uid="uid://jy5jhilgb8bs" path="res://romppeet/romppeet_kivi2.res" id="1_cna7m"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1co4c"]
+points = PackedVector3Array(-0.56261, -0.116419, -0.418651, -0.190618, 1.93576, -0.187942, -0.190618, 1.91328, -0.230835, 1.61293, 0.779548, 0.172101, -0.563076, -0.0645288, 0.911268, 1.44381, 0.0464531, -0.560194, -1.93069, -0.0314782, 0.00545139, 0.429043, 0.891967, 1.01788, 1.40118, -0.0404698, 0.553719, -0.659285, 0.164816, -0.825902, -1.31731, 0.779548, 0.454215, -0.815111, 1.6746, -0.5648, 1.49995, 0.948063, 0.397755, -0.415885, 2.01887, -0.165535, -0.241239, 1.75848, -0.499245, 0.0763789, -0.176218, 0.112956, -0.618153, -0.0158473, -0.849482, 1.19998, -0.069366, -0.475008, -1.08201, 0.684061, -0.622044, -0.815877, 1.72782, -0.148578, -0.51034, -0.174368, -0.0468585, -1.91862, -0.0248795, -0.0480875, -0.295784, -0.0533908, 0.901635, 1.61293, 0.891967, 0.284834, -0.456819, -0.119455, 0.64618, -0.34525, 0.0145521, -0.819947)
+
+[node name="kivi2" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.59678, 0, -9.76425)
+mesh = ExtResource("1_cna7m")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_1co4c")

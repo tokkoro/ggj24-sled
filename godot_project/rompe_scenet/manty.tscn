@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4vi176m4qad2"]
+
+[ext_resource type="ArrayMesh" uid="uid://deq7eg6xbil7w" path="res://romppeet/romppeet_manty.res" id="1_vuvxl"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h4plb"]
+points = PackedVector3Array(0.425429, 3.55418, 0.0666529, -0.543, 3.63997, -0.100358, -0.49702, 3.49984, 0.120936, 0.208257, -0.0271311, -0.204552, -0.225639, -0.0271311, 0.229503, 0.693425, 3.71427, -0.337375, 0.208257, -0.0271311, 0.229503, -0.225639, -0.0271311, -0.204552, 0.153937, 3.55418, 0.175167)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_18rpf"]
+points = PackedVector3Array(-0.735205, 4.64813, -2.44537, 2.46476, 4.06793, -0.939405, 0.370885, 6.10447, 0.0660635, -2.42411, 4.03292, 0.10518, -1.03941, 6.15851, -0.801347, 0.696379, 3.55443, -0.0421159, 0.479733, 5.99587, -1.07254, -0.663823, 5.92307, 0.812774, 2.75872, 4.42246, -0.475821, -0.333739, 4.53131, 2.34573, 0.370885, 3.66277, -1.12638, -2.61325, 4.25981, -0.151283, 0.253062, 4.54734, -2.52277, 2.51536, 4.06854, -0.151639, 0.49316, 5.30142, -2.08149, 0.479733, 4.91064, 2.12789, -0.225416, 3.55468, 0.174737, -1.36491, 5.67007, 0.445926, -2.39555, 4.15147, 0.554105, 1.50315, 3.81602, -1.55576, 0.567859, 4.43947, 1.98581, -0.659759, 4.91039, -2.70066, -1.70752, 3.87615, -0.306215, 2.75872, 4.42246, -0.638337, -2.61325, 4.25981, -0.258475, -0.894885, 4.59514, -2.34777, 1.70719, 3.76675, -0.203447, -0.551436, 3.55468, -0.151283, -0.00341104, 5.46857, -1.98802)
+
+[node name="manty" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02993, 0, -3.76972)
+mesh = ExtResource("1_vuvxl")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_h4plb")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_18rpf")

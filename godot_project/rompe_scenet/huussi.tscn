@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvau75w16rtuk"]
+
+[ext_resource type="ArrayMesh" uid="uid://b0hhbwc1onkp8" path="res://romppeet/romppeet_huussi.res" id="1_n22jr"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4tppi"]
+points = PackedVector3Array(0.877028, 2.49683, 0.685246, -0.816908, 2.06212, -0.731076, -0.576377, 2.06212, -0.731076, 0.913816, 0.0277984, 0.413921, -0.816908, 2.06212, 0.711455, 1.0265, 2.38299, -0.731076, -0.537468, 0.0516888, -0.500955, -0.537468, 0.0516888, 0.481334, 0.859404, 0.0532389, -0.4248, 1.0265, 2.38299, 0.711455, -0.667708, 2.18773, -0.704957, 0.986444, 0.0986968, 0.430884, 0.454013, 0.368386, -0.553075, 0.45575, 0.363945, 0.536157, 1.00107, 2.50805, -0.711178, -0.796999, 2.16273, 0.695875, -0.592238, 0.331803, 0.532095, 0.986444, 0.179041, 0.0702517, -0.589441, 0.335531, -0.549542, 0.520423, 0.0517388, -0.500934, 0.901755, 0.198145, -0.427225, 0.632339, 0.0549164, 0.480023, 0.877028, 2.49683, -0.704867)
+
+[node name="huussi" type="MeshInstance3D"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0.00506991, -5.96046e-05, -6.99139)
+mesh = ExtResource("1_n22jr")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_4tppi")

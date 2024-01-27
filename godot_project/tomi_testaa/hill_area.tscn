@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=24 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="PackedScene" uid="uid://cq833rrl7e2qe" path="res://sled/sled.tscn" id="1_pmsqt"]
@@ -14,6 +14,12 @@
 [ext_resource type="Script" path="res://tomi_testaa/InterpolatedCameraBetter.gd" id="12_u5t8h"]
 [ext_resource type="PackedScene" path="res://rikun_kansio/pointer.tscn" id="12_vi5oh"]
 [ext_resource type="PackedScene" path="res://rikun_kansio/world_environment.tscn" id="13_rxptn"]
+[ext_resource type="PackedScene" path="res://tomi_testaa/the_game.tscn" id="8_61eb4"]
+[ext_resource type="Shape3D" path="res://tomi_testaa/goal_box_shape.tres" id="12_0b2l2"]
+[ext_resource type="Script" path="res://tomi_testaa/InterpolatedCameraBetter.gd" id="12_u5t8h"]
+[ext_resource type="PackedScene" uid="uid://d321yu0pfgq3c" path="res://rikun_kansio/pointer.tscn" id="12_vi5oh"]
+[ext_resource type="PackedScene" uid="uid://b3siv2p6giv7c" path="res://rikun_kansio/world_environment.tscn" id="13_rxptn"]
+[ext_resource type="Script" path="res://rikun_kansio/MaailmanKalustus.gd" id="15_v6quu"]
 
 [sub_resource type="TextMesh" id="TextMesh_nq84k"]
 material = ExtResource("5_sgs8b")
@@ -143,9 +149,15 @@ shape = ExtResource("12_0b2l2")
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("13_rxptn")]
 
+[node name="MaailmanKalustus" type="Node3D" parent="."]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 0)
+script = ExtResource("15_v6quu")
+
+[node name="Propsit" type="Node3D" parent="."]
+
 [connection signal="body_entered" from="TheGame/GoalArea" to="TheGame/GoalArea" method="_on_body_entered"]
 
 [editable path="Sled"]
-
 [editable path="Hook"]
 [editable path="level1"]
+[editable path="Pointer"]
