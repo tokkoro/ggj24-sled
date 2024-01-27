@@ -1,10 +1,10 @@
 extends Node3D
 
 var current_level = 0
-var start_level = 1
+var start_level = 0
 var level_count = 3
 var levels = [
-	null, # preload("res://models/level0.glb"), 
+	preload("res://models/level0.glb"), 
 	preload("res://models/level1.glb"),
 	preload("res://models/level2.glb"),
 	null, # "preload(res://models/level3.glb"),

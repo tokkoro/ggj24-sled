@@ -23,7 +23,7 @@ func on_goal():
 	run_ended = true
 	run_end_time = Time.get_ticks_msec()
 	var duration = run_end_time - run_start_time
-	var s = floor(duration / 1000)
+	var s = floor(duration / 1000.0)
 	var ms = duration % 1000
 	var time_str = get_time_str(s)
 	var text_mesh: TextMesh = time_label.mesh
@@ -31,7 +31,7 @@ func on_goal():
 	level_loader.next_level()
 
 func get_time_str(s: int) -> String:
-	var minutes = floor(s / 60)
+	var minutes = floor(s / 60.0)
 	var seconds = s % 60
 	var mid = ":"
 	#if seconds < 10:
@@ -40,6 +40,7 @@ func get_time_str(s: int) -> String:
 	return time_str
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore("unused_parameter")
 func _process(delta):
 	if not start_node:
 		game_start()
@@ -47,7 +48,7 @@ func _process(delta):
 		move_player_to_start()
 	# count down
 	var time_from_start = Time.get_ticks_msec() - run_start_time
-	var s = time_from_start / 1000
+	var s = time_from_start / 1000.0
 	if previous_start_second + 1 < s:
 		previous_start_second += 1
 		var count_down_num = 4 - s
@@ -88,10 +89,6 @@ func game_start():
 	# wait 3 secs
 	run_start_time = Time.get_ticks_msec()
 	previous_start_second = -1
-
-
-func generate_goal():
-	var goal = 23
 
 func move_player_to_start():
 	player.stop(start_node.global_rotation)
