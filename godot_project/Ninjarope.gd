@@ -2,22 +2,22 @@ extends MeshInstance3D
 class_name Ninjarope
 
 @onready var player = $".."
-#@onready var spring_joint: Generic6DOFJoint3D = $SpringJoint
+var hook: Node3D = null
 
 var target: Node3D = null
 var target_offset := Vector3(10, -1, 10)
 var target_pos := Vector3()
 var original_length : float
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	hook = get_tree().current_scene.find_child("Hook")
+	hook.position = Vector3(0,-100,0)
 
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
 			if event.pressed:
+				# raycast from camera to mouse
 				var viewport := get_viewport()
 				var mouse_position := viewport.get_mouse_position()
 				var camera := viewport.get_camera_3d()
@@ -33,33 +33,37 @@ func _input(event):
 				var mouse_position_3D:Vector3 = result.get("position", Vector3(0,10,0))
 				var target_object = result.get("collider", null)
 				if target_object:
+					# hit something, save the hit offset to that something, and attach the hook there
 					target_offset = (mouse_position_3D - target_object.global_position)
 					target = target_object
-					print(target)
 					original_length = (mouse_position_3D - global_position).length()
-					#spring_joint.set_node_a(player.get_path())
-					#spring_joint.set_node_b(target.get_path())
+					hook.look_at_from_position(global_position, mouse_position_3D)
+					hook.global_position = mouse_position_3D
+					print(hook.global_position)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if not Input.is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_LEFT):
 		target = null
-		#spring_joint.set_node_a(NodePath())
-		#spring_joint.set_node_b(NodePath())
 	
 	var real_target := Vector3()
 	if target:
-		#print(spring_joint.linear_limit_x)
 		real_target = (global_position - target.global_position - target_offset)
 		global_rotation = Vector3()
 		var diff : Vector3 = -real_target
 		var dir : Vector3 = diff.normalized()
 		var len : float = diff.length()
-		var force : float = pow(max((len - original_length) * 5.0, 0.0), 2.0) * delta * 10
-		player.apply_impulse(dir * force)
-		original_length = max(1.0, original_length - delta)
-		print(len, " / ", original_length, " -> ", force)
-	target_pos = lerp(target_pos, real_target, 1.0)
+		const snap_back_force_multiplier_squared := 5
+		const snap_back_force_multiplier := 20
+		const anti_explosion_max_force := 500
+		const min_length := 3.0
+
+		var force : float = min(pow(max((len - original_length) * snap_back_force_multiplier_squared, 0.0), 1.0) * snap_back_force_multiplier, anti_explosion_max_force) * delta
+		player.apply_impulse(dir * force, global_position - player.global_position)
+		var shortening_per_second := 0.0
+		original_length = max(min_length, original_length - delta * shortening_per_second)
+		
+	target_pos = lerp(target_pos, real_target, 0.7)
+	hook.global_position = global_position - target_pos
 	
 	var shader_material : ShaderMaterial = mesh.surface_get_material(0)
 	shader_material.set_shader_parameter("target_pos", target_pos)
