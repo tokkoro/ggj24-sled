@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://3rkk4v2efisb"]
+
+[ext_resource type="Shader" path="res://rikun_kansio/ninjarope.gdshader" id="1_wbbnv"]
+[ext_resource type="Script" path="res://rikun_kansio/Ninjarope.gd" id="2_4ujd7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6n7y"]
+render_priority = 0
+shader = ExtResource("1_wbbnv")
+shader_parameter/target_pos = Vector3(0.48, 0.73, 0.48)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_k1m7c"]
+material = SubResource("ShaderMaterial_o6n7y")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+radial_segments = 8
+
+[node name="Ninjarope" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+mesh = SubResource("CylinderMesh_k1m7c")
+skeleton = NodePath("")
+script = ExtResource("2_4ujd7")

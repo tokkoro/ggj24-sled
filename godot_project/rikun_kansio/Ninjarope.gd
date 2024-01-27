@@ -46,10 +46,11 @@ func _process(delta):
 		target = null
 	
 	var real_target := Vector3()
+	var real_target_global := global_position
 	if target:
-		real_target = (global_position - target.global_position - target_offset)
+		real_target_global = target.global_position + target_offset
 		global_rotation = Vector3()
-		var diff : Vector3 = -real_target
+		var diff : Vector3 = -(global_position - real_target_global)
 		var dir : Vector3 = diff.normalized()
 		var len : float = diff.length()
 		const snap_back_force_multiplier_squared := 5
@@ -61,12 +62,15 @@ func _process(delta):
 		player.apply_impulse(dir * force, global_position - player.global_position)
 		var shortening_per_second := 0.0
 		original_length = max(min_length, original_length - delta * shortening_per_second)
-		
-	target_pos = lerp(target_pos, real_target, 0.7)
-	hook.global_position = global_position - target_pos
+	else:
+		hook.global_rotation = lerp(hook.global_rotation, global_rotation, 0.7)
+		real_target_global += -global_basis.z
 	
+	hook.global_position = lerp(hook.global_position, real_target_global, 0.5)
+
+	var hook_attachment_point_offset := hook.global_basis.z * 0.7
 	var shader_material : ShaderMaterial = mesh.surface_get_material(0)
-	shader_material.set_shader_parameter("target_pos", target_pos)
+	shader_material.set_shader_parameter("target_pos", hook.global_position + hook_attachment_point_offset - global_position)
 
 	
 

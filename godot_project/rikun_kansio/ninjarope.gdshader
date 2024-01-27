@@ -5,7 +5,7 @@ uniform vec3 target_pos;
 void vertex()
 {
 	vec2 offset = VERTEX.xz;
-	vec3 center = mix(vec3(0.0), target_pos, VERTEX.y - 0.5);
+	vec3 center = mix(vec3(0.0), target_pos, VERTEX.y + 0.5);
 	vec3 left = normalize(cross(target_pos, vec3(0.0, 1.0, 0.0)));
 	vec3 up = normalize(cross(target_pos, left));
 	vec3 dist = left * offset.x - up * offset.y;

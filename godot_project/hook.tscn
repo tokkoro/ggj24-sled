@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdpjuhke8m1w"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_5dbtn"]
-
-[node name="Hook" type="MeshInstance3D"]
-transform = Transform3D(0.7, 0, 0, 0, -3.0598e-08, 0.7, 0, -0.7, -3.0598e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_5dbtn")

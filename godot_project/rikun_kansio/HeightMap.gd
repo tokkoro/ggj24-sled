@@ -4,7 +4,7 @@ var original_pos : Vector3
 
 func _ready():
 	original_pos = position
-	var image:Image = load("res://graphics/heightmap.png")
+	var image:Image = load("res://rikun_kansio/heightmap.png")
 	
 	var w = image.get_width()
 	var h = image.get_height()
