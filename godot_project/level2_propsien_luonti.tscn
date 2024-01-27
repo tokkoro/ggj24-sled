@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://tixlflp2j413"]
+
+[ext_resource type="PackedScene" uid="uid://csm0xhy8ofy5l" path="res://models/level2.glb" id="1_nkmct"]
+[ext_resource type="PackedScene" uid="uid://c84j0x5s5gxwp" path="res://rikun_kansio/maailman_kalustus.tscn" id="2_dw5jp"]
+
+[sub_resource type="Curve3D" id="Curve3D_p01cd"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -530.418, 204.346, 309.964, 0, 0, 0, 0, 0, 0, -358.812, 183.418, 242.771, 0, 0, 0, 0, 0, 0, -365.509, 171.698, 88.0759, 0, 0, 0, 0, 0, 0, -301.052, 159.142, 93.0985, 0, 0, 0, 0, 0, 0, -242.454, 153.282, 138.302, 0, 0, 0, 0, 0, 0, -123.585, 129.006, 102.307, 0, 0, 0, 0, 0, 0, -88.4269, 106.404, -86.042, 0, 0, 0, 0, 0, 0, -37.3634, 90.4992, -95.2502, 0, 0, 0, 0, 0, 0, 37.9761, 66.2232, 91.4243, 0, 0, 0, 0, 0, 0, 118.338, 40.2729, 93.0985, 0, 0, 0, 0, 0, 0, 125.035, 33.5761, 16.9219, 0, 0, 0, 0, 0, 0, 62.2521, 18.5082, -101.11, 0, 0, 0, 0, 0, 0, 119.175, 6.78868, -182.309, 0, 0, 0, 0, 0, 0, 71.4603, -7.44209, -255.137, 0, 0, 0, 0, 0, 0, 133.406, -40.9263, -378.192, 0, 0, 0, 0, 0, 0, 96.5735, -36.7408, -391.586),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 16
+
+[node name="Node3D" type="Node3D"]
+
+[node name="level2" parent="." instance=ExtResource("1_nkmct")]
+
+[node name="MaailmanKalustus" parent="." instance=ExtResource("2_dw5jp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+path_name = "level2_path"
+
+[node name="level2_path" type="Path3D" parent="."]
+curve = SubResource("Curve3D_p01cd")
+
+[node name="Propsit" type="Node3D" parent="."]
+
+[editable path="MaailmanKalustus"]

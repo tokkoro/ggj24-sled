@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5vtvnfmphpqh"]
+
+[ext_resource type="PackedScene" uid="uid://c84j0x5s5gxwp" path="res://rikun_kansio/maailman_kalustus.tscn" id="1_778jm"]
+[ext_resource type="PackedScene" uid="uid://cuylct3lltjnn" path="res://models/level0.glb" id="2_xta8l"]
+[ext_resource type="PackedScene" uid="uid://dat2ib321ic2n" path="res://level0_propsit.tscn" id="3_5xrw8"]
+
+[sub_resource type="Curve3D" id="Curve3D_shcoi"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -269, 587, -808, 0, 0, 0, 0, 0, 0, -625, 542, -786, 0, 0, 0, 0, 0, 0, -873, 469, -726, 0, 0, 0, 0, 0, 0, -960, 393, -562, 0, 0, 0, 0, 0, 0, -947, 344, -309, 0, 0, 0, 0, 0, 0, -940, 314, -74, 0, 0, 0, 0, 0, 0, -859, 280, -27, 0, 0, 0, 0, 0, 0, -591, 206, -4, 0, 0, 0, 0, 0, 0, -382, 141, -80, 0, 0, 0, 0, 0, 0, -194, 68, -64, 0, 0, 0, 0, 0, 0, 36.6063, 38.4897, 16.326, 0, 0, 0, 0, 0, 0, 177.604, 0, 36.4594),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.635747, 0, 0)
+}
+point_count = 12
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MaailmanKalustus" parent="." instance=ExtResource("1_778jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+
+[node name="level0" parent="." instance=ExtResource("2_xta8l")]
+
+[node name="level0_path" type="Path3D" parent="."]
+curve = SubResource("Curve3D_shcoi")
+
+[node name="Propsit" parent="." instance=ExtResource("3_5xrw8")]
+
+[editable path="MaailmanKalustus"]

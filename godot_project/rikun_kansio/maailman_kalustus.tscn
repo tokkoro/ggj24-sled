@@ -1,23 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c84j0x5s5gxwp"]
+[gd_scene load_steps=2 format=3 uid="uid://c84j0x5s5gxwp"]
 
 [ext_resource type="Script" path="res://rikun_kansio/MaailmanKalustus.gd" id="1_gcvj1"]
-
-[sub_resource type="Curve3D" id="Curve3D_wtwas"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 420.144, -284.173, -46.816, 0, 0, 0, 0, 0, 0, 76.0858, -266.173, 14.7292, 0, 0, 0, 0, 0, 0, -125.914, -294.173, -14.2708, 0, 0, 0, 0, 0, 0, -291.914, -317.173, -7.27075, 0, 0, 0, 0, 0, 0, -457.914, -371.173, 3.72925, 0, 0, 0, 0, 0, 0, -604.914, -415.173, 36.7292, 0, 0, 0, 0, 0, 0, -785.915, -440.173, 138.729, 0, 0, 0, 0, 0, 0, -719.914, -515.173, 451.729, 0, 0, 0, 0, 0, 0, -703.914, -577.173, 726.729, 0, 0, 0, 0, 0, 0, -567.914, -612.173, 791.729, -14, 8, -2, 14, -8, 2, -286.914, -654.173, 741.729, 0, 0, 0, 0, 0, 0, -25.9142, -755.173, 719.729, 0, 0, 0, 0, 0, 0, 386.086, -823.173, 801.729),
-"tilts": PackedFloat32Array(0, 0, 0.523599, 0, 0, 0, 0, 0, 2.79253, 0, 0, 0, 0)
-}
-point_count = 13
 
 [node name="MaailmanKalustus" type="Node3D"]
 transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 0)
 script = ExtResource("1_gcvj1")
-generate_props = null
-test_mode = null
-delete_props = null
-path_name = null
-intended_path_thickness = null
-
-[node name="level0_path" type="Path3D" parent="."]
-transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, -0.227086, 0.862173, -0.784729)
-curve = SubResource("Curve3D_wtwas")
