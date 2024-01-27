@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=48 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="Script" path="res://sled/sled.gd" id="2_nu8po"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://rikun_kansio/Ninjarope.gd" id="4_s3o24"]
 [ext_resource type="PackedScene" uid="uid://bw8q8fcqh4wil" path="res://rikun_kansio/Hook.tscn" id="5_kv3ey"]
 [ext_resource type="AudioStream" uid="uid://blmpud0otcam8" path="res://sounds/boing.wav" id="5_qasfm"]
-[ext_resource type="Material" uid="uid://bdqffmtj76632" path="res://tomi_testaa/count_down_label_material.tres" id="5_sgs8b"]
+[ext_resource type="Material" path="res://tomi_testaa/count_down_label_material.tres" id="5_sgs8b"]
 [ext_resource type="AudioStream" uid="uid://cg67r5wg6cjs5" path="res://sounds/ping.ogg" id="6_8jhb8"]
 [ext_resource type="ArrayMesh" uid="uid://lnu0i22ntkg1" path="res://romppeet/romppeet_pulkka.res" id="6_jyfto"]
 [ext_resource type="Shader" path="res://sled/debug_my_balls.gdshader" id="6_t8g3j"]
@@ -17,11 +17,10 @@
 [ext_resource type="Script" path="res://tomi_testaa/sleder_animator.gd" id="7_q2t7e"]
 [ext_resource type="Script" path="res://tomi_testaa/TheGame.gd" id="8_115im"]
 [ext_resource type="AudioStream" uid="uid://l71a2758d1k7" path="res://sounds/humm.ogg" id="10_aqsud"]
-[ext_resource type="Shape3D" uid="uid://c6dwwlfow03tf" path="res://tomi_testaa/goal_box_shape.tres" id="12_0b2l2"]
+[ext_resource type="Shape3D" path="res://tomi_testaa/goal_box_shape.tres" id="12_0b2l2"]
 [ext_resource type="Script" path="res://tomi_testaa/InterpolatedCameraBetter.gd" id="12_u5t8h"]
-[ext_resource type="PackedScene" path="res://rikun_kansio/pointer.tscn" id="12_vi5oh"]
+[ext_resource type="PackedScene" uid="uid://d321yu0pfgq3c" path="res://rikun_kansio/pointer.tscn" id="12_vi5oh"]
 [ext_resource type="Script" path="res://tomi_testaa/pulsing_time.gd" id="13_2k2q3"]
-[ext_resource type="PackedScene" uid="uid://c84j0x5s5gxwp" path="res://rikun_kansio/maailman_kalustus.tscn" id="18_w2y4b"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sh2yx"]
 friction = 0.1
@@ -454,13 +453,6 @@ environment = SubResource("Environment_ojc11")
 [node name="Propsit" type="Node3D" parent="."]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-
-[node name="MaailmanKalustus" parent="." instance=ExtResource("18_w2y4b")]
-generate_props = false
-test_mode = false
-delete_props = false
-path_name = "level0_path"
-intended_path_thickness = 20.0
 
 [connection signal="body_entered" from="TheGame/GoalArea" to="TheGame/GoalArea" method="_on_body_entered"]
 
