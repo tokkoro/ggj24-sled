@@ -46,9 +46,7 @@ func _input(event):
 					const min_length := 10.0
 					original_length = max(min_length, (mouse_position_3D - global_position).length())
 					hook.look_at_from_position(global_position, mouse_position_3D)
-					hook.global_position = mouse_position_3D
 					extra_impulse = ((mouse_position_3D - global_position) * Vector3(1,0,1)).normalized()
-					#print(hook.global_position)
 					$NinjaRopeHit.play()
 
 func _process(delta):

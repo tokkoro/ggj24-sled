@@ -21,6 +21,7 @@ func _ready():
 	
 	for i in range(10000):
 		var start := Vector3(randf_range(-1000, 1000), 3000, randf_range(-1000, 1000))
+		var shape_index := randi_range(0, len(shapes) - 1)
 		var end := start + Vector3.DOWN * 6000
 		var query := PhysicsRayQueryParameters3D.create(start, end)
 		query.collision_mask = 1 # put all ropeable things on collision_layer 1
@@ -28,7 +29,7 @@ func _ready():
 		if not result:
 			continue
 
-		var node := shapes[randi_range(0, len(shapes) - 1)].instantiate()
+		var node := shapes[shape_index].instantiate()
 		node.global_position = result["position"]
 		prosit.add_child(node)
 		print(node.global_position)
