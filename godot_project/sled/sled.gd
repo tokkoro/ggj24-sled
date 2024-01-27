@@ -8,8 +8,7 @@ class_name Sled
 
 @export_group("Sled's properties")
 @export var acceleration = 35.0
-@export var turning = 18.0  # degrees
-@export var turning_speed = 4.0
+@export var turning = 18.0  # degrees per second
 @export var turn_stop_limit = 0.75
 @export var sphere_offset = Vector3.DOWN
 @export var body_tilt = 35

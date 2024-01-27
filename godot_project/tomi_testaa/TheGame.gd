@@ -12,12 +12,12 @@ var end_node: Node3D
 var camera: FollowerCamera
 @export var count_down_label: CountDownLabel
 
-var run_start_time: int
+var run_start_time: int  # milliseconds when start happened
 var run_has_started = false
-var previous_start_second = -1
+var previous_timer_second = -1
 
 var run_ended = false
-var run_end_time = 0
+var run_end_time = 0 # milliseconds when end happened
 
 func on_goal():
 	run_ended = true
@@ -46,18 +46,26 @@ func _process(delta):
 		game_start()
 	if Input.is_action_just_pressed("reset"):
 		move_player_to_start()
-	# count down
+		
+	# start game after player hits the ground
+	if not run_has_started and player.ground_ray.is_colliding():
+		run_has_started = true
+		player.enable_move()
+		count_down_label.set_label(0)
+		run_start_time = Time.get_ticks_msec()
+		previous_timer_second = -1
+	
+	if not run_has_started:
+		return
+	
+	# timing the run
 	var time_from_start = Time.get_ticks_msec() - run_start_time
 	var s = time_from_start / 1000.0
-	if previous_start_second + 1 < s:
-		previous_start_second += 1
-		var count_down_num = 4 - s
-		count_down_label.set_label(count_down_num)
-		if previous_start_second > 2:
-			run_has_started = true
-			player.enable_move()
+	if previous_timer_second + 1 < s:
+		previous_timer_second += 1
+		var count_down_num = 2 - s
 		# make run clock
-		s -= 4
+		s -= 1
 		var time_str = get_time_str(s)
 		if s < 0:
 			time_str = ""
@@ -72,14 +80,14 @@ func _process(delta):
 
 
 func game_start():
-	
-	# USE LEVELLOADER TO GET
+
 	start_node = level_loader.level_scene_ref.find_child("hint_start")
 	end_node = level_loader.level_scene_ref.find_child("hint_goal")
 	if !player:
 		player = get_node("..").find_child("Sled")
 	if !count_down_label:
 		count_down_label = get_node("..").find_child("CountDownLabels")
+	count_down_label.set_label(1)
 	
 	goal.set_size_pos_rot(end_node.scale*2, end_node.global_position, end_node.global_rotation)
 
@@ -88,7 +96,6 @@ func game_start():
 	move_player_to_start()
 	# wait 3 secs
 	run_start_time = Time.get_ticks_msec()
-	previous_start_second = -1
 
 func move_player_to_start():
 	player.stop(start_node.global_rotation)
