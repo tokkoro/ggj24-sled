@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1200
+window/main_scene="res://tomi_testaa/level_loader_scene.tscn"
 
 [filesystem]
 
