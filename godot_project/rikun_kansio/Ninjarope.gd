@@ -1,7 +1,7 @@
 extends MeshInstance3D
 class_name Ninjarope
 
-@onready var player = $"../../.."
+@onready var player: Sled = $"../../.."
 var hook: Node3D = null
 
 var target: Node3D = null
@@ -16,6 +16,8 @@ func _ready():
 	hook.position = Vector3(0,-100,0)
 
 func _input(event):
+	if not player.can_move:
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
 			if event.pressed:

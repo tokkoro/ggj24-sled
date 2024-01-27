@@ -71,6 +71,7 @@ physics_material_override = SubResource("PhysicsMaterial_sh2yx")
 gravity_scale = 5.0
 angular_damp = 13.425
 script = ExtResource("1_gnc3m")
+acceleration = 20.0
 sphere_offset = Vector3(0, -0.738, 0)
 
 [node name="SledModel" type="Node3D" parent="."]

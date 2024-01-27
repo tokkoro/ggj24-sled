@@ -1,13 +1,37 @@
-[gd_scene load_steps=11 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=18 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="PackedScene" uid="uid://cq833rrl7e2qe" path="res://sled/sled.tscn" id="1_pmsqt"]
 [ext_resource type="Material" uid="uid://d0tvqnt0gn0k7" path="res://tomi_testaa/lumi_material.tres" id="2_2c064"]
+[ext_resource type="Script" path="res://tomi_testaa/CountDownLabels.gd" id="4_kjjsv"]
 [ext_resource type="PackedScene" uid="uid://bw8q8fcqh4wil" path="res://rikun_kansio/Hook.tscn" id="5_kv3ey"]
+[ext_resource type="FontFile" uid="uid://odt5k5dsdlao" path="res://Fonts/Destruck.ttf" id="5_rmhmo"]
+[ext_resource type="Material" uid="uid://bdqffmtj76632" path="res://tomi_testaa/count_down_label_material.tres" id="5_sgs8b"]
 [ext_resource type="PackedScene" uid="uid://sew1cgydyonh" path="res://models/level1.glb" id="6_o6naf"]
 [ext_resource type="PackedScene" uid="uid://clhjncg85wmnj" path="res://tomi_testaa/goal.tscn" id="7_dvuml"]
 [ext_resource type="PackedScene" uid="uid://djwms37mv03jo" path="res://tomi_testaa/the_game.tscn" id="8_61eb4"]
 [ext_resource type="Script" path="res://tomi_testaa/InterpolatedCameraBetter.gd" id="12_u5t8h"]
+
+[sub_resource type="TextMesh" id="TextMesh_nq84k"]
+material = ExtResource("5_sgs8b")
+text = "1"
+font = ExtResource("5_rmhmo")
+
+[sub_resource type="TextMesh" id="TextMesh_y3pbh"]
+material = ExtResource("5_sgs8b")
+text = "2
+"
+font = ExtResource("5_rmhmo")
+
+[sub_resource type="TextMesh" id="TextMesh_hsqlu"]
+material = ExtResource("5_sgs8b")
+text = "3"
+font = ExtResource("5_rmhmo")
+
+[sub_resource type="TextMesh" id="TextMesh_j5h7i"]
+material = ExtResource("5_sgs8b")
+text = "GO!"
+font = ExtResource("5_rmhmo")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fivm5"]
 size = Vector3(1000, 2, 1000)
@@ -24,15 +48,42 @@ shadow_enabled = true
 
 [node name="Sled" parent="." instance=ExtResource("1_pmsqt")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 107.296, 104.794, -197.482)
-acceleration = 70.0
 sphere_offset = Vector3(0, -1, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.0538, -60.0348)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.7735, -60.0348)
 current = true
 script = ExtResource("12_u5t8h")
 offset = Vector3(0, 3, 4)
 target = NodePath("../Sled/SledModel")
+
+[node name="CountDownLabels" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.791874)
+script = ExtResource("4_kjjsv")
+
+[node name="l1" type="MeshInstance3D" parent="Camera3D/CountDownLabels"]
+visible = false
+mesh = SubResource("TextMesh_nq84k")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_sgs8b")
+
+[node name="l2" type="MeshInstance3D" parent="Camera3D/CountDownLabels"]
+visible = false
+mesh = SubResource("TextMesh_y3pbh")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_sgs8b")
+
+[node name="l3" type="MeshInstance3D" parent="Camera3D/CountDownLabels"]
+visible = false
+mesh = SubResource("TextMesh_hsqlu")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_sgs8b")
+
+[node name="go" type="MeshInstance3D" parent="Camera3D/CountDownLabels"]
+visible = false
+mesh = SubResource("TextMesh_j5h7i")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_sgs8b")
 
 [node name="Hill2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -57.0455, 0)

@@ -20,6 +20,9 @@ class_name Sled
 # how much turning from input!
 @export var turn_input = 0
 @export var jump_input = 0
+
+var can_move = false
+
 var can_jump = 0
 var jump_cost = -0.3
 
@@ -57,6 +60,8 @@ func _process(delta):
 	if can_jump < 0.1:
 		can_jump += delta
 	turn_input = Input.get_axis("turn_right","turn_left") * deg_to_rad(turning)
+	if not can_move:
+		return
 	if ground_ray.is_colliding():
 		#jump
 		if Input.is_action_just_pressed("jump") and can_jump > 0:
@@ -80,3 +85,5 @@ func stop(start_rot: Vector3):
 	start_rotation = start_rot
 	stop_me = true
 	
+func enable_move():
+	can_move = true
