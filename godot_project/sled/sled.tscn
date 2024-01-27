@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cq833rrl7e2qe"]
+[gd_scene load_steps=13 format=3 uid="uid://cq833rrl7e2qe"]
 
 [ext_resource type="Script" path="res://sled/sled.gd" id="1_gnc3m"]
 [ext_resource type="Shader" path="res://sled/debug_my_balls.gdshader" id="3_1g2vh"]
 [ext_resource type="PackedScene" uid="uid://3rkk4v2efisb" path="res://rikun_kansio/ninjarope.tscn" id="3_cja6s"]
+[ext_resource type="AudioStream" uid="uid://blmpud0otcam8" path="res://sounds/boing.wav" id="4_0akp1"]
+[ext_resource type="AudioStream" uid="uid://b66gkp73k7x6v" path="res://sounds/hop.wav" id="4_5yy72"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sh2yx"]
 friction = 0.1
@@ -85,6 +87,13 @@ target_position = Vector3(0, -0.3, 0)
 
 [node name="Ninjarope" parent="SledModel/SledVisual" instance=ExtResource("3_cja6s")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.192977, -1.00821)
+
+[node name="NinjaRopeHit" type="AudioStreamPlayer" parent="SledModel/SledVisual/Ninjarope"]
+stream = ExtResource("4_5yy72")
+
+[node name="NinjaRopeFired" type="AudioStreamPlayer" parent="SledModel/SledVisual/Ninjarope"]
+stream = ExtResource("4_0akp1")
+volume_db = -20.0
 
 [node name="pulkka" type="MeshInstance3D" parent="SledModel/SledVisual"]
 mesh = SubResource("ArrayMesh_d1alu")

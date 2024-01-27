@@ -18,6 +18,7 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
 			if event.pressed:
+				$NinjaRopeFired.play()
 				# raycast from camera to mouse
 				var viewport := get_viewport()
 				var mouse_position := viewport.get_mouse_position()
@@ -42,6 +43,7 @@ func _input(event):
 					hook.global_position = mouse_position_3D
 					extra_impulse = ((mouse_position_3D - global_position) * Vector3(1,0,1)).normalized() * 5
 					#print(hook.global_position)
+					$NinjaRopeHit.play()
 
 func _process(delta):
 	if not Input.is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_LEFT):
