@@ -72,5 +72,6 @@ reset={
 3d_physics/layer_2="PLAYER"
 
 [rendering]
+
 renderer/rendering_method.mobile="forward_plus"
 renderer/rendering_method.web="forward_plus"
