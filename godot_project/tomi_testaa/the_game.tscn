@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://djwms37mv03jo"]
+
+[ext_resource type="Script" path="res://tomi_testaa/TheGame.gd" id="1_8vlh2"]
+
+[node name="TheGame" type="Node"]
+script = ExtResource("1_8vlh2")
