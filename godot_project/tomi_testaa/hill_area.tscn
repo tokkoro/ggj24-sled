@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=35 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="Script" path="res://sled/sled.gd" id="2_nu8po"]
@@ -7,17 +7,16 @@
 [ext_resource type="Script" path="res://tomi_testaa/CountDownLabels.gd" id="4_kjjsv"]
 [ext_resource type="PackedScene" uid="uid://bw8q8fcqh4wil" path="res://rikun_kansio/Hook.tscn" id="5_kv3ey"]
 [ext_resource type="AudioStream" uid="uid://blmpud0otcam8" path="res://sounds/boing.wav" id="5_qasfm"]
-[ext_resource type="Material" uid="uid://bdqffmtj76632" path="res://tomi_testaa/count_down_label_material.tres" id="5_sgs8b"]
+[ext_resource type="Material" path="res://tomi_testaa/count_down_label_material.tres" id="5_sgs8b"]
 [ext_resource type="AudioStream" uid="uid://cg67r5wg6cjs5" path="res://sounds/ping.ogg" id="6_8jhb8"]
 [ext_resource type="Shader" path="res://sled/debug_my_balls.gdshader" id="6_t8g3j"]
 [ext_resource type="Script" path="res://tomi_testaa/Goal.gd" id="7_1fp6q"]
 [ext_resource type="Script" path="res://tomi_testaa/TheGame.gd" id="8_115im"]
-[ext_resource type="AudioStream" uid="uid://l71a2758d1k7" path="res://sounds/humm.ogg" id="10_aqsud"]
-[ext_resource type="Shape3D" uid="uid://c6dwwlfow03tf" path="res://tomi_testaa/goal_box_shape.tres" id="12_0b2l2"]
+[ext_resource type="Shape3D" path="res://tomi_testaa/goal_box_shape.tres" id="12_0b2l2"]
 [ext_resource type="Script" path="res://tomi_testaa/InterpolatedCameraBetter.gd" id="12_u5t8h"]
-[ext_resource type="PackedScene" path="res://rikun_kansio/pointer.tscn" id="12_vi5oh"]
-[ext_resource type="Script" path="res://tomi_testaa/pulsing_time.gd" id="13_2k2q3"]
+[ext_resource type="PackedScene" uid="uid://d321yu0pfgq3c" path="res://rikun_kansio/pointer.tscn" id="12_vi5oh"]
 [ext_resource type="Script" path="res://rikun_kansio/MaailmanKalustus.gd" id="15_v6quu"]
+[ext_resource type="AudioStream" uid="uid://dvs28j6ulowkp" path="res://sounds/ai2.ogg" id="17_qocic"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sh2yx"]
 friction = 0.1
@@ -80,7 +79,16 @@ height = 2.0
 
 [sub_resource type="TextMesh" id="TextMesh_nq84k"]
 material = ExtResource("5_sgs8b")
-text = "READY..."
+text = "1"
+
+[sub_resource type="TextMesh" id="TextMesh_y3pbh"]
+material = ExtResource("5_sgs8b")
+text = "2
+"
+
+[sub_resource type="TextMesh" id="TextMesh_hsqlu"]
+material = ExtResource("5_sgs8b")
+text = "3"
 
 [sub_resource type="TextMesh" id="TextMesh_j5h7i"]
 material = ExtResource("5_sgs8b")
@@ -137,7 +145,6 @@ gravity_scale = 5.0
 angular_damp = 13.425
 script = ExtResource("2_nu8po")
 acceleration = 40.0
-turning = 8.0
 
 [node name="SledModel" type="Node3D" parent="Sled" groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.738434, 0)
@@ -201,9 +208,21 @@ target = NodePath("../Sled/SledModel")
 transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0.202169, -0.791874)
 script = ExtResource("4_kjjsv")
 
-[node name="ready" type="MeshInstance3D" parent="Camera3D/CountDownLabels"]
+[node name="l1" type="MeshInstance3D" parent="Camera3D/CountDownLabels"]
 visible = false
 mesh = SubResource("TextMesh_nq84k")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_sgs8b")
+
+[node name="l2" type="MeshInstance3D" parent="Camera3D/CountDownLabels"]
+visible = false
+mesh = SubResource("TextMesh_y3pbh")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_sgs8b")
+
+[node name="l3" type="MeshInstance3D" parent="Camera3D/CountDownLabels"]
+visible = false
+mesh = SubResource("TextMesh_hsqlu")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("5_sgs8b")
 
@@ -221,7 +240,6 @@ transform = Transform3D(0.52, 0, 0, 0, 0.395411, -0.337713, 0, 0.337713, 0.39541
 cast_shadow = 0
 mesh = SubResource("TextMesh_aiufe")
 surface_material_override/0 = ExtResource("5_sgs8b")
-script = ExtResource("13_2k2q3")
 
 [node name="TheGame" type="Node" parent="." node_paths=PackedStringArray("player", "count_down_label")]
 script = ExtResource("8_115im")
@@ -241,12 +259,6 @@ mesh = SubResource("BoxMesh_ioh6s")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TheGame/GoalArea"]
 shape = ExtResource("12_0b2l2")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TheGame"]
-stream = ExtResource("10_aqsud")
-volume_db = -10.0
-pitch_scale = 0.8
-autoplay = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ojc11")
 
@@ -257,6 +269,11 @@ script = ExtResource("15_v6quu")
 [node name="Propsit" type="Node3D" parent="."]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_qocic")
+volume_db = -20.0
+autoplay = true
 
 [connection signal="body_entered" from="TheGame/GoalArea" to="TheGame/GoalArea" method="_on_body_entered"]
 
