@@ -63,11 +63,10 @@ func _process(delta):
 	var time_from_start = Time.get_ticks_msec() - run_start_time
 	var s = time_from_start / 1000.0
 	if previous_timer_second + 1 < s:
-		if s == 2:
+		if previous_timer_second == 0:
 			count_down_label.set_label(-2)
 		previous_timer_second += 1
 		# make run clock
-		s -= 1
 		var time_str = get_time_str(s)
 		if s < 0:
 			time_str = ""
