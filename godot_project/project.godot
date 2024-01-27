@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="fgj2024"
+run/main_scene="res://rikun_scene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[dotnet]
+
+project/assembly_name="fgj2024"
 
 [rendering]
 
