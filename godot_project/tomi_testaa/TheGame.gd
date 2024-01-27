@@ -1,7 +1,7 @@
 extends Node
 class_name TheGame
 
-@export var start_pos_offset = Vector3.UP
+@export var start_pos_offset = Vector3.UP*10
 @onready var goal: GoalArea = $GoalArea
 @onready var time_label = $"../Camera3D/time"
 var start_node: Node3D
