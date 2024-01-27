@@ -19,7 +19,7 @@ func _ready():
 		shapes.append(load(prop))
 		#print(shapes[-1])
 	
-	for i in range(10000):
+	for i in range(5000):
 		var start := Vector3(randf_range(-1000, 1000), 3000, randf_range(-1000, 1000))
 		var shape_index := randi_range(0, len(shapes) - 1)
 		var end := start + Vector3.DOWN * 6000
