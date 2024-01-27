@@ -31,6 +31,26 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "meshes": {
+"romppeet_Cube": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://romppeet/romppeet_Cube.res"
+},
+"romppeet_Cube_003": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://romppeet/romppeet_Cube_003.res"
+},
 "romppeet_ankkuri": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
@@ -39,7 +59,133 @@ _subresources={
 "lods/normal_split_angle": 25.0,
 "save_to_file/enabled": true,
 "save_to_file/make_streamable": "",
-"save_to_file/path": "res://models/ankkuri_testi.res"
+"save_to_file/path": "res://romppeet/romppeet_ankkuri.res"
+},
+"romppeet_huussi": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://romppeet/romppeet_huussi.res"
+},
+"romppeet_kivi1": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://romppeet/romppeet_kivi1.res"
+},
+"romppeet_kivi2": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://romppeet/romppeet_kivi2.res"
+},
+"romppeet_kivi3": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://romppeet/romppeet_kivi3.res"
+},
+"romppeet_kivi4": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://romppeet/romppeet_kivi4.res"
+},
+"romppeet_kuusi": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://romppeet/romppeet_kuusi.res"
+},
+"romppeet_laskija": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://romppeet/romppeet_laskija.res"
+},
+"romppeet_lehtipuu": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://romppeet/romppeet_lehtipuu.res"
+},
+"romppeet_manty": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://romppeet/romppeet_manty.res"
+},
+"romppeet_pulkka": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://romppeet/romppeet_pulkka.res"
+}
+},
+"nodes": {
+"PATH:huussi": {
+"generate/physics": true
+},
+"PATH:kivi1": {
+"generate/physics": true
+},
+"PATH:kivi2": {
+"generate/physics": true
+},
+"PATH:kivi3": {
+"generate/physics": true
+},
+"PATH:kivi4": {
+"generate/physics": true
+},
+"PATH:kuusi": {
+"generate/physics": true
+},
+"PATH:lehtipuu": {
+"generate/physics": true
+},
+"PATH:manty": {
+"generate/physics": true
 }
 }
 }
