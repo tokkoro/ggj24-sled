@@ -17,10 +17,8 @@ var ninjarope_hit_sound = preload("res://sounds/hop.wav")
 var huussi_sound = preload("res://sounds/fart.ogg")
 
 func _ready():
-
 	if !audio_player_3d:
 		audio_player_3d = get_tree().current_scene.find_child("HitAudio3D")
-
 	if !hook:
 		hook = get_tree().current_scene.find_child("Hook")
 		hook.position = Vector3(0,-100,0)
@@ -69,7 +67,7 @@ func _input(event):
 					play_hit_sound(target, mouse_position_3D)
 					
 
-func _process(delta):
+func _physics_process(delta):
 	if pointer:
 		var result : Dictionary = get_mouse_hit()
 		var pos = result.get("position", Vector3(0, 10000.0, 0))
@@ -96,7 +94,7 @@ func _process(delta):
 		original_length = min(len, original_length)
 		var force : float = min(pow(max(max(0.1, len - original_length) * snap_back_force_multiplier_squared, 0.0), 1.0) * snap_back_force_multiplier, anti_explosion_max_force) * delta
 
-		player.apply_impulse(dir * force + extra_impulse * extra_impulse_cooldwon, (global_position - player.global_position) * 0.3)
+		player.apply_impulse((dir * force + extra_impulse * extra_impulse_cooldwon)*3, (global_position - player.global_position) * 0.3)
 		if extra_impulse.length_squared() > 0.0:
 			extra_impulse_cooldwon = 0.0
 			extra_impulse = Vector3()
