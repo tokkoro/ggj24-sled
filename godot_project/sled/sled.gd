@@ -1,4 +1,5 @@
 extends RigidBody3D
+class_name Sled
 ## turning sled with human in
 
 @onready var sled_mesh = $SledModel
@@ -22,7 +23,20 @@ extends RigidBody3D
 var can_jump = 0
 var jump_cost = -0.3
 
+var stop_me = false
+var camera: FollowerCamera
+var start_rotation: Vector3
+
 func _physics_process(delta):
+	if stop_me:
+		linear_velocity = Vector3.ZERO
+		angular_velocity = Vector3.ZERO
+		global_rotation = start_rotation
+		can_jump = 0
+		stop_me = false
+		if not camera:
+			camera = get_viewport().get_camera_3d()
+		camera.force_move()
 	sled_mesh.position = position + sphere_offset
 	sled_mesh.rotation = rotation
 	if ground_ray.is_colliding():
@@ -32,7 +46,7 @@ func _physics_process(delta):
 		jump_input = 0
 
 func _process(delta):
-	if can_jump < 1:
+	if can_jump < 0.1:
 		can_jump += delta
 	turn_input = Input.get_axis("turn_right","turn_left") * deg_to_rad(turning)
 	if ground_ray.is_colliding():
@@ -56,3 +70,8 @@ func align_with_y(xform, new_y):
 	xform.basis.x = -xform.basis.z.cross(new_y)
 	xform.basis = xform.basis.orthonormalized()
 	return xform.orthonormalized()
+	
+func stop(start_rot: Vector3):
+	start_rotation = start_rot
+	stop_me = true
+	

@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=11 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="PackedScene" uid="uid://cq833rrl7e2qe" path="res://sled/sled.tscn" id="1_pmsqt"]
 [ext_resource type="Material" uid="uid://d0tvqnt0gn0k7" path="res://tomi_testaa/lumi_material.tres" id="2_2c064"]
 [ext_resource type="PackedScene" uid="uid://bw8q8fcqh4wil" path="res://rikun_kansio/Hook.tscn" id="5_kv3ey"]
 [ext_resource type="PackedScene" uid="uid://sew1cgydyonh" path="res://models/level1.glb" id="6_o6naf"]
+[ext_resource type="PackedScene" uid="uid://clhjncg85wmnj" path="res://tomi_testaa/goal.tscn" id="7_dvuml"]
+[ext_resource type="PackedScene" uid="uid://djwms37mv03jo" path="res://tomi_testaa/the_game.tscn" id="8_61eb4"]
 [ext_resource type="Script" path="res://tomi_testaa/InterpolatedCameraBetter.gd" id="12_u5t8h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fivm5"]
@@ -45,6 +47,10 @@ surface_material_override/0 = ExtResource("2_2c064")
 [node name="Hook" parent="." instance=ExtResource("5_kv3ey")]
 
 [node name="level1" parent="." instance=ExtResource("6_o6naf")]
+
+[node name="Goal" parent="level1/hint_goal" index="0" instance=ExtResource("7_dvuml")]
+
+[node name="TheGame" parent="." instance=ExtResource("8_61eb4")]
 
 [editable path="Sled"]
 [editable path="level1"]

@@ -63,7 +63,7 @@ material = SubResource("ShaderMaterial_aj0pj")
 radius = 1.0
 height = 2.0
 
-[node name="Sled" type="RigidBody3D"]
+[node name="Sled" type="RigidBody3D" groups=["Player"]]
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
