@@ -20,12 +20,16 @@ class_name Sled
 # how much turning from input!
 @export var turn_input = 0
 @export var jump_input = 0
+
+var can_move = false
+
 var can_jump = 0
 var jump_cost = -0.3
 
 var stop_me = false
 var camera: FollowerCamera
 var start_rotation: Vector3
+var graphics_up := Vector3(0,1,0)
 
 func _physics_process(delta):
 	if stop_me:
@@ -37,10 +41,17 @@ func _physics_process(delta):
 		if not camera:
 			camera = get_viewport().get_camera_3d()
 		camera.force_move()
+
+	var n = ground_ray.get_collision_normal()
+	var xform = align_with_y(sled_mesh.global_transform, n)
+	graphics_up = graphics_up.slerp(xform.basis.y, 10.0 * delta)
 	sled_mesh.position = position + sphere_offset
-	sled_mesh.rotation = rotation
+	sled_mesh.global_basis.y = graphics_up.normalized()
+	sled_mesh.rotation.y = rotation.y
 	if ground_ray.is_colliding():
-		apply_central_force(-sled_mesh.global_transform.basis.z * speed_input)
+		var force = sled_mesh.global_transform.basis.z * -speed_input
+		apply_central_force(force * delta)
+
 	if abs(jump_input) > 1:
 		apply_central_impulse(Vector3(0, jump_input, 0))
 		jump_input = 0
@@ -49,16 +60,15 @@ func _process(delta):
 	if can_jump < 0.1:
 		can_jump += delta
 	turn_input = Input.get_axis("turn_right","turn_left") * deg_to_rad(turning)
+	if not can_move:
+		return
 	if ground_ray.is_colliding():
 		#jump
 		if Input.is_action_just_pressed("jump") and can_jump > 0:
 			can_jump = jump_cost
 			jump_input = jump_power
-			
 		speed_input = Input.get_axis("break", "accelerate") * acceleration
-		var n = ground_ray.get_collision_normal()
-		var xform = align_with_y(sled_mesh.global_transform, n)
-	
+
 	if linear_velocity.length() > turn_stop_limit:
 		var t = -turn_input * linear_velocity.length() / body_tilt
 		apply_torque_impulse(global_basis.y * -t * delta * 100)
@@ -75,3 +85,5 @@ func stop(start_rot: Vector3):
 	start_rotation = start_rot
 	stop_me = true
 	
+func enable_move():
+	can_move = true

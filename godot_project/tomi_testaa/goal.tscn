@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://clhjncg85wmnj"]
+
+[ext_resource type="Script" path="res://tomi_testaa/Goal.gd" id="1_kynu4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igoq7"]
+transparency = 1
+albedo_color = Color(0.909804, 0.596078, 0.160784, 0.380392)
+emission_enabled = true
+emission = Color(0.686275, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ioh6s"]
+material = SubResource("StandardMaterial3D_igoq7")
+size = Vector3(2, 2, 2)
+
+[node name="Goal" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_ioh6s")
+script = ExtResource("1_kynu4")
