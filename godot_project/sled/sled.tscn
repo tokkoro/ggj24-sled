@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://cq833rrl7e2qe"]
+
+[ext_resource type="Script" path="res://sled/sled.gd" id="1_gnc3m"]
+[ext_resource type="PackedScene" uid="uid://cs0lgiem5a10p" path="res://sled/model.glb" id="1_mvf0i"]
+[ext_resource type="Shader" path="res://sled/debug_my_balls.gdshader" id="3_1g2vh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sh2yx"]
+bounce = 0.3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nfixa"]
+radius = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aj0pj"]
+render_priority = 0
+shader = ExtResource("3_1g2vh")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/wire_color = Color(0, 0, 0, 1)
+shader_parameter/wire_width = 0.5
+shader_parameter/wire_smoothness = 0.05
+
+[sub_resource type="SphereMesh" id="SphereMesh_wvwl8"]
+material = SubResource("ShaderMaterial_aj0pj")
+radius = 1.0
+height = 2.0
+
+[node name="Sled" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_sh2yx")
+gravity_scale = 5.0
+angular_damp = 10.0
+script = ExtResource("1_gnc3m")
+sphere_offset = Vector3(0, -0.738, 0)
+
+[node name="ShedModel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.738434, 0)
+top_level = true
+
+[node name="GroundDetector" type="RayCast3D" parent="ShedModel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.180984, 0)
+target_position = Vector3(0, -0.3, 0)
+
+[node name="ShedVisual" parent="ShedModel" instance=ExtResource("1_mvf0i")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_nfixa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+visible = false
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("SphereMesh_wvwl8")

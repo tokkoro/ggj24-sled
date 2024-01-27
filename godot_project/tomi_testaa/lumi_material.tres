@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" load_steps=10 format=3 uid="uid://d0tvqnt0gn0k7"]
+
+[ext_resource type="Shader" path="res://Snow/interactive_snow.gdshader" id="1_ycjoj"]
+[ext_resource type="Texture2D" uid="uid://o3mppjie0fym" path="res://Snow/BlendTexture.jpg" id="2_ogogb"]
+[ext_resource type="Texture2D" uid="uid://i70ymtgo5fnf" path="res://Snow/Ground039_1K_Color.jpg" id="3_rg8pr"]
+[ext_resource type="Texture2D" uid="uid://d25refup1n4bi" path="res://Snow/Ground039_1K_Normal.jpg" id="4_ibiop"]
+[ext_resource type="Texture2D" uid="uid://wlc6uvqmrk8n" path="res://Snow/Ground039_1K_Roughness.jpg" id="5_mxt7m"]
+[ext_resource type="Texture2D" uid="uid://bokrk3at2rspi" path="res://Snow/testmask.png" id="6_luk5t"]
+[ext_resource type="Texture2D" uid="uid://bku15f3ei4kpe" path="res://Snow/Snow004_1K_Color.jpg" id="7_t78jc"]
+[ext_resource type="Texture2D" uid="uid://hxs0xnbcblvb" path="res://Snow/Snow004_1K_Normal.jpg" id="8_sq835"]
+[ext_resource type="Texture2D" uid="uid://bx57q3ln66fjo" path="res://Snow/Snow004_1K_Roughness.jpg" id="9_b7nt1"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ycjoj")
+shader_parameter/mask_texture_world_size = Vector2(16, 16)
+shader_parameter/snow_height = 0.3
+shader_parameter/snow_sharpness = 3.0
+shader_parameter/textures_tiling = Vector2(40, 40)
+shader_parameter/mask_texture = ExtResource("6_luk5t")
+shader_parameter/snow_texture = ExtResource("7_t78jc")
+shader_parameter/snow_texture_normal = ExtResource("8_sq835")
+shader_parameter/snow_texture_roughness = ExtResource("9_b7nt1")
+shader_parameter/dirt_texture = ExtResource("3_rg8pr")
+shader_parameter/dirt_texture_normal = ExtResource("4_ibiop")
+shader_parameter/dirt_texture_roughness = ExtResource("5_mxt7m")
+shader_parameter/blend_texture = ExtResource("2_ogogb")
