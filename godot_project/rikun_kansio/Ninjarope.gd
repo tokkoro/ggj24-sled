@@ -61,13 +61,12 @@ func _process(delta):
 		const snap_back_force_multiplier := 20
 		const anti_explosion_max_force := 500
 		const min_shortened_length := 1.3
-		print(len - original_length)
+
 		original_length = min(len, original_length)
 		var force : float = min(pow(max(max(0.1, len - original_length) * snap_back_force_multiplier_squared, 0.0), 1.0) * snap_back_force_multiplier, anti_explosion_max_force) * delta
-		print(force, ", ", len - original_length)
+
 		player.apply_impulse(dir * force + extra_impulse * extra_impulse_cooldwon, global_position - player.global_position)
 		if extra_impulse.length_squared() > 0.0:
-			print(extra_impulse_cooldwon)
 			extra_impulse_cooldwon = 0.0
 			extra_impulse = Vector3()
 		var shortening_per_second := 1.0
