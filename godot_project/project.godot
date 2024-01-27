@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="fgj2024"
-run/main_scene="res://tomi_testaa/hill_area.tscn"
+run/main_scene="res://tomi_testaa/level_loader_scene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -72,5 +72,5 @@ reset={
 3d_physics/layer_2="PLAYER"
 
 [rendering]
-
-renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method.mobile="forward_plus"
+renderer/rendering_method.web="forward_plus"

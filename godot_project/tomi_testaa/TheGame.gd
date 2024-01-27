@@ -4,11 +4,13 @@ class_name TheGame
 @export var start_pos_offset = Vector3.UP*10
 @onready var goal: GoalArea = $GoalArea
 @onready var time_label = $"../Camera3D/time"
+@onready var level_loader = $"../.."
+
 var start_node: Node3D
 var end_node: Node3D
-var player: Sled
+@export var player: Sled
 var camera: FollowerCamera
-var count_down_label: CountDownLabel
+@export var count_down_label: CountDownLabel
 
 var run_start_time: int
 var run_has_started = false
@@ -26,6 +28,7 @@ func on_goal():
 	var time_str = get_time_str(s)
 	var text_mesh: TextMesh = time_label.mesh
 	text_mesh.text = time_str + "." + ("%03d" % ms)
+	level_loader.next_level()
 
 func get_time_str(s: int) -> String:
 	var minutes = floor(s / 60)
@@ -68,12 +71,14 @@ func _process(delta):
 
 
 func game_start():
-	var root = get_tree().current_scene
-	start_node = root.find_child("hint_start")
-	print("Gind end knode")
-	end_node = root.find_child("hint_goal")
-	player = root.find_child("Sled")
-	count_down_label = root.find_child("CountDownLabels")
+	
+	# USE LEVELLOADER TO GET
+	start_node = level_loader.level_scene_ref.find_child("hint_start")
+	end_node = level_loader.level_scene_ref.find_child("hint_goal")
+	if !player:
+		player = get_node("..").find_child("Sled")
+	if !count_down_label:
+		count_down_label = get_node("..").find_child("CountDownLabels")
 	
 	goal.set_size_pos_rot(end_node.scale*2, end_node.global_position, end_node.global_rotation)
 

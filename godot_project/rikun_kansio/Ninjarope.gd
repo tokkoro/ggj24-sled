@@ -2,8 +2,8 @@ extends MeshInstance3D
 class_name Ninjarope
 
 @onready var player: Sled = $"../../.."
-var hook: Node3D = null
-var pointer: Node3D = null
+@export var hook: Node3D
+@export var pointer: Node3D
 
 var target: Node3D = null
 var target_offset := Vector3(10, -1, 10)
@@ -11,16 +11,22 @@ var target_pos := Vector3()
 var original_length : float
 var extra_impulse := Vector3()
 var extra_impulse_cooldwon := 0.0
-var audio_player_3d : AudioStreamPlayer3D = null
+@export var audio_player_3d : AudioStreamPlayer3D
 
 var ninjarope_hit_sound = preload("res://sounds/hop.wav")
 var huussi_sound = preload("res://sounds/fart.ogg")
 
 func _ready():
-	hook = get_tree().current_scene.find_child("Hook")
-	pointer = get_tree().current_scene.find_child("Pointer")
-	audio_player_3d = get_tree().current_scene.find_child("HitAudio3D")
-	hook.position = Vector3(0,-100,0)
+
+	if !audio_player_3d:
+		audio_player_3d = get_tree().current_scene.find_child("HitAudio3D")
+
+	if !hook:
+		hook = get_tree().current_scene.find_child("Hook")
+		hook.position = Vector3(0,-100,0)
+	if !pointer:
+		pointer = get_tree().current_scene.find_child("Pointer")
+
 
 func get_mouse_hit() -> Dictionary:
 	var viewport := get_viewport()
