@@ -1,9 +1,6 @@
 [gd_scene load_steps=35 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
-[ext_resource type="PackedScene" uid="uid://cq833rrl7e2qe" path="res://sled/sled.tscn" id="1_pmsqt"]
-[ext_resource type="AudioStream" uid="uid://cksh3t1ejy3i5" path="res://sounds/fart.ogg" id="3_12ic3"]
-[ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="Script" path="res://sled/sled.gd" id="2_nu8po"]
 [ext_resource type="PackedScene" uid="uid://3rkk4v2efisb" path="res://rikun_kansio/ninjarope.tscn" id="3_qy3nd"]
 [ext_resource type="AudioStream" uid="uid://b66gkp73k7x6v" path="res://sounds/hop.wav" id="4_g70mr"]
@@ -163,23 +160,16 @@ target_position = Vector3(0, -2, 0)
 
 [node name="SledVisual" type="Node3D" parent="Sled/SledModel" groups=["Player"]]
 
-[node name="Ninjarope" parent="Sled/SledModel/SledVisual" node_paths=PackedStringArray("hook", "pointer") groups=["Player"] instance=ExtResource("3_qy3nd")]
+[node name="Ninjarope" parent="Sled/SledModel/SledVisual" node_paths=PackedStringArray("hook", "pointer", "audio_player_3d") groups=["Player"] instance=ExtResource("3_qy3nd")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.192977, -1.00821)
 hook = NodePath("../../../Hook")
 pointer = NodePath("../../../Pointer")
+audio_player_3d = NodePath("../../../../AudioStreamPlayer3D")
 
 [node name="NinjaRopeHit" type="AudioStreamPlayer" parent="Sled/SledModel/SledVisual/Ninjarope"]
 stream = ExtResource("4_g70mr")
 volume_db = -20.0
 pitch_scale = 2.0
-mix_target = 1
-
-[node name="NinjaRopeFired" parent="Sled/SledModel/SledVisual/Ninjarope" index="1"]
-mix_target = 1
-
-[node name="HuussiSound" type="AudioStreamPlayer" parent="Sled/SledModel/SledVisual/Ninjarope" index="2"]
-stream = ExtResource("3_12ic3")
-mix_target = 1
 
 [node name="NinjaRopeFired" type="AudioStreamPlayer" parent="Sled/SledModel/SledVisual/Ninjarope"]
 stream = ExtResource("5_qasfm")
@@ -284,11 +274,7 @@ script = ExtResource("15_v6quu")
 
 [node name="Propsit" type="Node3D" parent="."]
 
-[node name="HitAudio3D" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.545457, -1.00821)
-max_distance = 500.0
-panning_strength = 2.0
-doppler_tracking = 2
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
 [connection signal="body_entered" from="TheGame/GoalArea" to="TheGame/GoalArea" method="_on_body_entered"]
 
