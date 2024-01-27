@@ -11,10 +11,15 @@ var target_pos := Vector3()
 var original_length : float
 var extra_impulse := Vector3()
 var extra_impulse_cooldwon := 0.0
+var audio_player_3d : AudioStreamPlayer3D = null
+
+var ninjarope_hit_sound = preload("res://sounds/hop.wav")
+var huussi_sound = preload("res://sounds/fart.ogg")
 
 func _ready():
 	hook = get_tree().current_scene.find_child("Hook")
 	pointer = get_tree().current_scene.find_child("Pointer")
+	audio_player_3d = get_tree().current_scene.find_child("HitAudio3D")
 	hook.position = Vector3(0,-100,0)
 
 func get_mouse_hit() -> Dictionary:
@@ -28,6 +33,14 @@ func get_mouse_hit() -> Dictionary:
 	query.collision_mask = 1 # put all ropeable things on collision_layer 1
 	query.exclude.append(player.get_rid())
 	return space_state.intersect_ray(query)
+	
+func play_hit_sound(target, mouse_position_3d):
+	if target.is_in_group("huussi"):
+		audio_player_3d.stream = huussi_sound
+	else:
+		audio_player_3d.stream = ninjarope_hit_sound
+	audio_player_3d.position = mouse_position_3d
+	audio_player_3d.play()
 
 func _input(event):
 	if not player.can_move:
@@ -47,7 +60,8 @@ func _input(event):
 					original_length = max(min_length, (mouse_position_3D - global_position).length())
 					hook.look_at_from_position(global_position, mouse_position_3D)
 					extra_impulse = ((mouse_position_3D - global_position) * Vector3(1,0,1)).normalized()
-					$NinjaRopeHit.play()
+					play_hit_sound(target, mouse_position_3D)
+					
 
 func _process(delta):
 	if pointer:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=25 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="PackedScene" uid="uid://cq833rrl7e2qe" path="res://sled/sled.tscn" id="1_pmsqt"]
+[ext_resource type="AudioStream" uid="uid://cksh3t1ejy3i5" path="res://sounds/fart.ogg" id="3_12ic3"]
 [ext_resource type="Script" path="res://tomi_testaa/CountDownLabels.gd" id="4_kjjsv"]
 [ext_resource type="PackedScene" uid="uid://bw8q8fcqh4wil" path="res://rikun_kansio/Hook.tscn" id="5_kv3ey"]
 [ext_resource type="Material" path="res://tomi_testaa/count_down_label_material.tres" id="5_sgs8b"]
@@ -68,6 +69,14 @@ sphere_offset = Vector3(0, -1, 0)
 [node name="NinjaRopeHit" parent="Sled/SledModel/SledVisual/Ninjarope" index="0"]
 volume_db = -20.0
 pitch_scale = 2.0
+mix_target = 1
+
+[node name="NinjaRopeFired" parent="Sled/SledModel/SledVisual/Ninjarope" index="1"]
+mix_target = 1
+
+[node name="HuussiSound" type="AudioStreamPlayer" parent="Sled/SledModel/SledVisual/Ninjarope" index="2"]
+stream = ExtResource("3_12ic3")
+mix_target = 1
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.7735, -60.0348)
@@ -149,6 +158,12 @@ transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 0)
 script = ExtResource("15_v6quu")
 
 [node name="Propsit" type="Node3D" parent="."]
+
+[node name="HitAudio3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.545457, -1.00821)
+max_distance = 500.0
+panning_strength = 2.0
+doppler_tracking = 2
 
 [connection signal="body_entered" from="TheGame/GoalArea" to="TheGame/GoalArea" method="_on_body_entered"]
 
