@@ -43,5 +43,5 @@ func load_level():
 func next_level():
 	current_level += 1
 	wait_for_next_level = true
-	load_next_level_timer = 2
+	load_next_level_timer = 5
 

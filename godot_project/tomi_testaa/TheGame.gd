@@ -27,6 +27,7 @@ func on_goal():
 	var ms = duration % 1000
 	var time_str = get_time_str(s)
 	var text_mesh: TextMesh = time_label.mesh
+	time_label.start_pulsing()
 	text_mesh.text = time_str + "." + ("%03d" % ms)
 	level_loader.next_level()
 

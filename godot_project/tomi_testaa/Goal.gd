@@ -5,6 +5,9 @@ class_name GoalArea
 @onready var goal_visu: MeshInstance3D = $GoalDebugVisu
 @onready var the_game = $".."
 
+var end_triggered = false
+
+
 func set_size_pos_rot(size: Vector3, pos: Vector3, rot: Vector3):
 	var shape: BoxShape3D = collision_shape_node.shape
 	shape.size = size
@@ -15,7 +18,9 @@ func set_size_pos_rot(size: Vector3, pos: Vector3, rot: Vector3):
 	
 
 func _on_body_entered(body: Node3D):
+	if end_triggered:
+		return
 	if body.is_in_group("Player"):
 		print("Finished")
+		end_triggered = true
 		the_game.on_goal()
-		the_game.move_player_to_start()
