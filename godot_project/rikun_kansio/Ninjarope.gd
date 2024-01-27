@@ -26,7 +26,7 @@ func _input(event):
 				var start := camera.project_ray_origin(mouse_position);
 				var end := camera.project_ray_normal(mouse_position) * 1000;
 				var query := PhysicsRayQueryParameters3D.create(start, end)
-				query.collision_mask = query.collision_mask & (~player.collision_layer)
+				query.collision_mask = 1 # put all ropeable things on collision_layer 1
 				query.exclude.append(player.get_rid())
 				var result := space_state.intersect_ray(query)
 				
@@ -39,7 +39,7 @@ func _input(event):
 					original_length = (mouse_position_3D - global_position).length()
 					hook.look_at_from_position(global_position, mouse_position_3D)
 					hook.global_position = mouse_position_3D
-					print(hook.global_position)
+					#print(hook.global_position)
 
 func _process(delta):
 	if not Input.is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_LEFT):
@@ -56,12 +56,13 @@ func _process(delta):
 		const snap_back_force_multiplier_squared := 5
 		const snap_back_force_multiplier := 20
 		const anti_explosion_max_force := 500
-		const min_length := 3.0
+		const min_length := 1.3
 
-		var force : float = min(pow(max((len - original_length) * snap_back_force_multiplier_squared, 0.0), 1.0) * snap_back_force_multiplier, anti_explosion_max_force) * delta
+		var force : float = min(pow(max(max(0.1, len - original_length) * snap_back_force_multiplier_squared, 0.0), 1.0) * snap_back_force_multiplier, anti_explosion_max_force) * delta
 		player.apply_impulse(dir * force, global_position - player.global_position)
-		var shortening_per_second := 0.0
+		var shortening_per_second := 0.5
 		original_length = max(min_length, original_length - delta * shortening_per_second)
+		print(len)
 	else:
 		hook.global_rotation = lerp(hook.global_rotation, global_rotation, 0.7)
 		real_target_global += -global_basis.z

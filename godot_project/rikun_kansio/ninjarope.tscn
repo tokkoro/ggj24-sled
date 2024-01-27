@@ -10,8 +10,8 @@ shader_parameter/target_pos = Vector3(0.48, 0.73, 0.48)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_k1m7c"]
 material = SubResource("ShaderMaterial_o6n7y")
-top_radius = 0.1
-bottom_radius = 0.1
+top_radius = 0.05
+bottom_radius = 0.05
 height = 1.0
 radial_segments = 8
 
