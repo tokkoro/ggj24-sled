@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=24 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="PackedScene" uid="uid://cq833rrl7e2qe" path="res://sled/sled.tscn" id="1_pmsqt"]
 [ext_resource type="Script" path="res://tomi_testaa/CountDownLabels.gd" id="4_kjjsv"]
 [ext_resource type="PackedScene" uid="uid://bw8q8fcqh4wil" path="res://rikun_kansio/Hook.tscn" id="5_kv3ey"]
 [ext_resource type="Material" path="res://tomi_testaa/count_down_label_material.tres" id="5_sgs8b"]
+[ext_resource type="AudioStream" uid="uid://cg67r5wg6cjs5" path="res://sounds/ping.ogg" id="6_6v35f"]
 [ext_resource type="PackedScene" uid="uid://sew1cgydyonh" path="res://models/level1.glb" id="6_o6naf"]
 [ext_resource type="Script" path="res://tomi_testaa/Goal.gd" id="7_1fp6q"]
 [ext_resource type="Script" path="res://tomi_testaa/TheGame.gd" id="8_115im"]
@@ -104,6 +105,9 @@ mesh = SubResource("TextMesh_j5h7i")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("5_sgs8b")
 
+[node name="Ping" type="AudioStreamPlayer" parent="Camera3D/CountDownLabels"]
+stream = ExtResource("6_6v35f")
+
 [node name="time" type="MeshInstance3D" parent="Camera3D"]
 transform = Transform3D(0.52, 0, 0, 0, 0.395411, -0.337713, 0, 0.337713, 0.395411, 0, 0.517, -0.792)
 mesh = SubResource("TextMesh_aiufe")
@@ -129,7 +133,7 @@ mesh = SubResource("BoxMesh_ioh6s")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TheGame/GoalArea"]
 shape = ExtResource("12_0b2l2")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TheGame"]
+[node name="Ambient" type="AudioStreamPlayer" parent="TheGame"]
 stream = ExtResource("10_aqsud")
 volume_db = -10.0
 pitch_scale = 0.8
