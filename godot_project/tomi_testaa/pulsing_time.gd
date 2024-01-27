@@ -14,6 +14,6 @@ func _process(delta):
 		return
 	
 	var t = Time.get_ticks_msec() - pulse_start
-	scale = Vector3.ONE * (1 + 0.5 * sin(t/500.0))
-	position.y = 0.517 * (0.8 + 0.25 * sin(t/500.0))
+	scale = Vector3.ONE * (1 + 0.15 * sin(t/200.0))
+	position.y = 0.517 * (1 + 0.1 * (sin(t/200.0 + 3.1415/2)-1))
 
