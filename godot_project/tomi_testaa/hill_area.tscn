@@ -149,5 +149,4 @@ script = ExtResource("15_v6quu")
 
 [editable path="Sled"]
 [editable path="Hook"]
-[editable path="level1"]
 [editable path="Pointer"]
