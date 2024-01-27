@@ -1,9 +1,9 @@
 extends RigidBody3D
 ## turning sled with human in
 
-@onready var sled_mesh = $ShedModel
-@onready var ground_ray = $ShedModel/GroundDetector
-@onready var sled_mesh_body = $ShedModel/ShedVisual/Mesh1
+@onready var sled_mesh = $SledModel
+@onready var ground_ray = $SledModel/GroundDetector
+@onready var sled_mesh_body = $SledModel/SledVisual/Mesh1
 
 @export_group("Sled's properties")
 @export var acceleration = 35.0

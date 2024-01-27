@@ -31,15 +31,15 @@ angular_damp = 10.0
 script = ExtResource("1_gnc3m")
 sphere_offset = Vector3(0, -0.738, 0)
 
-[node name="ShedModel" type="Node3D" parent="."]
+[node name="SledModel" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.738434, 0)
 top_level = true
 
-[node name="GroundDetector" type="RayCast3D" parent="ShedModel"]
+[node name="GroundDetector" type="RayCast3D" parent="SledModel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.180984, 0)
 target_position = Vector3(0, -0.3, 0)
 
-[node name="ShedVisual" parent="ShedModel" instance=ExtResource("1_mvf0i")]
+[node name="SledVisual" parent="SledModel" instance=ExtResource("1_mvf0i")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
