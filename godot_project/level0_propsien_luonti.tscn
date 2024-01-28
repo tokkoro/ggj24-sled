@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c84j0x5s5gxwp" path="res://rikun_kansio/maailman_kalustus.tscn" id="1_778jm"]
 [ext_resource type="PackedScene" uid="uid://cuylct3lltjnn" path="res://models/level0.glb" id="2_xta8l"]
-[ext_resource type="PackedScene" uid="uid://bfxfbvbbmqjcu" path="res://level0_propsit.tscn" id="3_5xrw8"]
+[ext_resource type="PackedScene" uid="uid://wkwtffer6t5j" path="res://level0_propsit.tscn" id="3_5xrw8"]
 
 [sub_resource type="Curve3D" id="Curve3D_shcoi"]
 _data = {

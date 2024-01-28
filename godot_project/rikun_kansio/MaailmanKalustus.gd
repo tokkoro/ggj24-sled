@@ -60,6 +60,7 @@ func _generate(do_coins:bool):
 				var node := shapes[shape_index].instantiate()
 				prosit.add_child(node)
 				node.global_position = closest_point
+				node.rotate_y(closest_point.length_squared() * 10.0)
 				print("a test, ", closest_point)
 				continue
 			print("not test")

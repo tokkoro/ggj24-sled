@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c84j0x5s5gxwp" path="res://rikun_kansio/maailman_kalustus.tscn" id="1_gkvtr"]
 [ext_resource type="PackedScene" uid="uid://blw1x3tc4b73t" path="res://models/level3.glb" id="2_0sg8l"]
-[ext_resource type="PackedScene" uid="uid://bx0cidqu2nf0e" path="res://level3_propsit.tscn" id="3_8g0ss"]
+[ext_resource type="PackedScene" uid="uid://ch4d1md1235eo" path="res://level3_propsit.tscn" id="3_8g0ss"]
 
 [sub_resource type="Curve3D" id="Curve3D_p8coc"]
 _data = {
@@ -23,5 +23,3 @@ visible = false
 
 [node name="level3_path" type="Path3D" parent="."]
 curve = SubResource("Curve3D_p8coc")
-
-[node name="Coins" type="Node3D" parent="."]

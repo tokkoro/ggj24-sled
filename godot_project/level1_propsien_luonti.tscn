@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://sw0d8ddg0wkj"]
+[gd_scene load_steps=5 format=3 uid="uid://sw0d8ddg0wkj"]
 
 [ext_resource type="PackedScene" uid="uid://c84j0x5s5gxwp" path="res://rikun_kansio/maailman_kalustus.tscn" id="1_vmsmw"]
 [ext_resource type="PackedScene" uid="uid://sew1cgydyonh" path="res://models/level1.glb" id="2_ixy7w"]
+[ext_resource type="PackedScene" uid="uid://dschwyb1h8p82" path="res://level1_propsit.tscn" id="3_bavyi"]
 
 [sub_resource type="Curve3D" id="Curve3D_tg3tl"]
 _data = {
@@ -23,17 +24,6 @@ coin_count = 10
 [node name="level1_path" type="Path3D" parent="."]
 curve = SubResource("Curve3D_tg3tl")
 
-[node name="Propsit" type="Node3D" parent="."]
-
-[connection signal="area_entered" from="Propsit/Coin" to="Propsit/Coin" method="_on_area_entered"]
-[connection signal="body_entered" from="Propsit/Coin" to="Propsit/Coin" method="_on_body_entered"]
-[connection signal="area_entered" from="Propsit/@Area3D@27709" to="Propsit/@Area3D@27709" method="_on_area_entered"]
-[connection signal="body_entered" from="Propsit/@Area3D@27709" to="Propsit/@Area3D@27709" method="_on_body_entered"]
-[connection signal="area_entered" from="Propsit/@Area3D@27710" to="Propsit/@Area3D@27710" method="_on_area_entered"]
-[connection signal="body_entered" from="Propsit/@Area3D@27710" to="Propsit/@Area3D@27710" method="_on_body_entered"]
-[connection signal="area_entered" from="Propsit/@Area3D@27711" to="Propsit/@Area3D@27711" method="_on_area_entered"]
-[connection signal="body_entered" from="Propsit/@Area3D@27711" to="Propsit/@Area3D@27711" method="_on_body_entered"]
-[connection signal="area_entered" from="Propsit/@Area3D@27712" to="Propsit/@Area3D@27712" method="_on_area_entered"]
-[connection signal="body_entered" from="Propsit/@Area3D@27712" to="Propsit/@Area3D@27712" method="_on_body_entered"]
+[node name="Propsit" parent="." instance=ExtResource("3_bavyi")]
 
 [editable path="MaailmanKalustus"]
