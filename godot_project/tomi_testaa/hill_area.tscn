@@ -28,18 +28,6 @@
 friction = 0.1
 bounce = 0.3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6n7y"]
-render_priority = 0
-shader = ExtResource("3_d85xm")
-shader_parameter/target_pos = Vector3(0.48, 0.73, 0.48)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_k1m7c"]
-material = SubResource("ShaderMaterial_o6n7y")
-top_radius = 0.05
-bottom_radius = 0.05
-height = 1.0
-radial_segments = 8
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_peat5"]
 resource_name = "Material"
 vertex_color_use_as_albedo = true
@@ -165,6 +153,18 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_w8pyg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6n7y"]
+render_priority = 0
+shader = ExtResource("3_d85xm")
+shader_parameter/target_pos = Vector3(0.48, 0.73, 0.48)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_k1m7c"]
+material = SubResource("ShaderMaterial_o6n7y")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 1.0
+radial_segments = 8
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0o3gg"]
 _surfaces = [{
@@ -313,25 +313,6 @@ target_position = Vector3(0, -2, 0)
 
 [node name="SledVisual" type="Node3D" parent="Sled/SledModel" groups=["Player"]]
 
-[node name="Ninjarope" type="MeshInstance3D" parent="Sled/SledModel/SledVisual" node_paths=PackedStringArray("hook_rest_pos", "hook", "pointer", "audio_player_3d") groups=["Player"]]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.192977, -1.00821)
-mesh = SubResource("CylinderMesh_k1m7c")
-skeleton = NodePath("")
-script = ExtResource("4_s3o24")
-hook_rest_pos = NodePath("../Pulkkailija_origo/laskija/body/r_hand/HookRestPosition")
-hook = NodePath("../../../Hook")
-pointer = NodePath("../../../Pointer")
-audio_player_3d = NodePath("../../../../AudioStreamPlayer3D")
-
-[node name="NinjaRopeHit" type="AudioStreamPlayer" parent="Sled/SledModel/SledVisual/Ninjarope"]
-stream = ExtResource("4_g70mr")
-volume_db = -20.0
-pitch_scale = 2.0
-
-[node name="NinjaRopeFired" type="AudioStreamPlayer" parent="Sled/SledModel/SledVisual/Ninjarope"]
-stream = ExtResource("5_qasfm")
-volume_db = -20.0
-
 [node name="Pulkkailija_origo" type="Node3D" parent="Sled/SledModel/SledVisual"]
 script = ExtResource("7_q2t7e")
 
@@ -384,6 +365,25 @@ randomness = 0.5
 collision_base_size = 0.0
 process_material = SubResource("ParticleProcessMaterial_2bf5s")
 draw_pass_1 = SubResource("QuadMesh_1pxp5")
+
+[node name="Ninjarope" type="MeshInstance3D" parent="Sled/SledModel/SledVisual/Pulkkailija_origo/laskija/body/r_hand" node_paths=PackedStringArray("hook_rest_pos", "hook", "pointer", "audio_player_3d") groups=["Player"]]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.309715, -0.0513265, -0.0209778)
+mesh = SubResource("CylinderMesh_k1m7c")
+skeleton = NodePath("")
+script = ExtResource("4_s3o24")
+hook_rest_pos = NodePath("../HookRestPosition")
+hook = NodePath("../../../../../../../Hook")
+pointer = NodePath("../../../../../../../Pointer")
+audio_player_3d = NodePath("../../../../../../../../AudioStreamPlayer3D")
+
+[node name="NinjaRopeHit" type="AudioStreamPlayer" parent="Sled/SledModel/SledVisual/Pulkkailija_origo/laskija/body/r_hand/Ninjarope"]
+stream = ExtResource("4_g70mr")
+volume_db = -20.0
+pitch_scale = 2.0
+
+[node name="NinjaRopeFired" type="AudioStreamPlayer" parent="Sled/SledModel/SledVisual/Pulkkailija_origo/laskija/body/r_hand/Ninjarope"]
+stream = ExtResource("5_qasfm")
+volume_db = -20.0
 
 [node name="head" type="MeshInstance3D" parent="Sled/SledModel/SledVisual/Pulkkailija_origo/laskija/body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0159336, 0.446146, -0.142493)

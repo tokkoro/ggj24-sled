@@ -8,11 +8,11 @@ class_name Sled
 @onready var animator: SlederAnimator = $SledModel/SledVisual/Pulkkailija_origo
 
 var acceleration = 70.0
-var turning = 8  # degrees per second
+var turning = 10  # degrees per second
 var turn_stop_limit = 0.75
 var sphere_offset = Vector3.DOWN
 var body_tilt = 35
-var jump_power = 0
+var jump_power = 20
 
 var speed_input = 0  # speeeed!!
 var turn_input = 0

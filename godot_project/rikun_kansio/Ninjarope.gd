@@ -1,7 +1,7 @@
 extends MeshInstance3D
 class_name Ninjarope
 
-@onready var player: Sled = $"../../.."
+var player: Sled
 @export var hook_rest_pos: Node3D
 @export var hook: Node3D
 @export var pointer: Node3D
@@ -18,6 +18,15 @@ var ninjarope_hit_sound = preload("res://sounds/hop.wav")
 var huussi_sound = preload("res://sounds/fart.ogg")
 
 func _ready():
+	var p = get_parent()
+	var c = 10
+	while c > 0:
+		c -= 1
+		if not(p is Sled):
+			p = p.get_parent()
+		else:
+			player = p
+			break
 	if !audio_player_3d:
 		audio_player_3d = get_tree().current_scene.find_child("HitAudio3D")
 	if !hook:

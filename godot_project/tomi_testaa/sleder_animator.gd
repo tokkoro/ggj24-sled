@@ -20,9 +20,16 @@ var hand_idle_angle = 60
 var hand_turn_angle = 5
 var total_tilt_max = 15
 var is_in_air = false
+var holding_hook = false
 
 func _process(delta):
 	
+	# hook holding
+	if not victory_pos and holding_hook:
+		# lean over and grap the point
+		pass
+	
+	# hands in the air
 	if victory_pos or is_in_air:
 		current_turning = lerp(current_turning, 0.0, 0.5)
 		current_acc = lerp(current_acc, 0.0, 0.5)
