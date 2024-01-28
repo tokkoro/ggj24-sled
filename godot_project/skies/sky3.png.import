@@ -3,24 +3,25 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cd53ixb1beye5"
-path="res://.godot/imported/sky3.png-71a707d12495ea003dc40a731e18a348.ctex"
+path.s3tc="res://.godot/imported/sky3.png-71a707d12495ea003dc40a731e18a348.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://skies/sky3.png"
-dest_files=["res://.godot/imported/sky3.png-71a707d12495ea003dc40a731e18a348.ctex"]
+dest_files=["res://.godot/imported/sky3.png-71a707d12495ea003dc40a731e18a348.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
-compress/channel_pack=0
+compress/normal_map=2
+compress/channel_pack=1
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
