@@ -76,7 +76,7 @@ func _process(delta):
 			text_mesh.text = time_str
 		
 		
-	if player.global_position.y < -200:
+	if player.global_position.y < -300:
 		print("TOO LOW")
 		move_player_to_start()
 
