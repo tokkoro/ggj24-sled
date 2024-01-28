@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=54 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="Script" path="res://sled/sled.gd" id="2_nu8po"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://rikun_kansio/Ninjarope.gd" id="4_s3o24"]
 [ext_resource type="PackedScene" uid="uid://bw8q8fcqh4wil" path="res://rikun_kansio/Hook.tscn" id="5_kv3ey"]
 [ext_resource type="AudioStream" uid="uid://blmpud0otcam8" path="res://sounds/boing.wav" id="5_qasfm"]
-[ext_resource type="Material" path="res://tomi_testaa/count_down_label_material.tres" id="5_sgs8b"]
+[ext_resource type="Material" uid="uid://bdqffmtj76632" path="res://tomi_testaa/count_down_label_material.tres" id="5_sgs8b"]
 [ext_resource type="AudioStream" uid="uid://cg67r5wg6cjs5" path="res://sounds/ping.ogg" id="6_8jhb8"]
 [ext_resource type="ArrayMesh" uid="uid://lnu0i22ntkg1" path="res://romppeet/romppeet_pulkka.res" id="6_jyfto"]
 [ext_resource type="Shader" path="res://sled/debug_my_balls.gdshader" id="6_t8g3j"]
@@ -228,6 +228,25 @@ emission = Color(0, 0.0862745, 0.458824, 1)
 [sub_resource type="TextMesh" id="TextMesh_aiufe"]
 material = SubResource("StandardMaterial3D_hy66e")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_essa0"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("10_081dr")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kaa3a"]
+emission_shape = 1
+emission_sphere_radius = 48.8
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 6.0
+initial_velocity_max = 12.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_5v314"]
+size = Vector2(0.2, 0.2)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igoq7"]
 transparency = 1
 albedo_color = Color(0.909804, 0.596078, 0.160784, 0.380392)
@@ -426,6 +445,14 @@ cast_shadow = 0
 mesh = SubResource("TextMesh_aiufe")
 surface_material_override/0 = ExtResource("5_sgs8b")
 script = ExtResource("13_2k2q3")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.1303, -55.5909)
+material_override = SubResource("StandardMaterial3D_essa0")
+amount = 1024
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_kaa3a")
+draw_pass_1 = SubResource("QuadMesh_5v314")
 
 [node name="TheGame" type="Node" parent="." node_paths=PackedStringArray("player", "count_down_label")]
 script = ExtResource("8_115im")
