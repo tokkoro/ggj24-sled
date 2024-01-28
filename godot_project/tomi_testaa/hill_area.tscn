@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=57 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="Script" path="res://sled/sled.gd" id="2_nu8po"]
@@ -22,7 +22,6 @@
 [ext_resource type="Script" path="res://tomi_testaa/InterpolatedCameraBetter.gd" id="12_u5t8h"]
 [ext_resource type="Script" path="res://tomi_testaa/pulsing_time.gd" id="13_2k2q3"]
 [ext_resource type="ArrayMesh" uid="uid://cntmk5q4i3ox1" path="res://romppeet/romppeet_ankkuri.res" id="13_o4soh"]
-[ext_resource type="PackedScene" uid="uid://c84j0x5s5gxwp" path="res://rikun_kansio/maailman_kalustus.tscn" id="18_w2y4b"]
 [ext_resource type="Texture2D" uid="uid://dl0ipcus3ipok" path="res://tomi_testaa/checker_flag.png" id="22_ct83y"]
 [ext_resource type="Script" path="res://tomi_testaa/EnvironmentChanger.gd" id="23_gggsl"]
 [ext_resource type="Texture2D" uid="uid://dxwqbfr5gya2m" path="res://skies/sky0.png" id="23_wj0ex"]
@@ -481,8 +480,6 @@ autoplay = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ojc11")
 script = ExtResource("23_gggsl")
-
-[node name="Propsit" type="Node3D" parent="."]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
