@@ -71,7 +71,7 @@ func _process(delta):
 		previous_timer_second += 1
 		# make run clock
 		var time_str = get_time_str(s)
-		if s < 0 or level_loader.current_level >= level_loader.level_count:
+		if s < 0 or level_loader.current_level > level_loader.level_count:
 			time_str = ""
 		if not run_ended:
 			var text_mesh: TextMesh = time_label.mesh
