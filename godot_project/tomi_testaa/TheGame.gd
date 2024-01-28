@@ -29,6 +29,7 @@ func on_goal():
 	var text_mesh: TextMesh = time_label.mesh
 	time_label.start_pulsing()
 	text_mesh.text = time_str + "." + ("%03d" % ms)
+	player.on_victory()
 	level_loader.next_level()
 
 func get_time_str(s: int) -> String:

@@ -32,6 +32,8 @@ var camera: FollowerCamera
 var start_rotation: Vector3
 var graphics_up := Vector3(0,1,0)
 
+var victory = false
+
 func _physics_process(delta):
 	if stop_me:
 		linear_velocity = Vector3.ZERO
@@ -54,18 +56,23 @@ func _physics_process(delta):
 		apply_central_force(force * delta)
 
 	if abs(jump_input) > 1:
-		apply_central_impulse(Vector3(0, jump_input, 0) - transform.basis.z*jump_input)
+		var extra = 1
+		if victory:
+			extra = 3
+		apply_central_impulse(Vector3(0, jump_input * extra, 0) - transform.basis.z*jump_input)
 		jump_input = 0
 
 func _process(delta):
 	if can_jump < 0.1:
 		can_jump += delta
+		if victory:
+			can_jump += 2 * delta
 	turn_input = Input.get_axis("turn_right", "turn_left") * deg_to_rad(turning)
 	if not can_move:
 		return
 	if ground_ray.is_colliding():
 		#jump
-		if Input.is_action_just_pressed("jump") and can_jump > 0:
+		if (Input.is_action_just_pressed("jump") or victory) and can_jump > 0:
 			can_jump = jump_cost
 			jump_input = jump_power
 		speed_input = Input.get_axis("break", "accelerate") * acceleration
@@ -90,3 +97,7 @@ func stop(start_rot: Vector3):
 	
 func enable_move():
 	can_move = true
+
+func on_victory():
+	victory = true
+	animator.set_victory()

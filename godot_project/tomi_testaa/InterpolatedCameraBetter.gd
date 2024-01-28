@@ -22,7 +22,7 @@ func _process(delta):
 		if dist.length() > follow_distance:
 			global_position = follow_point + dist.normalized() * follow_distance
 
-	look_at(target.global_position + (target.transform.basis.z * Vector3(1,0,1)).normalized() * -look_distance, Vector3.UP)
+	look_at(target.global_position + (target.transform.basis.z * Vector3(1,0,1)).normalized() * -look_distance + Vector3.UP*3, Vector3.UP)
 
 func force_move():
 	snap_to = true
