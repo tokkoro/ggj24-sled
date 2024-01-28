@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=51 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="Script" path="res://sled/sled.gd" id="2_nu8po"]
@@ -398,7 +398,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.7735, -60.0348)
 current = true
 script = ExtResource("12_u5t8h")
 lerp_speed = 4.0
-offset = Vector3(0, 6, 8)
+offset = Vector3(0, 2, 8)
 target = NodePath("../Sled/SledModel")
 
 [node name="CountDownLabels" type="Node3D" parent="Camera3D"]
