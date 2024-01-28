@@ -91,7 +91,6 @@ func _physics_process(delta):
 	if not Input.is_mouse_button_pressed(MouseButton.MOUSE_BUTTON_LEFT) or not player.can_move:
 		target = null
 
-	var real_target := Vector3()
 	var real_target_global := global_position
 	if target:
 		real_target_global = target.global_position + offset_to_target

@@ -30,7 +30,6 @@ const props := [ "res://rompe_scenet/huussi.tscn", "res://rompe_scenet/kivi_1.ts
 
 func _generate(do_coins:bool):
 	var prosit = $"../Propsit"
-	var coins = $"../Coins"
 	var curve : Curve3D = intended_path.curve
 	seed(random_seed)
 	var space_state := get_world_3d().direct_space_state
