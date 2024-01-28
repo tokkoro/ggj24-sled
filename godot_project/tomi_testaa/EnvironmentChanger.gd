@@ -6,6 +6,7 @@ var skyboxes = [
 	load("res://skies/sky1.png"),
 	load("res://skies/sky2.png"),
 	load("res://skies/sky3.png"),
+	load("res://skies/sky0.png"),
 ]
 
 var fog_densities = [
