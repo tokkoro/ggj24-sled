@@ -6,6 +6,7 @@ class_name TheGame
 @onready var time_label = $"../Camera3D/time"
 @onready var level_loader = $"../.."
 @onready var info_label = $"../Camera3D/TotalInfoLabel"
+@onready var coin_label = $"../Camera3D/CoinCount"
 
 var start_node: Node3D
 var end_node: Node3D
@@ -108,3 +109,6 @@ func move_player_to_start():
 	player.stop(start_node.global_rotation)
 	player.global_position = start_node.global_position + start_pos_offset
 
+func update_coin_lable(total: int):
+	var coin_t_mesh:TextMesh = coin_label.mesh
+	coin_t_mesh.text = str(total) + " c"

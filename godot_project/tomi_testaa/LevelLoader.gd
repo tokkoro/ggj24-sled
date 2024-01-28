@@ -82,6 +82,15 @@ var results = [
 	0,
 ]
 
+var coin_count = [
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+]
+
 func next_level(time_s):
 	results[current_level] = time_s
 	current_level += 1
@@ -118,3 +127,10 @@ func get_time_str(s: int) -> String:
 	var mid = ":"
 	var time_str = str(minutes) + mid + ("%02d" % seconds)
 	return time_str
+
+func coin_collected():
+	coin_count[current_level] += 1
+	var total = 0
+	for c in coin_count:
+		total += c
+	root_scene_ref.get_node("TheGame").update_coin_lable(total)

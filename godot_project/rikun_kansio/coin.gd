@@ -8,8 +8,19 @@ var collected := false
 
 var delete_time := 1000000000000.0
 
+var level_loader: LevelLoader
+
 func _ready():
-	pass
+	# util: find player in parent
+	var g = get_parent()
+	var c = 10
+	while c > 0:
+		c -= 1
+		if not(g is LevelLoader):
+			g = g.get_parent()
+		else:
+			level_loader = g
+			break
 
 func _process(delta):
 	if not collected:
@@ -31,6 +42,7 @@ func collect():
 	collected = true
 	delete_time = Time.get_ticks_msec() + duration_ms
 	collect_sound.play()
+	level_loader.coin_collected()
 
 func _on_body_entered(body):
 	if not body is Sled:

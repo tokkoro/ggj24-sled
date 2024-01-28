@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=61 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="Script" path="res://sled/sled.gd" id="2_nu8po"]
@@ -206,6 +206,17 @@ text = "WASD to move
 SPACE to jump
 MOUSE to hook"
 horizontal_alignment = 2
+vertical_alignment = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0ioq"]
+albedo_color = Color(0.862745, 0.960784, 0, 1)
+emission_enabled = true
+emission = Color(0.462745, 0.141176, 0.290196, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_7aprx"]
+material = SubResource("StandardMaterial3D_l0ioq")
+text = "5 c"
+horizontal_alignment = 0
 vertical_alignment = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_essa0"]
@@ -457,6 +468,11 @@ script = ExtResource("13_2k2q3")
 transform = Transform3D(0.153059, 0.0811063, -0.183027, 0, 0.230392, 0.102096, 0.200192, -0.0620105, 0.139935, 0.905, -0.566, -0.792)
 cast_shadow = 0
 mesh = SubResource("TextMesh_tht3x")
+
+[node name="CoinCount" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.274534, -0.145476, 0.328286, 0, 0.413243, 0.183124, -0.359075, -0.111225, 0.250994, -0.825, -0.566, -0.792)
+cast_shadow = 0
+mesh = SubResource("TextMesh_7aprx")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.1303, -55.5909)
