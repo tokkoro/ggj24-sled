@@ -114,10 +114,10 @@ func get_info_label_str():
 		return "WASD to move\nSPACE to jump\nMOUSE to hook"
 	
 	# add total
-	var s = floor(total / 1000.0)
-	var ms = total % 1000
-	var time_str = get_time_str(s)
-	result += "TOTAL: " + time_str + "." + ("%03d" % ms)
+	var total_s = floor(total / 1000.0)
+	var total_ms = total % 1000
+	var total_time_str = get_time_str(total_s)
+	result += "TOTAL: " + total_time_str + "." + ("%03d" % total_ms)
 	
 	return result
 
