@@ -19,10 +19,11 @@ var max_hip_angle = 50
 var hand_idle_angle = 60
 var hand_turn_angle = 5
 var total_tilt_max = 15
+var is_in_air = false
 
 func _process(delta):
 	
-	if victory_pos:
+	if victory_pos or is_in_air:
 		current_turning = lerp(current_turning, 0.0, 0.5)
 		current_acc = lerp(current_acc, 0.0, 0.5)
 		l_arm.rotation = Vector3(0, 0, lerp(l_arm.rotation.z, deg_to_rad(-hand_idle_angle), 0.5))
@@ -32,7 +33,7 @@ func _process(delta):
 	hip.rotation = Vector3(0, 0, deg_to_rad(max_hip_angle * current_turning))
 	pulkka.rotation = Vector3(0, 0, deg_to_rad(total_tilt_max * current_turning))
 	
-	if victory_pos:
+	if victory_pos or is_in_air:
 		return
 	# handling hands
 	if current_turning > 0:
@@ -55,3 +56,6 @@ func set_acceleration(amount: float):
 	
 func set_victory():
 	victory_pos = true
+
+func set_jump(jumpping: bool):
+	is_in_air = jumpping

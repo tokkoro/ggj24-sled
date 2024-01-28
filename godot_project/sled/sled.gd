@@ -7,20 +7,16 @@ class_name Sled
 @onready var ground_ray_for_normal = $SledModel/GroundNormalDetector
 @onready var animator: SlederAnimator = $SledModel/SledVisual/Pulkkailija_origo
 
-@export_group("Sled's properties")
-@export var acceleration = 35.0
-@export var turning = 18.0  # degrees per second
-@export var turn_stop_limit = 0.75
-@export var sphere_offset = Vector3.DOWN
-@export var body_tilt = 35
-@export var jump_power = 10
+var acceleration = 70.0
+var turning = 8  # degrees per second
+var turn_stop_limit = 0.75
+var sphere_offset = Vector3.DOWN
+var body_tilt = 35
+var jump_power = 0
 
-@export_group("inputs for debug")
-@export var speed_input = 0  # speeeed!!
-
-# how much turning from input!
-@export var turn_input = 0
-@export var jump_input = 0
+var speed_input = 0  # speeeed!!
+var turn_input = 0
+var jump_input = 0
 
 var can_move = false
 
@@ -84,6 +80,7 @@ func _process(delta):
 	# Animate
 	animator.set_turning(Input.get_axis("turn_right", "turn_left"))
 	animator.set_acceleration(Input.get_axis("break", "accelerate"))
+	animator.set_jump(not ground_ray.is_colliding())
 
 func align_with_y(xform, new_y):
 	xform.basis.y = new_y
