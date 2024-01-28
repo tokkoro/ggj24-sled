@@ -1,6 +1,7 @@
 shader_type spatial;
 
 uniform vec3 target_pos;
+uniform vec3 start_pos;
 
 void vertex()
 {

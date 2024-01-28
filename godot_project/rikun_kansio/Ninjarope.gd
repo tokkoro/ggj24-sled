@@ -3,6 +3,7 @@ class_name Ninjarope
 
 var player: Sled
 @export var hook_rest_pos: Node3D
+@onready var hook_res_pos_hand := $"../HookRestPositionHand"
 @export var hook: Node3D
 @export var pointer: Node3D
 
@@ -16,6 +17,8 @@ var extra_impulse_cooldwon := 0.0
 
 var ninjarope_hit_sound = preload("res://sounds/hop.wav")
 var huussi_sound = preload("res://sounds/fart.ogg")
+
+@onready var rope_2 = $"../Rope2"
 
 func _ready():
 	# util: find player in parent
@@ -115,8 +118,16 @@ func _physics_process(delta):
 	else:
 		hook.global_rotation = lerp(hook.global_rotation, player.global_rotation, 0.7)
 		hook.global_position = lerp(hook.global_position, hook_rest_pos.global_position, 0.75)
+	update_rope_pos()
 
 
-	var hook_attachment_point_offset := hook.global_basis.z * 0.7
-	var shader_material : ShaderMaterial = mesh.surface_get_material(0)
-	shader_material.set_shader_parameter("target_pos", hook.global_position + hook_attachment_point_offset - global_position)
+func _process(delta):
+	update_rope_pos()
+
+
+func update_rope_pos():
+	var hook_tail_pos = hook.global_position + hook.global_basis.z * 0.7
+	rope_2.global_position = hook_res_pos_hand.global_position
+	rope_2.look_at(hook_tail_pos, Vector3.UP)
+	var distance = (hook_res_pos_hand.global_position - hook_tail_pos).length()
+	rope_2.scale = Vector3(1, 1, -distance)

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="Script" path="res://sled/sled.gd" id="2_nu8po"]
-[ext_resource type="Shader" path="res://rikun_kansio/ninjarope.gdshader" id="3_d85xm"]
 [ext_resource type="AudioStream" uid="uid://b66gkp73k7x6v" path="res://sounds/hop.wav" id="4_g70mr"]
 [ext_resource type="Script" path="res://tomi_testaa/CountDownLabels.gd" id="4_kjjsv"]
 [ext_resource type="Script" path="res://rikun_kansio/Ninjarope.gd" id="4_s3o24"]
@@ -19,6 +18,7 @@
 [ext_resource type="Script" path="res://tomi_testaa/TheGame.gd" id="8_115im"]
 [ext_resource type="Texture2D" uid="uid://dd8wr8w3t34tx" path="res://tomi_testaa/snowflake.png" id="10_081dr"]
 [ext_resource type="AudioStream" uid="uid://l71a2758d1k7" path="res://sounds/humm.ogg" id="10_aqsud"]
+[ext_resource type="Texture2D" uid="uid://dj0d3b1ahut7u" path="res://tomi_testaa/rop2.png" id="11_aqwcp"]
 [ext_resource type="Shape3D" uid="uid://c6dwwlfow03tf" path="res://tomi_testaa/goal_box_shape.tres" id="12_0b2l2"]
 [ext_resource type="Script" path="res://tomi_testaa/InterpolatedCameraBetter.gd" id="12_u5t8h"]
 [ext_resource type="PackedScene" path="res://rikun_kansio/pointer.tscn" id="12_vi5oh"]
@@ -125,17 +125,15 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_w8pyg")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6n7y"]
-render_priority = 0
-shader = ExtResource("3_d85xm")
-shader_parameter/target_pos = Vector3(0.48, 0.73, 0.48)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mn0rb"]
+albedo_color = Color(1, 0.301961, 0.0823529, 1)
+emission_enabled = true
+emission = Color(1, 0.301961, 0.0823529, 1)
+emission_texture = ExtResource("11_aqwcp")
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_k1m7c"]
-material = SubResource("ShaderMaterial_o6n7y")
-top_radius = 0.05
-bottom_radius = 0.05
+[sub_resource type="CylinderMesh" id="CylinderMesh_ro3ld"]
+material = SubResource("StandardMaterial3D_mn0rb")
 height = 1.0
-radial_segments = 8
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0o3gg"]
 _surfaces = [{
@@ -328,7 +326,10 @@ mesh = SubResource("ArrayMesh_7d2p5")
 skeleton = NodePath("")
 
 [node name="HookRestPosition" type="Marker3D" parent="Sled/SledModel/SledVisual/Pulkkailija_origo/laskija/body/r_hand"]
-transform = Transform3D(0.422618, 0.906308, -2.91038e-11, -0.906308, 0.422618, 0, 1.81899e-12, -2.91038e-11, 1, 0.137995, -0.330994, -0.804211)
+transform = Transform3D(0.422618, 0.906308, -2.91038e-11, -0.906308, 0.422618, 0, 1.81899e-12, -2.91038e-11, 1, 0.422529, 0.00311783, -0.804211)
+
+[node name="HookRestPositionHand" type="Marker3D" parent="Sled/SledModel/SledVisual/Pulkkailija_origo/laskija/body/r_hand"]
+transform = Transform3D(0.422618, 0.906308, -2.91038e-11, -0.906308, 0.422618, 0, 1.81899e-12, -2.91038e-11, 1, 0.417586, -0.0448847, -0.133109)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Sled/SledModel/SledVisual/Pulkkailija_origo/laskija/body/r_hand"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.462371, -0.0842869, 0.111017)
@@ -343,7 +344,6 @@ draw_pass_1 = SubResource("QuadMesh_1pxp5")
 
 [node name="Ninjarope" type="MeshInstance3D" parent="Sled/SledModel/SledVisual/Pulkkailija_origo/laskija/body/r_hand" node_paths=PackedStringArray("hook_rest_pos", "hook", "pointer", "audio_player_3d") groups=["Player"]]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.309718, -0.0513265, -0.0209839)
-mesh = SubResource("CylinderMesh_k1m7c")
 skeleton = NodePath("")
 script = ExtResource("4_s3o24")
 hook_rest_pos = NodePath("../HookRestPosition")
@@ -360,14 +360,19 @@ pitch_scale = 2.0
 stream = ExtResource("5_qasfm")
 volume_db = -20.0
 
+[node name="Rope2" type="Node3D" parent="Sled/SledModel/SledVisual/Pulkkailija_origo/laskija/body/r_hand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -10, 0.279693, -0.148976, -0.800897)
+top_level = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sled/SledModel/SledVisual/Pulkkailija_origo/laskija/body/r_hand/Rope2"]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-08, -0.1, 0, 1, -4.37114e-09, 0, 0, 0.5)
+mesh = SubResource("CylinderMesh_ro3ld")
+skeleton = NodePath("../../HookRestPosition")
+
 [node name="head" type="MeshInstance3D" parent="Sled/SledModel/SledVisual/Pulkkailija_origo/laskija/body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0159336, 0.446146, -0.142493)
 mesh = SubResource("ArrayMesh_ux7xg")
 skeleton = NodePath("")
-
-[node name="romppeet" type="Node3D" parent="Sled/SledModel/SledVisual"]
-
-[node name="romppeet2" type="Node3D" parent="Sled/SledModel/SledVisual"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sled" groups=["Player"]]
 shape = SubResource("SphereShape3D_nfixa")
