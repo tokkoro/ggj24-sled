@@ -16,10 +16,10 @@ var current_acc = 0.0
 
 var d = 0.2
 
-var max_hip_angle = 50
+var max_hip_angle = 10
 var hand_idle_angle = 60
 var hand_turn_angle = 5
-var total_tilt_max = 15
+var total_tilt_max = 10
 var is_in_air = false
 var holding_hook = false
 
