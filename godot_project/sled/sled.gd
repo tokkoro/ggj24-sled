@@ -7,7 +7,7 @@ class_name Sled
 @onready var ground_ray_for_normal = $SledModel/GroundNormalDetector
 @onready var animator: SlederAnimator = $SledModel/SledVisual/Pulkkailija_origo
 
-var acceleration = 700.0
+var acceleration = 1200.0
 var turning = 30  # degrees per second
 var max_turning = 10
 var turn_stop_limit = 0.75
