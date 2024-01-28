@@ -13,7 +13,7 @@ config_version=5
 config/name="fgj2024"
 run/main_scene="res://tomi_testaa/level_loader_scene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [display]
 

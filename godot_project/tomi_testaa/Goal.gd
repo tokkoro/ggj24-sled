@@ -26,6 +26,8 @@ func _on_body_entered(body: Node3D):
 		the_game.on_goal()
 
 func _input(event):
+	if  not OS.has_feature("editor"):
+		return
 	if event is InputEventKey and event.is_pressed() and not end_triggered:
 		var e: InputEventKey = event
 		if e.key_label == Key.KEY_G:
