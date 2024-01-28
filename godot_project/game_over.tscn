@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3gddncqur21y"]
+
+[ext_resource type="Material" path="res://tomi_testaa/count_down_label_material.tres" id="1_1wgll"]
+
+[sub_resource type="TextMesh" id="TextMesh_gwwtp"]
+material = ExtResource("1_1wgll")
+text = "You made it!
+
+Press ctrl+1/2/3/4
+to choose level"
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("TextMesh_gwwtp")

@@ -8,11 +8,13 @@ var levels = [
 	preload("res://models/level1.glb"),
 	preload("res://models/level2.glb"),
 	preload("res://models/level3.glb"),
+	preload("res://game_over.tscn"),
 ]
 var props = [
 	preload("res://level0_propsit.tscn"),
 	preload("res://level1_propsit.tscn"),
 	preload("res://level2_propsit.tscn"),
+	preload("res://level3_propsit.tscn"),
 	preload("res://level3_propsit.tscn"),
 ]
 var root_level = preload("res://tomi_testaa/hill_area.tscn")
@@ -37,6 +39,8 @@ func _input(event):
 			current_level = 2
 		elif e.key_label == Key.KEY_4:
 			current_level = 3
+		elif e.key_label == Key.KEY_5:
+			current_level = 4
 		else:
 			return
 		load_level()

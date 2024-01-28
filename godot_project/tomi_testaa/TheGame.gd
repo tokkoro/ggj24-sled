@@ -90,7 +90,10 @@ func game_start():
 	if !count_down_label:
 		count_down_label = get_node("..").find_child("CountDownLabels")
 	count_down_label.set_label(1)
-	
+
+	if not end_node:
+		return # game over
+
 	goal.set_size_pos_rot(end_node.scale*2, end_node.global_position, end_node.global_rotation)
 
 	camera = get_viewport().get_camera_3d()
