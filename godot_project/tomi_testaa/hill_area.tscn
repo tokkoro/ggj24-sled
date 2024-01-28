@@ -28,8 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://dxwqbfr5gya2m" path="res://skies/sky0.png" id="23_wj0ex"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sh2yx"]
-friction = 0.1
-bounce = 0.3
+friction = 0.13
+bounce = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_peat5"]
 resource_name = "Material"
@@ -342,7 +342,7 @@ process_material = SubResource("ParticleProcessMaterial_2bf5s")
 draw_pass_1 = SubResource("QuadMesh_1pxp5")
 
 [node name="Ninjarope" type="MeshInstance3D" parent="Sled/SledModel/SledVisual/Pulkkailija_origo/laskija/body/r_hand" node_paths=PackedStringArray("hook_rest_pos", "hook", "pointer", "audio_player_3d") groups=["Player"]]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.309715, -0.0513265, -0.0209778)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.309718, -0.0513265, -0.0209839)
 mesh = SubResource("CylinderMesh_k1m7c")
 skeleton = NodePath("")
 script = ExtResource("4_s3o24")
