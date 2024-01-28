@@ -73,8 +73,48 @@ func load_level():
 	props_scene_ref = props[level_num].instantiate()
 	add_child(props_scene_ref)
 
-func next_level():
+
+var results = [
+	0,
+	0,
+	0,
+	0,
+	0,
+]
+
+func next_level(time_s):
+	results[current_level] = time_s
 	current_level += 1
 	wait_for_next_level = true
 	load_next_level_timer = 7
 
+func get_info_label_str():
+	var result = "TIMES:\n"
+	var has_times = false
+	var total = 0
+	for i in range(len(results)):
+		var duration = results[i]
+		if duration > 1:
+			has_times = true
+			var s = floor(duration / 1000.0)
+			var ms = duration % 1000
+			var time_str = get_time_str(s)
+			result += "Map_" + str(i) + ": " + time_str + "." + ("%03d" % ms) + "\n"
+			total += duration
+	if not has_times:
+		return "WASD to move\nSPACE to jump\nMOUSE to hook"
+	
+	# add total
+	var s = floor(total / 1000.0)
+	var ms = total % 1000
+	var time_str = get_time_str(s)
+	result += "TOTAL: " + time_str + "." + ("%03d" % ms)
+	
+	return result
+
+func get_time_str(s: int) -> String:
+	var minutes = floor(s / 60.0)
+	var seconds = s % 60
+	var mid = ":"
+	var time_str = str(minutes) + mid + ("%02d" % seconds)
+	return time_str
