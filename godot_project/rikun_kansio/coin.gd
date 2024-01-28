@@ -1,7 +1,7 @@
 extends Area3D
 
 @onready var gfx : MeshInstance3D = $gfx
-@onready var collect_sound : AudioStreamPlayer3D = $collect_sound
+@onready var collect_sound : AudioStreamPlayer = $collect_sound
 
 const duration_ms := 1000.0
 var collected := false

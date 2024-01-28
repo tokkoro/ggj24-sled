@@ -49,7 +49,7 @@ func _input(event):
 func _ready():
 	current_level = start_level
 	load_level()
-	
+
 func _process(delta):
 	if wait_for_next_level:
 		load_next_level_timer -= delta
@@ -72,6 +72,9 @@ func load_level():
 	add_child(root_scene_ref)
 	props_scene_ref = props[level_num].instantiate()
 	add_child(props_scene_ref)
+	
+	coin_count[level_num] = 0
+	update_coin_label()
 
 
 var results = [
@@ -128,9 +131,12 @@ func get_time_str(s: int) -> String:
 	var time_str = str(minutes) + mid + ("%02d" % seconds)
 	return time_str
 
-func coin_collected():
-	coin_count[current_level] += 1
+func update_coin_label():
 	var total = 0
 	for c in coin_count:
 		total += c
 	root_scene_ref.get_node("TheGame").update_coin_lable(total)
+
+func coin_collected():
+	coin_count[current_level] += 1
+	update_coin_label()
