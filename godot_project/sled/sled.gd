@@ -53,7 +53,7 @@ func _physics_process(delta):
 		var force = sled_mesh.global_transform.basis.z * -speed_input
 		
 		var turbo_boost = 1
-		turbo = Input.is_key_pressed(KEY_SHIFT)
+		turbo = Input.is_key_pressed(KEY_SHIFT) and OS.has_feature("editor")
 		if turbo:
 			turbo_boost = 100
 		apply_central_force(force * delta * turbo_boost)
