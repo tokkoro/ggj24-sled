@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c84j0x5s5gxwp" path="res://rikun_kansio/maailman_kalustus.tscn" id="1_vmsmw"]
 [ext_resource type="PackedScene" uid="uid://sew1cgydyonh" path="res://models/level1.glb" id="2_ixy7w"]
-[ext_resource type="PackedScene" uid="uid://bxyay8hd4ks8u" path="res://level1_propsit.tscn" id="3_bavyi"]
+[ext_resource type="PackedScene" uid="uid://otp5vawyjsab" path="res://level1_propsit.tscn" id="3_bavyi"]
 
 [sub_resource type="Curve3D" id="Curve3D_tg3tl"]
 _data = {
@@ -13,9 +13,11 @@ point_count = 11
 
 [node name="Node3D" type="Node3D"]
 
-[node name="MaailmanKalustus" parent="." instance=ExtResource("1_vmsmw")]
+[node name="MaailmanKalustus" parent="." node_paths=PackedStringArray("intended_path") instance=ExtResource("1_vmsmw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-path_name = "level1_path"
+intended_path_thickness = 10.0
+intended_path = NodePath("../level1_path")
+coin_count = 10
 
 [node name="level1" parent="." instance=ExtResource("2_ixy7w")]
 

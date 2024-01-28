@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://bw8q8fcqh4wil"]
+[gd_scene load_steps=3 format=3 uid="uid://bw8q8fcqh4wil"]
 
-[ext_resource type="ArrayMesh" path="res://romppeet/romppeet_ankkuri.res" id="1_wl5um"]
+[ext_resource type="ArrayMesh" uid="uid://cntmk5q4i3ox1" path="res://romppeet/romppeet_ankkuri.res" id="1_wl5um"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0xnl4"]
 
 [node name="Hook" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_wl5um")
+
+[node name="Hook" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hook"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("SphereShape3D_0xnl4")

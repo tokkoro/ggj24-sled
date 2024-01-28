@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3gddncqur21y"]
+[gd_scene load_steps=9 format=3 uid="uid://c3gddncqur21y"]
 
 [ext_resource type="Material" path="res://tomi_testaa/count_down_label_material.tres" id="1_1wgll"]
 [ext_resource type="Script" path="res://congratulations.gd" id="1_pnd4d"]
+[ext_resource type="PackedScene" uid="uid://vlvll4u6ygwk" path="res://rikun_kansio/coin.tscn" id="3_d1aht"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfvah"]
 emission_enabled = true
@@ -45,3 +46,6 @@ shape = SubResource("BoxShape3D_pmhm8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_hyx7i")
+
+[node name="Coin" parent="." instance=ExtResource("3_d1aht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 2)

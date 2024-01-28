@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://vlvll4u6ygwk"]
+
+[ext_resource type="Script" path="res://rikun_kansio/coin.gd" id="1_tr7ya"]
+[ext_resource type="AudioStream" uid="uid://cg67r5wg6cjs5" path="res://sounds/ping.ogg" id="2_mfyo1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ge1cp"]
+emission_enabled = true
+emission = Color(1, 0.694118, 0.309804, 1)
+emission_energy_multiplier = 1.93
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ek6om"]
+material = SubResource("StandardMaterial3D_ge1cp")
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_j7ryd"]
+radius = 1.0
+
+[node name="Coin" type="Area3D"]
+collision_mask = 2
+script = ExtResource("1_tr7ya")
+
+[node name="gfx" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_ek6om")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_j7ryd")
+
+[node name="collect_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_mfyo1")
+pitch_scale = 1.2
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

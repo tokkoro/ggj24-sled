@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://tixlflp2j413"]
+[gd_scene load_steps=5 format=3 uid="uid://tixlflp2j413"]
 
 [ext_resource type="PackedScene" uid="uid://csm0xhy8ofy5l" path="res://models/level2.glb" id="1_nkmct"]
 [ext_resource type="PackedScene" uid="uid://c84j0x5s5gxwp" path="res://rikun_kansio/maailman_kalustus.tscn" id="2_dw5jp"]
+[ext_resource type="PackedScene" uid="uid://bcir8dddk0025" path="res://level2_propsit.tscn" id="3_l5yx6"]
 
 [sub_resource type="Curve3D" id="Curve3D_p01cd"]
 _data = {
@@ -14,14 +15,15 @@ point_count = 16
 
 [node name="level2" parent="." instance=ExtResource("1_nkmct")]
 
-[node name="MaailmanKalustus" parent="." instance=ExtResource("2_dw5jp")]
+[node name="MaailmanKalustus" parent="." node_paths=PackedStringArray("intended_path") instance=ExtResource("2_dw5jp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 visible = false
-path_name = "level2_path"
+intended_path = NodePath("../level2_path")
+coin_count = 20
 
 [node name="level2_path" type="Path3D" parent="."]
 curve = SubResource("Curve3D_p01cd")
 
-[node name="Propsit" type="Node3D" parent="."]
+[node name="Propsit" parent="." instance=ExtResource("3_l5yx6")]
 
 [editable path="MaailmanKalustus"]
