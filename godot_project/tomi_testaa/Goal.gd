@@ -24,3 +24,10 @@ func _on_body_entered(body: Node3D):
 		print("Finished")
 		end_triggered = true
 		the_game.on_goal()
+
+func _input(event):
+	if event is InputEventKey and event.is_pressed() and not end_triggered:
+		var e: InputEventKey = event
+		if e.key_label == Key.KEY_G:
+			end_triggered = true
+			the_game.on_goal()

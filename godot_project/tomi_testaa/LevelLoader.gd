@@ -1,4 +1,5 @@
 extends Node3D
+class_name LevelLoader
 
 var current_level = 0
 var start_level = 0
