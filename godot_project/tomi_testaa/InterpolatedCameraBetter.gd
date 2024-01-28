@@ -1,8 +1,8 @@
 extends Camera3D
 class_name FollowerCamera
 
-@export var lerp_speed := 3.0
-@export var offset := Vector3.ZERO
+var lerp_speed = 4.0
+var offset = Vector3(0,2,8)
 @export var target : Node
 var look_distance := 3.0
 

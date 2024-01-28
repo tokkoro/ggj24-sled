@@ -415,8 +415,6 @@ top_level = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.7735, -60.0348)
 current = true
 script = ExtResource("12_u5t8h")
-lerp_speed = 4.0
-offset = Vector3(0, 2, 8)
 target = NodePath("../Sled/SledModel")
 
 [node name="CountDownLabels" type="Node3D" parent="Camera3D"]
