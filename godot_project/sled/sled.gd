@@ -7,7 +7,7 @@ class_name Sled
 @onready var ground_ray_for_normal = $SledModel/GroundNormalDetector
 @onready var animator: SlederAnimator = $SledModel/SledVisual/Pulkkailija_origo
 
-var acceleration = 70.0
+var acceleration = 700.0
 var turning = 30  # degrees per second
 var turn_stop_limit = 0.75
 var sphere_offset = Vector3.DOWN
@@ -29,6 +29,7 @@ var start_rotation: Vector3
 var graphics_up := Vector3(0,1,0)
 
 var victory = false
+var turbo = false
 
 func _physics_process(delta):
 	if stop_me:
@@ -49,13 +50,18 @@ func _physics_process(delta):
 	sled_mesh.rotation.y = rotation.y
 	if ground_ray.is_colliding():
 		var force = sled_mesh.global_transform.basis.z * -speed_input
-		apply_central_force(force * delta)
+		
+		var turbo_boost = 1
+		turbo = Input.is_key_pressed(KEY_SHIFT)
+		if turbo:
+			turbo_boost = 100
+		apply_central_force(force * delta * turbo_boost)
 
 	if abs(jump_input) > 1:
 		var extra = 1
 		if victory:
 			extra = 3
-		apply_central_impulse(Vector3(0, jump_input * extra, 0) - transform.basis.z*jump_input)
+		apply_central_impulse(Vector3(0, jump_input * extra, 0) - transform.basis.z * jump_input)
 		jump_input = 0
 
 func _process(delta):

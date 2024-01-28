@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=58 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="Script" path="res://sled/sled.gd" id="2_nu8po"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://tomi_testaa/CountDownLabels.gd" id="4_kjjsv"]
 [ext_resource type="Script" path="res://rikun_kansio/Ninjarope.gd" id="4_s3o24"]
 [ext_resource type="AudioStream" uid="uid://blmpud0otcam8" path="res://sounds/boing.wav" id="5_qasfm"]
-[ext_resource type="Material" path="res://tomi_testaa/count_down_label_material.tres" id="5_sgs8b"]
+[ext_resource type="Material" uid="uid://bdqffmtj76632" path="res://tomi_testaa/count_down_label_material.tres" id="5_sgs8b"]
 [ext_resource type="ArrayMesh" uid="uid://dgyiqw13cr41q" path="res://models/body_mesh.tres" id="6_1qkax"]
 [ext_resource type="AudioStream" uid="uid://cg67r5wg6cjs5" path="res://sounds/ping.ogg" id="6_8jhb8"]
 [ext_resource type="ArrayMesh" uid="uid://lnu0i22ntkg1" path="res://romppeet/romppeet_pulkka.res" id="6_jyfto"]
@@ -18,10 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://dd8wr8w3t34tx" path="res://tomi_testaa/snowflake.png" id="10_081dr"]
 [ext_resource type="AudioStream" uid="uid://l71a2758d1k7" path="res://sounds/humm.ogg" id="10_aqsud"]
 [ext_resource type="Texture2D" uid="uid://dj0d3b1ahut7u" path="res://tomi_testaa/rop2.png" id="11_aqwcp"]
-[ext_resource type="Shape3D" path="res://tomi_testaa/goal_box_shape.tres" id="12_0b2l2"]
+[ext_resource type="Shape3D" uid="uid://c6dwwlfow03tf" path="res://tomi_testaa/goal_box_shape.tres" id="12_0b2l2"]
 [ext_resource type="Script" path="res://tomi_testaa/InterpolatedCameraBetter.gd" id="12_u5t8h"]
 [ext_resource type="Script" path="res://tomi_testaa/pulsing_time.gd" id="13_2k2q3"]
-[ext_resource type="ArrayMesh" uid="uid://cntmk5q4i3ox1" path="res://romppeet/romppeet_ankkuri.res" id="13_3vib4"]
+[ext_resource type="ArrayMesh" uid="uid://cntmk5q4i3ox1" path="res://romppeet/romppeet_ankkuri.res" id="13_o4soh"]
+[ext_resource type="PackedScene" uid="uid://c84j0x5s5gxwp" path="res://rikun_kansio/maailman_kalustus.tscn" id="18_w2y4b"]
+[ext_resource type="Texture2D" uid="uid://dl0ipcus3ipok" path="res://tomi_testaa/checker_flag.png" id="22_ct83y"]
 [ext_resource type="Script" path="res://tomi_testaa/EnvironmentChanger.gd" id="23_gggsl"]
 [ext_resource type="Texture2D" uid="uid://dxwqbfr5gya2m" path="res://skies/sky0.png" id="23_wj0ex"]
 
@@ -217,15 +219,21 @@ gravity = Vector3(0, 0, 0)
 [sub_resource type="QuadMesh" id="QuadMesh_5v314"]
 size = Vector2(0.2, 0.2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igoq7"]
-transparency = 1
-albedo_color = Color(0.909804, 0.596078, 0.160784, 0.380392)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8x6s4"]
+transparency = 3
+alpha_hash_scale = 0.2
+alpha_antialiasing_mode = 0
+albedo_color = Color(1, 1, 1, 0.498039)
+albedo_texture = ExtResource("22_ct83y")
 emission_enabled = true
-emission = Color(0.686275, 0, 0, 1)
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.1
+emission_texture = ExtResource("11_aqwcp")
+uv1_scale = Vector3(36, 4, 327)
+texture_filter = 0
 
-[sub_resource type="BoxMesh" id="BoxMesh_ioh6s"]
-material = SubResource("StandardMaterial3D_igoq7")
-size = Vector3(47.77, 14.63, 14)
+[sub_resource type="BoxMesh" id="BoxMesh_d8i0d"]
+material = SubResource("StandardMaterial3D_8x6s4")
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2by0e"]
 panorama = ExtResource("23_wj0ex")
@@ -278,7 +286,7 @@ top_level = true
 
 [node name="GroundDetector" type="RayCast3D" parent="Sled/SledModel" groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.183868, 0)
-target_position = Vector3(0, -0.3, 0)
+target_position = Vector3(0, -0.5, 0)
 
 [node name="GroundNormalDetector" type="RayCast3D" parent="Sled/SledModel" groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.183868, 0)
@@ -388,7 +396,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 107.29
 top_level = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Sled/Hook"]
-mesh = ExtResource("13_3vib4")
+mesh = ExtResource("13_o4soh")
 
 [node name="Hook" type="Area3D" parent="Sled/Hook"]
 collision_layer = 3
@@ -403,7 +411,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 107.29
 top_level = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Sled/Pointer"]
-mesh = ExtResource("13_3vib4")
+mesh = ExtResource("13_o4soh")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.7735, -60.0348)
@@ -458,7 +466,8 @@ script = ExtResource("7_1fp6q")
 
 [node name="GoalDebugVisu" type="MeshInstance3D" parent="TheGame/GoalArea"]
 cast_shadow = 0
-mesh = SubResource("BoxMesh_ioh6s")
+gi_mode = 0
+mesh = SubResource("BoxMesh_d8i0d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TheGame/GoalArea"]
 shape = ExtResource("12_0b2l2")
