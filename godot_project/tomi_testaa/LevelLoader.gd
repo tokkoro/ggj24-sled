@@ -24,6 +24,23 @@ var props_scene_ref
 var load_next_level_timer = 0
 var wait_for_next_level = false
 
+func _input(event):
+	if event is InputEventKey and event.is_pressed():
+		var e: InputEventKey = event
+		if not Input.is_key_pressed(KEY_CTRL):
+			return
+		if e.key_label == Key.KEY_1:
+			current_level = 0
+		elif e.key_label == Key.KEY_2:
+			current_level = 1
+		elif e.key_label == Key.KEY_3:
+			current_level = 2
+		elif e.key_label == Key.KEY_4:
+			current_level = 3
+		else:
+			return
+		load_level()
+
 func _ready():
 	current_level = start_level
 	load_level()
