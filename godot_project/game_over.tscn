@@ -1,15 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3gddncqur21y"]
+[gd_scene load_steps=8 format=3 uid="uid://c3gddncqur21y"]
 
 [ext_resource type="Material" path="res://tomi_testaa/count_down_label_material.tres" id="1_1wgll"]
+[ext_resource type="Script" path="res://congratulations.gd" id="1_pnd4d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfvah"]
+emission_enabled = true
+emission = Color(0.988235, 0.839216, 0.435294, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_wferl"]
+material = SubResource("StandardMaterial3D_pfvah")
+text = "CONGRATULATIONS!"
 
 [sub_resource type="TextMesh" id="TextMesh_gwwtp"]
 material = ExtResource("1_1wgll")
-text = "You made it!
+text = "Press ctrl+1/2/3/4
+to choose a level"
 
-Press ctrl+1/2/3/4
-to choose level"
+[sub_resource type="BoxShape3D" id="BoxShape3D_pmhm8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hyx7i"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="congratulations" type="MeshInstance3D" parent="."]
+transform = Transform3D(-17.32, -2.38778e-08, -2.52613e-06, -6.76876e-07, 16.7298, 4.48275, 2.43388e-06, 4.48275, -16.7298, 5.05227e-07, 2.44545, 10.389)
+mesh = SubResource("TextMesh_wferl")
+script = ExtResource("1_pnd4d")
+
+[node name="cheat_hint_text" type="MeshInstance3D" parent="."]
+transform = Transform3D(-5.05, 0, -7.62529e-07, -1.97357e-07, 4.87793, 1.30704, 7.36546e-07, 1.30704, -4.87793, 0, -0.159585, 3.68359)
 mesh = SubResource("TextMesh_gwwtp")
+
+[node name="hint_start" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.5, 0)
+
+[node name="hint_goal" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.1, -28.1264)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(4.8, 0, 0, 0, 0.1, 0, 0, 0, 5.9, 0, -1.1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_pmhm8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_hyx7i")
