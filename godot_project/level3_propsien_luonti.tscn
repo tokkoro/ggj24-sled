@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfp7xycm8mrxj"]
+
+[ext_resource type="PackedScene" uid="uid://c84j0x5s5gxwp" path="res://rikun_kansio/maailman_kalustus.tscn" id="1_gkvtr"]
+[ext_resource type="PackedScene" uid="uid://blw1x3tc4b73t" path="res://models/level3.glb" id="2_0sg8l"]
+[ext_resource type="PackedScene" uid="uid://b7u3124wuoc7w" path="res://level3_propsit.tscn" id="3_8g0ss"]
+
+[sub_resource type="Curve3D" id="Curve3D_p8coc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -165, 639, -99, 0, 0, 0, 0, 0, 0, -232, 604, -46, 0, 0, 0, 0, 0, 0, -257, 581, -104, 0, 0, 0, 0, 0, 0, -232, 552, -180, 0, 0, 0, 0, 0, 0, -185, 543, -151, 0, 0, 0, 0, 0, 0, -103, 531, -128, 0, 0, 0, 0, 0, 0, -74, 516, -62, 0, 0, 0, 0, 0, 0, -164, 501, 53, 0, 0, 0, 0, 0, 0, -316, 474, 21, 0, 0, 0, 0, 0, 0, -371, 468, -29, 0, 0, 0, 0, 0, 0, -255, 463, -150, 0, 0, 0, 0, 0, 0, -184, 434, -108, 0, 0, 0, 0, 0, 0, -124, 416, -148, 0, 0, 0, 0, 0, 0, -169, 400, -226, 0, 0, 0, 0, 0, 0, -245, 375, -261, 0, 0, 0, 0, 0, 0, -315, 358, -269, 0, 0, 0, 0, 0, 0, -363, 330, -214, 0, 0, 0, 0, 0, 0, -338, 309, -128, 0, 0, 0, 0, 0, 0, -265, 296, -29, 0, 0, 0, 0, 0, 0, -135, 263, 165, 0, 0, 0, 0, 0, 0, -113, 238, 56, 0, 0, 0, 0, 0, 0, -192, 197, -6, 0, 0, 0, 0, 0, 0, -126, 178, -113, 0, 0, 0, 0, 0, 0, -183, 158, -169, 0, 0, 0, 0, 0, 0, -340, 132, -124, 0, 0, 0, 0, 0, 0, -306, 97, 8, 0, 0, 0, 0, 0, 0, -129, 42, -14, 0, 0, 0, 0, 0, 0, -12.4574, -0.0837708, 0, 0, 0, 0, 0, 0, 0, 11.4984, 14.7853, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 29
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MaailmanKalustus" parent="." instance=ExtResource("1_gkvtr")]
+test_mode = true
+path_name = "level3_path"
+
+[node name="level3" parent="." instance=ExtResource("2_0sg8l")]
+
+[node name="Propsit" parent="." instance=ExtResource("3_8g0ss")]
+
+[node name="level3_path" type="Path3D" parent="."]
+curve = SubResource("Curve3D_p8coc")
