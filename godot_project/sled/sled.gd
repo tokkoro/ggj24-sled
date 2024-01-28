@@ -9,6 +9,7 @@ class_name Sled
 
 var acceleration = 700.0
 var turning = 30  # degrees per second
+var max_turning = 10
 var turn_stop_limit = 0.75
 var sphere_offset = Vector3.DOWN
 var body_tilt = 35
@@ -82,7 +83,10 @@ func _process(delta):
 	var t = -turn_input / body_tilt
 	sled_mesh.rotation.z = lerp(sled_mesh.rotation.z, -t * 40, 5.0 * delta)
 	if linear_velocity.length() > turn_stop_limit:
-		apply_torque_impulse(global_basis.y * -t * delta * 100 * max(1.0, linear_velocity.length()))
+		var turning_multi_per_speed =  linear_velocity.length()
+		# print("speed", turning_multi_per_speed)
+		turning_multi_per_speed = clamp(turning_multi_per_speed, 1, max_turning)
+		apply_torque_impulse(global_basis.y * -t * delta * 100 * turning_multi_per_speed)
 	# Animate
 	animator.set_turning(Input.get_axis("turn_right", "turn_left"))
 	animator.set_acceleration(Input.get_axis("break", "accelerate"))

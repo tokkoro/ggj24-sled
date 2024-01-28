@@ -270,13 +270,13 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 107.29
 collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
-mass = 2.0
+mass = 1.1
 physics_material_override = SubResource("PhysicsMaterial_sh2yx")
-gravity_scale = 5.0
+gravity_scale = 4.0
 can_sleep = false
 continuous_cd = true
-linear_damp = 0.5
-angular_damp = 13.425
+linear_damp = 0.15
+angular_damp = 25.0
 script = ExtResource("2_nu8po")
 
 [node name="SledModel" type="Node3D" parent="Sled" groups=["Player"]]
