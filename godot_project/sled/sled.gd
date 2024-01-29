@@ -50,9 +50,6 @@ func _physics_process(delta):
 		if not camera:
 			camera = get_viewport().get_camera_3d()
 		camera.force_move()
-		
-	if Engine.is_editor_hint() and Input.is_key_pressed(KEY_G):
-		on_victory()
 
 	var n = ground_ray_for_normal.get_collision_normal()
 	var xform = align_with_y(sled_mesh.global_transform, n)
