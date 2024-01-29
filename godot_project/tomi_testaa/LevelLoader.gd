@@ -46,6 +46,11 @@ func _input(event):
 			return
 		load_level()
 
+	if event is InputEventScreenTouch:
+		if event.pressed and event.index == 4:
+			current_level = (current_level + 1) % 5
+			load_level()
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	current_level = start_level
