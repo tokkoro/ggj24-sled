@@ -32,6 +32,14 @@ var graphics_up := Vector3(0,1,0)
 var victory = false
 var turbo = false
 
+var touch_screen_jump_input := false
+var prev_mouse_pos : Vector2
+
+func _input(event):
+	if event is InputEventScreenTouch:
+		if event.pressed and event.index > 1:
+			touch_screen_jump_input = true
+
 func _physics_process(delta):
 	if stop_me:
 		linear_velocity = Vector3.ZERO
@@ -42,6 +50,9 @@ func _physics_process(delta):
 		if not camera:
 			camera = get_viewport().get_camera_3d()
 		camera.force_move()
+		
+	if Engine.is_editor_hint() and Input.is_key_pressed(KEY_G):
+		on_victory()
 
 	var n = ground_ray_for_normal.get_collision_normal()
 	var xform = align_with_y(sled_mesh.global_transform, n)
@@ -61,8 +72,11 @@ func _physics_process(delta):
 	if abs(jump_input) > 1:
 		var extra = 1
 		if victory:
-			extra = 3
-		apply_central_impulse(Vector3(0, jump_input * extra, 0) - transform.basis.z * jump_input)
+			extra = -0.6
+		var forward_power : Vector3 = -transform.basis.z * jump_input
+		if victory:
+			forward_power = Vector3() 
+		apply_central_impulse(Vector3(0, jump_input * extra, 0) + forward_power)
 		jump_input = 0
 
 func _process(delta):
@@ -75,10 +89,23 @@ func _process(delta):
 		return
 	if ground_ray.is_colliding():
 		#jump
-		if (Input.is_action_just_pressed("jump") or victory) and can_jump > 0:
+		if (Input.is_action_just_pressed("jump") or touch_screen_jump_input or victory) and can_jump > 0:
 			can_jump = jump_cost
 			jump_input = jump_power
+			touch_screen_jump_input = false
 		speed_input = Input.get_axis("break", "accelerate") * acceleration
+
+	if not prev_mouse_pos:
+		prev_mouse_pos = get_viewport().get_mouse_position()
+	else:
+		var new_mouse_pos := get_viewport().get_mouse_position()
+		var mouse_delta := new_mouse_pos - prev_mouse_pos
+		prev_mouse_pos = new_mouse_pos
+		print("Delta: ", mouse_delta / Vector2(get_viewport().size))
+		const aim_velocity := Vector2(30, -10)
+		var relative_delta := mouse_delta / Vector2(get_viewport().size) * aim_velocity
+		if Input.get_mouse_button_mask() != 0:
+			turn_input -= relative_delta.x * 400 * delta
 
 	var t = -turn_input / body_tilt
 	sled_mesh.rotation.z = lerp(sled_mesh.rotation.z, -t * 40, 5.0 * delta)

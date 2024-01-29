@@ -13,6 +13,7 @@ var target_offset := Vector3(0,0,0)
 func _process(delta):
 	if !target:
 		return
+
 	if snap_to:
 		var target_pos = target.global_transform.translated_local(offset)
 		global_transform = global_transform.interpolate_with(target_pos,1)
@@ -25,7 +26,9 @@ func _process(delta):
 			global_position = follow_point + dist.normalized() * follow_distance
 
 	var t :float= 1.0 - pow(0.1, delta)
-	target_offset = lerp(target_offset, (target.transform.basis.z * Vector3(1,0,1)).normalized() * -look_distance, t)
+	var look_target : Vector3 = target.transform.basis.z * -look_distance
+	look_target.y = min(look_target.y, 0.0)
+	target_offset = lerp(target_offset, look_target, t)
 
 	look_at(target.global_position + target_offset + Vector3.UP*3, Vector3.UP)
 
