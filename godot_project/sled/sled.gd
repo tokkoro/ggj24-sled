@@ -27,14 +27,14 @@ var jump_cost = -0.3
 var stop_me = false
 var camera: FollowerCamera
 var start_rotation: Vector3
-var graphics_up := Vector3(0,1,0)
+var graphics_up = Vector3.UP
 
 var victory = false
 var turbo = false
 
 var touch_screen_jump_input := false
 var prev_mouse_pos
-var mouse_turn_input := 0.0
+var mouse_turn_input = 0.0
 
 func _input(event):
 	if event is InputEventScreenTouch:
@@ -93,30 +93,33 @@ func _process(delta):
 			touch_screen_jump_input = false
 		speed_input = Input.get_axis("break", "accelerate") * acceleration
 
-	var mouse_turn_amount := 0.0
+	var mouse_turn_amount = 0.0
 	if Input.get_mouse_button_mask() == 0:
 		prev_mouse_pos = null
 	elif not prev_mouse_pos:
 		prev_mouse_pos = get_viewport().get_mouse_position()
 	else:
-		var new_mouse_pos := get_viewport().get_mouse_position()
-		var mouse_delta : Vector2 = new_mouse_pos - prev_mouse_pos
+		var new_mouse_pos = get_viewport().get_mouse_position()
+		var mouse_delta: Vector2 = new_mouse_pos - prev_mouse_pos
 		prev_mouse_pos = new_mouse_pos
-		const aim_velocity := Vector2(30, -10)
-		var relative_delta := mouse_delta / Vector2(get_viewport().size) * aim_velocity
-		const touch_turn_multiplier := 5
+		const aim_velocity = Vector2(30, -10)
+		var relative_delta = mouse_delta / Vector2(get_viewport().size) * aim_velocity
+		const touch_turn_multiplier = 5
 		mouse_turn_amount = relative_delta.x * touch_turn_multiplier
 
 	var mouse_lerp_t := 1.0 - pow(0.001, delta)
 	mouse_turn_input = lerp(mouse_turn_input, mouse_turn_amount, mouse_lerp_t)
-	turn_input -= clamp(mouse_turn_input, -1, 1)
+	
+	# use mouse turn or keyboard turn which ever is greater
+	if abs(turn_input) < abs(mouse_turn_input):
+		turn_input = mouse_turn_input
+		turn_input = clamp(turn_input, -deg_to_rad(turning), deg_to_rad(turning))
 
 	var t = -turn_input / body_tilt
-	var fps_lerp_t := 1.0 - pow(0.001, delta)
+	var fps_lerp_t = 1.0 - pow(0.001, delta)
 	sled_mesh.rotation.z = lerp(sled_mesh.rotation.z, -t * 40, fps_lerp_t)
 	if linear_velocity.length() > turn_stop_limit:
 		var turning_multi_per_speed =  linear_velocity.length()
-		# print("speed", turning_multi_per_speed)
 		turning_multi_per_speed = clamp(turning_multi_per_speed, 1, max_turning)
 		apply_torque_impulse(global_basis.y * -t * delta * 100 * turning_multi_per_speed)
 	# Animate
