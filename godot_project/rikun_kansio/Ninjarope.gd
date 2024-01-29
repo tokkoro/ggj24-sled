@@ -66,11 +66,11 @@ func _input(event):
 		return
 	if event is InputEventMouseButton:
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.pressed:
-			$NinjaRopeFired.play()
 			var result: Dictionary = get_mouse_hit()
 			var mouse_hit_position_3D:Vector3 = result.get("position", Vector3(0,10,0))
 			var target_object = result.get("collider", null)
 			if target_object:
+				$NinjaRopeFired.play()
 				# hit something, save the hit offset to that something, and attach the hook there
 				offset_to_target = (mouse_hit_position_3D - target_object.global_position)
 				target = target_object

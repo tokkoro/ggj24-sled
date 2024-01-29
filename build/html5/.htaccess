@@ -1,6 +1,6 @@
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ /index.html [QSA,L]
+RewriteRule ^ ./index.html [QSA,L]
 
 # Godot game requires CORS headers
 Header set Access-Control-Allow-Origin "*"

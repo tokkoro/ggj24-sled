@@ -69,7 +69,7 @@ func _physics_process(delta):
 	if abs(jump_input) > 1:
 		var extra = 1
 		if victory:
-			extra = -0.6
+			extra = 0.4
 		var forward_power : Vector3 = -transform.basis.z * jump_input
 		if victory:
 			forward_power = Vector3() 
@@ -80,7 +80,7 @@ func _process(delta):
 	if can_jump < 0.1:
 		can_jump += delta
 		if victory:
-			can_jump += 2 * delta
+			can_jump += 10 * delta
 	turn_input = Input.get_axis("turn_right", "turn_left") * deg_to_rad(turning)
 	if not can_move:
 		return
@@ -112,9 +112,10 @@ func _process(delta):
 		turning_multi_per_speed = clamp(turning_multi_per_speed, 1, max_turning)
 		apply_torque_impulse(global_basis.y * -t * delta * 100 * turning_multi_per_speed)
 	# Animate
-	animator.set_turning(Input.get_axis("turn_right", "turn_left"))
+	animator.set_turning(turn_input / deg_to_rad(turning))
 	animator.set_acceleration(Input.get_axis("break", "accelerate"))
 	animator.set_jump(not ground_ray.is_colliding())
+	animator.set_falling(linear_velocity.y)
 
 func align_with_y(xform, new_y):
 	xform.basis.y = new_y
