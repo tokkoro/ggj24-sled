@@ -33,7 +33,7 @@ var victory = false
 var turbo = false
 
 var touch_screen_jump_input := false
-var prev_mouse_pos : Vector2
+var prev_mouse_pos
 
 func _input(event):
 	if event is InputEventScreenTouch:
@@ -92,17 +92,18 @@ func _process(delta):
 			touch_screen_jump_input = false
 		speed_input = Input.get_axis("break", "accelerate") * acceleration
 
+	if Input.get_mouse_button_mask() == 0:
+		prev_mouse_pos = null
 	if not prev_mouse_pos:
 		prev_mouse_pos = get_viewport().get_mouse_position()
 	else:
 		var new_mouse_pos := get_viewport().get_mouse_position()
-		var mouse_delta := new_mouse_pos - prev_mouse_pos
+		var mouse_delta : Vector2 = new_mouse_pos - prev_mouse_pos
 		prev_mouse_pos = new_mouse_pos
 		const aim_velocity := Vector2(30, -10)
 		var relative_delta := mouse_delta / Vector2(get_viewport().size) * aim_velocity
-		if Input.get_mouse_button_mask() != 0:
-			const touch_turn_multiplier := 10
-			turn_input -= relative_delta.x * touch_turn_multiplier * (60 * delta)
+		const touch_turn_multiplier := 10
+		turn_input -= relative_delta.x * touch_turn_multiplier * (60 * delta)
 
 	var t = -turn_input / body_tilt
 	sled_mesh.rotation.z = lerp(sled_mesh.rotation.z, -t * 40, 5.0 * delta)
