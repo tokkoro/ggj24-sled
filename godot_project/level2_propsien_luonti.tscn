@@ -1,8 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://tixlflp2j413"]
+[gd_scene load_steps=13 format=3 uid="uid://tixlflp2j413"]
 
 [ext_resource type="PackedScene" uid="uid://csm0xhy8ofy5l" path="res://models/level2.glb" id="1_nkmct"]
 [ext_resource type="PackedScene" uid="uid://c84j0x5s5gxwp" path="res://rikun_kansio/maailman_kalustus.tscn" id="2_dw5jp"]
-[ext_resource type="PackedScene" uid="uid://bvp63l8o1whru" path="res://level2_propsit.tscn" id="3_l5yx6"]
+[ext_resource type="PackedScene" uid="uid://vlvll4u6ygwk" path="res://rikun_kansio/coin.tscn" id="3_arsc4"]
+[ext_resource type="PackedScene" uid="uid://b4y42ys6heyhl" path="res://rompe_scenet/kivi_3.tscn" id="4_q0556"]
+[ext_resource type="PackedScene" uid="uid://dcg1dhe4pprg7" path="res://rompe_scenet/kivi_1.tscn" id="5_4cp3q"]
+[ext_resource type="PackedScene" uid="uid://bp75v0eneci3m" path="res://rompe_scenet/kuusi.tscn" id="6_hbvxp"]
+[ext_resource type="PackedScene" uid="uid://c4vi176m4qad2" path="res://rompe_scenet/manty.tscn" id="7_c5ul8"]
+[ext_resource type="PackedScene" uid="uid://ldj8qdr5ff7x" path="res://rompe_scenet/kivi_2.tscn" id="8_2yb1j"]
+[ext_resource type="PackedScene" uid="uid://ddpy5rwc7n68f" path="res://rompe_scenet/kivi_4.tscn" id="9_qsxt2"]
+[ext_resource type="PackedScene" uid="uid://2ktggy4fdnqw" path="res://rompe_scenet/lehtipuu.tscn" id="10_bdewo"]
+[ext_resource type="PackedScene" uid="uid://bvau75w16rtuk" path="res://rompe_scenet/huussi.tscn" id="11_poc8f"]
 
 [sub_resource type="Curve3D" id="Curve3D_p01cd"]
 _data = {
@@ -24,6 +32,735 @@ coin_count = 20
 [node name="level2_path" type="Path3D" parent="."]
 curve = SubResource("Curve3D_p01cd")
 
-[node name="Propsit" parent="." instance=ExtResource("3_l5yx6")]
+[node name="Propsit" type="Node2D" parent="."]
+
+[node name="Coin" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -530.114, 206.558, 309.864)
+
+[node name="_Area3D_32471" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -450.704, 192.431, 278.692)
+
+[node name="_Area3D_32472" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -369.881, 185.071, 247.265)
+
+[node name="_Area3D_32473" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -361.764, 174.099, 169.975)
+
+[node name="_Area3D_32474" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -362.09, 169.758, 88.2671)
+
+[node name="_Area3D_32475" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -281.918, 156.425, 107.814)
+
+[node name="_Area3D_32476" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207.436, 147.398, 127.968)
+
+[node name="_Area3D_32477" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127.469, 121.908, 103.304)
+
+[node name="_Area3D_32478" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.085, 104.335, 22.5042)
+
+[node name="_Area3D_32479" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.882, 85.3368, -61.7177)
+
+[node name="_Area3D_32480" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.7216, 68.5206, -88.9628)
+
+[node name="_Area3D_32481" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42247, 61.6605, -10.0437)
+
+[node name="_Area3D_32482" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3899, 40.5616, 69.5438)
+
+[node name="_Area3D_32483" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.2501, 26.1576, 92.8857)
+
+[node name="_Area3D_32484" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.792, 39.352, 28.8781)
+
+[node name="_Area3D_32485" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.9697, 15.4439, -47.5168)
+
+[node name="_Area3D_32486" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.5716, 4.03522, -121.229)
+
+[node name="_Area3D_32487" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.102, -10.5748, -191.703)
+
+[node name="_Area3D_32488" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.324, -27.2784, -263.227)
+
+[node name="_Area3D_32489" parent="Propsit" instance=ExtResource("3_arsc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.003, -43.679, -337.842)
+
+[node name="kivi3" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.8361, 68.545, -97.2956)
+
+[node name="kivi1" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9451, 81.5218, -111.458)
+
+[node name="kuusi" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -573.021, 211.9, 311.339)
+
+[node name="manty" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.1454, -52.9828, -356.754)
+
+[node name="kivi2" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -379.317, 169.187, 69.7967)
+
+[node name="_MeshInstance3D_32490" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1503, 88.5523, -136.338)
+
+[node name="kivi4" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -376.989, 166.707, 56.9904)
+
+[node name="_MeshInstance3D_32491" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.5499, 102.202, 86.18)
+
+[node name="_MeshInstance3D_32492" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.8018, 134.406, 82.1049)
+
+[node name="_MeshInstance3D_32493" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.3517, 112.123, 136.901)
+
+[node name="_MeshInstance3D_32494" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.071, 39.9859, 117.728)
+
+[node name="_MeshInstance3D_32495" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -133.715, 108.725, -140.069)
+
+[node name="_MeshInstance3D_32496" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.328, 39.826, 120.609)
+
+[node name="_MeshInstance3D_32497" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.07, 54.6229, -31.9139)
+
+[node name="_MeshInstance3D_32498" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4671, 87.1058, -117.968)
+
+[node name="lehtipuu" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -381.727, 167.152, 53.8591)
+
+[node name="_MeshInstance3D_32499" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.809, 101.133, -171.053)
+
+[node name="_MeshInstance3D_32500" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.594, 42.399, 161.263)
+
+[node name="_MeshInstance3D_32501" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.219, -35.5148, -311.002)
+
+[node name="_MeshInstance3D_32502" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.149, 0.565283, -128.494)
+
+[node name="_MeshInstance3D_32503" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149.5, 132.48, 27.9924)
+
+[node name="_MeshInstance3D_32504" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -385.011, 187.507, 128.09)
+
+[node name="_MeshInstance3D_32505" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.3083, -23.2829, -343.833)
+
+[node name="_MeshInstance3D_32506" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -589.257, 214.572, 354.256)
+
+[node name="_MeshInstance3D_32507" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.577, -17.3266, -284.463)
+
+[node name="_MeshInstance3D_32508" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.6201, 84.1466, -57.5382)
+
+[node name="_MeshInstance3D_32509" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.8275, 16.7411, -154.408)
+
+[node name="_MeshInstance3D_32510" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -610.027, 196.435, 259.656)
+
+[node name="_MeshInstance3D_32511" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3718, -24.6471, -385.869)
+
+[node name="_MeshInstance3D_32512" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.7639, 58.3136, -143.093)
+
+[node name="_MeshInstance3D_32513" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -168.514, 107.797, -84.0872)
+
+[node name="_MeshInstance3D_32514" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141.088, -12.2643, -336.427)
+
+[node name="_MeshInstance3D_32515" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.5886, -48.8192, -404.671)
+
+[node name="_MeshInstance3D_32516" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.2, 84.6095, -63.2785)
+
+[node name="_MeshInstance3D_32517" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -333.947, 168.4, 13.7665)
+
+[node name="huussi" parent="Propsit" instance=ExtResource("11_poc8f")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -0.664471, 67.6219, -87.5348)
+
+[node name="_MeshInstance3D_32518" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.258, 19.1688, -49.4896)
+
+[node name="_MeshInstance3D_32519" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.4324, 106.428, -27.5424)
+
+[node name="_MeshInstance3D_32520" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.4765, 99.0873, 5.14169)
+
+[node name="_MeshInstance3D_32521" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.4204, 101.571, -172.244)
+
+[node name="_MeshInstance3D_32522" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -306.137, 193.128, 217.847)
+
+[node name="_MeshInstance3D_32523" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143.037, 43.0536, 165.387)
+
+[node name="_MeshInstance3D_32524" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -318.782, 161.566, 54.7778)
+
+[node name="_MeshInstance3D_32525" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.95, 105.594, -97.8379)
+
+[node name="_MeshInstance3D_32526" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44275, 84.3355, -148.581)
+
+[node name="_MeshInstance3D_32527" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.077, 106.887, -100.347)
+
+[node name="_MeshInstance3D_32528" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.7485, 98.0428, -1.2837)
+
+[node name="_MeshInstance3D_32529" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.7213, 25.6195, 103.164)
+
+[node name="_MeshInstance3D_32530" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.564, -2.16641, -151.531)
+
+[node name="_MeshInstance3D_32531" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.9505, 76.2945, -108.954)
+
+[node name="_MeshInstance3D_32532" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -584.879, 212.124, 298.353)
+
+[node name="_MeshInstance3D_32533" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.204, 9.60947, -195.877)
+
+[node name="_MeshInstance3D_32534" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.9729, -23.6146, -257.773)
+
+[node name="_MeshInstance3D_32535" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -411.182, 198.145, 317.784)
+
+[node name="_MeshInstance3D_32536" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.907, 20.8504, -1.22406)
+
+[node name="_MeshInstance3D_32537" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -309.361, 158.868, 3.2853)
+
+[node name="_MeshInstance3D_32538" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146.657, 104.926, -153.532)
+
+[node name="_MeshInstance3D_32539" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1512, -26.6642, -385.658)
+
+[node name="_MeshInstance3D_32540" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -137.97, 110.993, -91.1063)
+
+[node name="_MeshInstance3D_32541" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -323.411, 199.166, 286.218)
+
+[node name="_MeshInstance3D_32542" parent="Propsit" instance=ExtResource("11_poc8f")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -6.64577, 58.5694, -31.1127)
+
+[node name="_MeshInstance3D_32543" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160.1, 110.148, -43.4699)
+
+[node name="_MeshInstance3D_32544" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.3136, -55.1393, -379.005)
+
+[node name="_MeshInstance3D_32545" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.8251, 101.231, 50.0581)
+
+[node name="_MeshInstance3D_32546" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.715, 56.7445, 48.5484)
+
+[node name="_MeshInstance3D_32547" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -556.129, 209.794, 348.213)
+
+[node name="_MeshInstance3D_32548" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.9145, 136.389, 161.517)
+
+[node name="_MeshInstance3D_32549" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -315.422, 195.87, 208.881)
+
+[node name="_MeshInstance3D_32550" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.059, -0.42251, -256.058)
+
+[node name="_MeshInstance3D_32551" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.729, 21.1573, -93.9109)
+
+[node name="_MeshInstance3D_32552" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -197.913, 148.207, 89.3264)
+
+[node name="_MeshInstance3D_32553" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -395.905, 192.125, 328.955)
+
+[node name="_MeshInstance3D_32554" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.523, 104.939, -48.7053)
+
+[node name="_MeshInstance3D_32555" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.27142, 58.4969, -40.7781)
+
+[node name="_MeshInstance3D_32556" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108.738, 107.21, -108.775)
+
+[node name="_MeshInstance3D_32557" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -452.963, 194.544, 233.049)
+
+[node name="_MeshInstance3D_32558" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.7689, 102.403, 36.2633)
+
+[node name="_MeshInstance3D_32559" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8237, 85.8182, -101.33)
+
+[node name="_MeshInstance3D_32560" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.273, -21.0177, -304.062)
+
+[node name="_MeshInstance3D_32561" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.381, 43.8819, 109.244)
+
+[node name="_MeshInstance3D_32562" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -503.746, 209.914, 268.15)
+
+[node name="_MeshInstance3D_32563" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -306.637, 195.61, 268.603)
+
+[node name="_MeshInstance3D_32564" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.6914, 39.5267, 74.0955)
+
+[node name="_MeshInstance3D_32565" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -592.683, 214.14, 277.658)
+
+[node name="_MeshInstance3D_32566" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.2454, 69.3673, -101.973)
+
+[node name="_MeshInstance3D_32567" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -424.842, 190.345, 301.431)
+
+[node name="_MeshInstance3D_32568" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -328.339, 184.422, 323.324)
+
+[node name="_MeshInstance3D_32569" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8185, 77.8438, -14.0621)
+
+[node name="_MeshInstance3D_32570" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.695, 36.1629, 106.36)
+
+[node name="_MeshInstance3D_32571" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -211.067, 148.989, 90.5875)
+
+[node name="_MeshInstance3D_32572" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -411.827, 180.849, 66.8944)
+
+[node name="_MeshInstance3D_32573" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -513.539, 202.611, 331.823)
+
+[node name="_MeshInstance3D_32574" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8428, -15.943, -390.877)
+
+[node name="_MeshInstance3D_32575" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3779, 88.6029, -147.149)
+
+[node name="_MeshInstance3D_32576" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.1654, 102.555, 27.7634)
+
+[node name="_MeshInstance3D_32577" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.5208, -25.1347, -418.705)
+
+[node name="_MeshInstance3D_32578" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.9605, -11.725, -305.347)
+
+[node name="_MeshInstance3D_32579" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 176.533, 38.037, 35.4669)
+
+[node name="_MeshInstance3D_32580" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -602.908, 203.502, 271.668)
+
+[node name="_MeshInstance3D_32581" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -301.177, 170.213, 51.8894)
+
+[node name="_MeshInstance3D_32582" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.2041, 64.6195, 15.5736)
+
+[node name="_MeshInstance3D_32583" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -530.815, 211.482, 267.192)
+
+[node name="_MeshInstance3D_32584" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -370.553, 182.486, 334.336)
+
+[node name="_MeshInstance3D_32585" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6364, 77.4725, -59.8331)
+
+[node name="_MeshInstance3D_32586" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.965, -1.90884, -246.045)
+
+[node name="_MeshInstance3D_32587" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.6109, 85.7594, -52.9345)
+
+[node name="_MeshInstance3D_32588" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.075, 4.02158, -220.31)
+
+[node name="_MeshInstance3D_32589" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -556.417, 210.318, 263.095)
+
+[node name="_MeshInstance3D_32590" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.775, -2.20571, -139.325)
+
+[node name="_MeshInstance3D_32591" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -279.411, 187.938, 284.68)
+
+[node name="_MeshInstance3D_32592" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -350.454, 175.098, 35.4246)
+
+[node name="_MeshInstance3D_32593" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.6545, 93.4898, -143.47)
+
+[node name="_MeshInstance3D_32594" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.6271, 97.4339, -6.96046)
+
+[node name="_MeshInstance3D_32595" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.646, 96.2618, -75.5696)
+
+[node name="_MeshInstance3D_32596" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -381.567, 182.296, 222.334)
+
+[node name="_MeshInstance3D_32597" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -517.194, 203.259, 326.685)
+
+[node name="_MeshInstance3D_32598" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.7276, 101.988, 46.7346)
+
+[node name="_MeshInstance3D_32599" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -172.483, 123.329, 31.5341)
+
+[node name="_MeshInstance3D_32600" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -523.319, 213.5, 275.907)
+
+[node name="_MeshInstance3D_32601" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -330.753, 196.905, 302.351)
+
+[node name="_MeshInstance3D_32602" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.4527, -20.0202, -232.297)
+
+[node name="_MeshInstance3D_32603" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.241, 9.03061, -69.7213)
+
+[node name="_MeshInstance3D_32604" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.02, -2.00869, -225.176)
+
+[node name="_MeshInstance3D_32605" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -368.352, 187.578, 294.912)
+
+[node name="_MeshInstance3D_32606" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.2206, 113.959, 134.4)
+
+[node name="_MeshInstance3D_32607" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 162.048, -27.7426, -400.36)
+
+[node name="_MeshInstance3D_32608" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 167.781, -24.2929, -346.458)
+
+[node name="_MeshInstance3D_32609" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -318.572, 181.458, 138.965)
+
+[node name="_MeshInstance3D_32610" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -403.924, 194.608, 207.51)
+
+[node name="_MeshInstance3D_32611" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.4905, 53.7989, 133.517)
+
+[node name="_MeshInstance3D_32612" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -297.214, 175.029, 195.933)
+
+[node name="_MeshInstance3D_32613" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.828, 41.764, -61.2508)
+
+[node name="_MeshInstance3D_32614" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.4027, -21.9728, -345.769)
+
+[node name="_MeshInstance3D_32615" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -157.627, 129.925, 32.5849)
+
+[node name="_MeshInstance3D_32616" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.2321, 41.6803, -10.5854)
+
+[node name="_MeshInstance3D_32617" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -152.504, 102.875, -155.562)
+
+[node name="_MeshInstance3D_32618" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.0496, 100.762, 16.2264)
+
+[node name="_MeshInstance3D_32619" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.68, 40.1114, 20.1913)
+
+[node name="_MeshInstance3D_32620" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.327, -3.21035, -261.343)
+
+[node name="_MeshInstance3D_32621" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -112.818, 122.664, 131.829)
+
+[node name="_MeshInstance3D_32622" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.5456, 73.9271, -113.102)
+
+[node name="_MeshInstance3D_32623" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 119.127, 1.64634, -122.759)
+
+[node name="_MeshInstance3D_32624" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -157.739, 129.256, 29.2449)
+
+[node name="_MeshInstance3D_32625" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -251.87, 148.993, 63.3509)
+
+[node name="_MeshInstance3D_32626" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -406.927, 180.815, 96.2301)
+
+[node name="_MeshInstance3D_32627" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -313.883, 198.833, 274.025)
+
+[node name="_MeshInstance3D_32628" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.106, 40.398, 125.342)
+
+[node name="_MeshInstance3D_32629" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -347.409, 162.482, 58.4591)
+
+[node name="_MeshInstance3D_32630" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160.198, 102.467, -142.1)
+
+[node name="_MeshInstance3D_32631" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -291.118, 165.626, 27.9276)
+
+[node name="_MeshInstance3D_32632" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -112.145, 90.1651, -41.3734)
+
+[node name="_MeshInstance3D_32633" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.399, 14.3419, -147.391)
+
+[node name="_MeshInstance3D_32634" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -227.673, 168.816, 161.635)
+
+[node name="_MeshInstance3D_32635" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.3266, -8.62124, -303.81)
+
+[node name="_MeshInstance3D_32636" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -156.34, 148.286, 95.1683)
+
+[node name="_MeshInstance3D_32637" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.988, -22.2448, -265.123)
+
+[node name="_MeshInstance3D_32638" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -137.982, 107.324, -83.5794)
+
+[node name="_MeshInstance3D_32639" parent="Propsit" instance=ExtResource("11_poc8f")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -148.625, 154.808, 81.8829)
+
+[node name="_MeshInstance3D_32640" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -606.055, 196.597, 255.736)
+
+[node name="_MeshInstance3D_32641" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -377.335, 185.546, 283.349)
+
+[node name="_MeshInstance3D_32642" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.2491, 9.89072, -172.448)
+
+[node name="_MeshInstance3D_32643" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.0255, 37.1776, 62.5068)
+
+[node name="_MeshInstance3D_32644" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.487, 42.2245, 133.256)
+
+[node name="_MeshInstance3D_32645" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.541, 24.7281, 110.169)
+
+[node name="_MeshInstance3D_32646" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -512.843, 211.147, 269.388)
+
+[node name="_MeshInstance3D_32647" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174.528, 114.512, -71.633)
+
+[node name="_MeshInstance3D_32648" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.1049, 90.8827, -65.6557)
+
+[node name="_MeshInstance3D_32649" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -290.06, 191.568, 291.538)
+
+[node name="_MeshInstance3D_32650" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8674, 80.8155, -84.0076)
+
+[node name="_MeshInstance3D_32651" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.159, -3.40957, -174.601)
+
+[node name="_MeshInstance3D_32652" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -338.997, 178.006, 117.583)
+
+[node name="_MeshInstance3D_32653" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.7033, 36.9593, 92.7785)
+
+[node name="_MeshInstance3D_32654" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.656, 0.83457, -274.892)
+
+[node name="_MeshInstance3D_32655" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.7461, 130.237, -5.66293)
+
+[node name="_MeshInstance3D_32656" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -133.693, 113.614, 2.57203)
+
+[node name="_MeshInstance3D_32657" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.144, 32.161, -66.8484)
+
+[node name="_MeshInstance3D_32658" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136.356, 110.633, -124.474)
+
+[node name="_MeshInstance3D_32659" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.56, -19.5583, -413.774)
+
+[node name="_MeshInstance3D_32660" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -272.54, 161.552, 146.769)
+
+[node name="_MeshInstance3D_32661" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -310.029, 166.301, 37.5799)
+
+[node name="_MeshInstance3D_32662" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -328.613, 191.553, 236.158)
+
+[node name="_MeshInstance3D_32663" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.253, 41.9598, 83.8965)
+
+[node name="_MeshInstance3D_32664" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -292.972, 182.285, 244.751)
+
+[node name="_MeshInstance3D_32665" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.473, 2.83823, -187.389)
+
+[node name="_MeshInstance3D_32666" parent="Propsit" instance=ExtResource("11_poc8f")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -9.44024, 57.8392, -17.3349)
+
+[node name="_MeshInstance3D_32667" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.589, 13.0238, -207.561)
+
+[node name="_MeshInstance3D_32668" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -296.411, 163.955, 20.6404)
+
+[node name="_MeshInstance3D_32669" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4778, 137.525, 55.861)
+
+[node name="_MeshInstance3D_32670" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -281.995, 152.115, 4.14561)
+
+[node name="_MeshInstance3D_32671" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.2778, 87.0323, -14.3803)
+
+[node name="_MeshInstance3D_32672" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -282.626, 180.522, 168.269)
+
+[node name="_MeshInstance3D_32673" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -387.663, 182.959, 218.976)
+
+[node name="_MeshInstance3D_32674" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -138.044, 107.84, -84.7379)
+
+[node name="_MeshInstance3D_32675" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.788, 23.0062, 95.497)
+
+[node name="_MeshInstance3D_32676" parent="Propsit" instance=ExtResource("10_bdewo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148.91, 148.675, 147.581)
+
+[node name="_MeshInstance3D_32677" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132.801, 100.021, -175.846)
+
+[node name="_MeshInstance3D_32678" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -220.661, 171.782, 152.709)
+
+[node name="_MeshInstance3D_32679" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -430.097, 190.837, 296.205)
+
+[node name="_MeshInstance3D_32680" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.1016, 101.126, 17.9723)
+
+[node name="_MeshInstance3D_32681" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -333.402, 195.652, 274.838)
+
+[node name="_MeshInstance3D_32682" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.832, 12.4049, -103.333)
+
+[node name="_MeshInstance3D_32683" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -305.73, 185.327, 180.85)
+
+[node name="_MeshInstance3D_32684" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -279.175, 168.42, 70.0658)
+
+[node name="_MeshInstance3D_32685" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -438.421, 198.764, 239.824)
+
+[node name="_MeshInstance3D_32686" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.57946, 53.4874, 33.4143)
+
+[node name="_MeshInstance3D_32687" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -238.729, 150.153, 110.243)
+
+[node name="_MeshInstance3D_32688" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9049, 90.2494, -110.873)
+
+[node name="_MeshInstance3D_32689" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.2293, -30.0038, -427.473)
+
+[node name="_MeshInstance3D_32690" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 121.568, -21.8686, -415.439)
+
+[node name="_MeshInstance3D_32691" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -137.367, 110.617, -123.93)
+
+[node name="_MeshInstance3D_32692" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.77, 39.9449, 22.9431)
+
+[node name="_MeshInstance3D_32693" parent="Propsit" instance=ExtResource("9_qsxt2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.159, 26.5577, -91.231)
+
+[node name="_MeshInstance3D_32694" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.172, 121.555, 123.78)
+
+[node name="_MeshInstance3D_32695" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 167.465, -7.21133, -203.807)
+
+[node name="_MeshInstance3D_32696" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.39696, 59.3124, -31.5572)
+
+[node name="_MeshInstance3D_32697" parent="Propsit" instance=ExtResource("7_c5ul8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -324.197, 195.358, 232.836)
+
+[node name="_MeshInstance3D_32698" parent="Propsit" instance=ExtResource("8_2yb1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -532.966, 212.01, 267.952)
+
+[node name="_MeshInstance3D_32699" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -357.801, 190.84, 290.499)
+
+[node name="_MeshInstance3D_32700" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -382.89, 180.742, 39.3114)
+
+[node name="_MeshInstance3D_32701" parent="Propsit" instance=ExtResource("5_4cp3q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188.774, 144.992, 87.3891)
+
+[node name="_MeshInstance3D_32702" parent="Propsit" instance=ExtResource("11_poc8f")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -105.573, 106.298, -115.888)
+
+[node name="_MeshInstance3D_32703" parent="Propsit" instance=ExtResource("6_hbvxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -217.403, 171.939, 149.459)
+
+[node name="_MeshInstance3D_32704" parent="Propsit" instance=ExtResource("4_q0556")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.703, 44.9815, 137.478)
 
 [editable path="MaailmanKalustus"]
