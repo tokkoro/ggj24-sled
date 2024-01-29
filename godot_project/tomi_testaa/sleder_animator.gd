@@ -56,7 +56,7 @@ func _process(delta):
 	if victory_pos or is_in_air:
 		current_turning = lerp(current_turning, 0.0, 0.5)
 		current_acc = lerp(current_acc, 0.0, 0.5)
-		var f : float = clamp(-falling_speed * 0.2, -1.0, 1.0) * 0.5 + 0.5
+		var f : float = clamp(-falling_speed * 0.2, -0.9, 1.0) * 0.5 + 0.5
 		l_arm_target = deg_to_rad(lerp(hand_idle_angle, -hand_idle_angle, f))
 		r_arm_target = deg_to_rad(lerp(-hand_idle_angle, hand_idle_angle, f))
 		#left_parti.emitting = false
