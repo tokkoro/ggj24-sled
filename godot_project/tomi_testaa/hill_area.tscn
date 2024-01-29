@@ -220,8 +220,8 @@ horizontal_alignment = 0
 vertical_alignment = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_essa0"]
-transparency = 3
-alpha_hash_scale = 1.0
+transparency = 2
+alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("10_081dr")
 emission_enabled = true
@@ -239,9 +239,8 @@ gravity = Vector3(0, 0, 0)
 size = Vector2(0.2, 0.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8x6s4"]
-transparency = 3
-alpha_hash_scale = 0.2
-alpha_antialiasing_mode = 0
+transparency = 1
+blend_mode = 2
 albedo_color = Color(1, 1, 1, 0.498039)
 albedo_texture = ExtResource("22_ct83y")
 emission_enabled = true
