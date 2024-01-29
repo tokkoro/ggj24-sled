@@ -21,6 +21,10 @@ func _ready():
 		else:
 			level_loader = g
 			break
+	var is_collected = level_loader.register_coin(global_position)
+	if is_collected:
+		collected = true
+		queue_free()
 
 func _process(delta):
 	if not collected:
@@ -42,7 +46,7 @@ func collect():
 	collected = true
 	delete_time = Time.get_ticks_msec() + duration_ms
 	collect_sound.play()
-	level_loader.coin_collected()
+	level_loader.coin_collected(global_position)
 
 func _on_body_entered(body):
 	if not body is Sled:

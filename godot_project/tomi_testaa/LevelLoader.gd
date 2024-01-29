@@ -79,7 +79,6 @@ func load_level():
 	props_scene_ref = props[level_num].instantiate()
 	add_child(props_scene_ref)
 	
-	coin_count[level_num] = 0
 	update_coin_label()
 
 
@@ -91,14 +90,8 @@ var results = [
 	0,
 ]
 
-var coin_count = [
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-]
+
+
 
 func next_level(time_s):
 	results[current_level] = time_s
@@ -137,12 +130,63 @@ func get_time_str(s: int) -> String:
 	var time_str = str(minutes) + mid + ("%02d" % seconds)
 	return time_str
 
-func update_coin_label():
-	var total = 0
-	for c in coin_count:
-		total += c
-	root_scene_ref.get_node("TheGame").update_coin_lable(total)
+###
+# Coin system
+###
 
-func coin_collected():
-	coin_count[current_level] += 1
+func v3_to_index(v3: Vector3):
+	# y is not used as coins move up and down
+	return str(int(round(v3.x))) + "," + str(int(round(v3.z)))
+
+
+var coins_per_level = [
+	Dictionary(),
+	Dictionary(),
+	Dictionary(),
+	Dictionary(),
+	Dictionary(),
+	Dictionary(),
+]
+
+func register_coin(c_pos: Vector3):
+	# returns whether coin is collected or not
+	var index = v3_to_index(c_pos)
+	if coins_per_level[current_level].has(index):
+		return coins_per_level[current_level][index]
+	else:
+		coins_per_level[current_level][index] = false
+	return false
+
+func get_coin_count(level_num: int):
+	var total = 0
+	for c in coins_per_level[level_num]:
+		if coins_per_level[level_num][c]:
+			total += 1
+	return total
+
+func update_coin_label():
+	var global_total = 0
+	var global_count = 0
+	
+	var result = "COINS:\n"
+	for i in range(len(coins_per_level)):
+		var coins = coins_per_level[i]
+		var coin_count = get_coin_count(i)
+		var coin_max = len(coins)
+		if coin_max > 1:
+			result += "Map_" + str(i) + ": " + str(coin_count) + " / " + str(coin_max) + "\n"
+			global_count += coin_count
+			global_total += coin_max
+	if global_total < 3:
+		return ""
+	
+	# add total
+	result += "TOTAL: " + str(global_count) + " / " + str(global_total)
+	root_scene_ref.get_node("TheGame").update_coin_lable(result)
+
+func coin_collected(c_pos:Vector3):
+	var index = v3_to_index(c_pos)
+	coins_per_level[current_level][index] = true
 	update_coin_label()
+
+

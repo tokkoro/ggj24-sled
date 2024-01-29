@@ -109,6 +109,6 @@ func move_player_to_start():
 	player.stop(start_node.global_rotation)
 	player.global_position = start_node.global_position + start_pos_offset
 
-func update_coin_lable(total: int):
+func update_coin_lable(content: String):
 	var coin_t_mesh:TextMesh = coin_label.mesh
-	coin_t_mesh.text = str(total) + " c"
+	coin_t_mesh.text = content

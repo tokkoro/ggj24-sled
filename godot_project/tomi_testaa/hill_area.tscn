@@ -474,7 +474,7 @@ cast_shadow = 0
 mesh = SubResource("TextMesh_tht3x")
 
 [node name="CoinCount" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(0.274534, -0.145476, 0.328286, 0, 0.413243, 0.183124, -0.359075, -0.111225, 0.250994, -0.825, -0.566, -0.792)
+transform = Transform3D(0.153059, -0.0811061, 0.183027, 0, 0.230392, 0.102096, -0.200192, -0.0620104, 0.139935, -0.825, -0.566, -0.792)
 cast_shadow = 0
 mesh = SubResource("TextMesh_7aprx")
 
