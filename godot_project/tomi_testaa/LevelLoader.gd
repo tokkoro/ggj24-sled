@@ -90,9 +90,6 @@ var results = [
 	0,
 ]
 
-
-
-
 func next_level(time_s):
 	results[current_level] = time_s
 	current_level += 1
@@ -130,14 +127,12 @@ func get_time_str(s: int) -> String:
 	var time_str = str(minutes) + mid + ("%02d" % seconds)
 	return time_str
 
-###
-# Coin system
-###
-
+###############
+# Coin system #
+###############
 func v3_to_index(v3: Vector3):
 	# y is not used as coins move up and down
 	return str(int(round(v3.x))) + "," + str(int(round(v3.z)))
-
 
 var coins_per_level = [
 	Dictionary(),

@@ -16,7 +16,6 @@ https://globalgamejam.org/games/2024/sled-2/"
 run/main_scene="res://tomi_testaa/level_loader_scene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(0.0588235, 0.164706, 0.25098, 1)
-boot_splash/show_image=false
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false

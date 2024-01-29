@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=60 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="Script" path="res://sled/sled.gd" id="2_nu8po"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://tomi_testaa/CountDownLabels.gd" id="4_kjjsv"]
 [ext_resource type="Script" path="res://rikun_kansio/Ninjarope.gd" id="4_s3o24"]
 [ext_resource type="AudioStream" uid="uid://blmpud0otcam8" path="res://sounds/boing.wav" id="5_qasfm"]
-[ext_resource type="Material" uid="uid://bdqffmtj76632" path="res://tomi_testaa/count_down_label_material.tres" id="5_sgs8b"]
 [ext_resource type="ArrayMesh" uid="uid://dgyiqw13cr41q" path="res://models/body_mesh.tres" id="6_1qkax"]
 [ext_resource type="AudioStream" uid="uid://cg67r5wg6cjs5" path="res://sounds/ping.ogg" id="6_8jhb8"]
 [ext_resource type="ArrayMesh" uid="uid://lnu0i22ntkg1" path="res://romppeet/romppeet_pulkka.res" id="6_jyfto"]
@@ -23,9 +22,12 @@
 [ext_resource type="Script" path="res://tomi_testaa/InterpolatedCameraBetter.gd" id="12_u5t8h"]
 [ext_resource type="Script" path="res://tomi_testaa/pulsing_time.gd" id="13_2k2q3"]
 [ext_resource type="ArrayMesh" uid="uid://cntmk5q4i3ox1" path="res://romppeet/romppeet_ankkuri.res" id="13_o4soh"]
-[ext_resource type="Texture2D" uid="uid://dl0ipcus3ipok" path="res://tomi_testaa/checker_flag.png" id="22_ct83y"]
+[ext_resource type="Material" uid="uid://ckase4k86h8gi" path="res://materials/count_down_label_mat.tres" id="17_1g54b"]
+[ext_resource type="Material" uid="uid://pasugfmxbjjy" path="res://materials/time_info_mat.tres" id="20_pkh00"]
+[ext_resource type="Material" uid="uid://c08yybsxblm7v" path="res://materials/coin_count_mat.tres" id="21_dw6ml"]
 [ext_resource type="Script" path="res://tomi_testaa/EnvironmentChanger.gd" id="23_gggsl"]
 [ext_resource type="Texture2D" uid="uid://dxwqbfr5gya2m" path="res://skies/sky0.png" id="23_wj0ex"]
+[ext_resource type="BoxMesh" uid="uid://csd6084d4rwrr" path="res://materials/goal_area_mesh.tres" id="23_xolec"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sh2yx"]
 friction = 0.13
@@ -183,11 +185,11 @@ height = 2.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_0xnl4"]
 
 [sub_resource type="TextMesh" id="TextMesh_nq84k"]
-material = ExtResource("5_sgs8b")
+material = ExtResource("17_1g54b")
 text = "READY..."
 
 [sub_resource type="TextMesh" id="TextMesh_j5h7i"]
-material = ExtResource("5_sgs8b")
+material = ExtResource("17_1g54b")
 text = "GO!"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hy66e"]
@@ -197,27 +199,16 @@ emission = Color(0, 0.0862745, 0.458824, 1)
 [sub_resource type="TextMesh" id="TextMesh_aiufe"]
 material = SubResource("StandardMaterial3D_hy66e")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62sd8"]
-albedo_color = Color(0.984314, 0.85098, 0.92549, 1)
-emission_enabled = true
-emission = Color(0.462745, 0.141176, 0.290196, 1)
-
 [sub_resource type="TextMesh" id="TextMesh_tht3x"]
-material = SubResource("StandardMaterial3D_62sd8")
+material = ExtResource("20_pkh00")
 text = "WASD to move
 SPACE to jump
 MOUSE to hook"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0ioq"]
-albedo_color = Color(0.862745, 0.960784, 0, 1)
-emission_enabled = true
-emission = Color(0.462745, 0.141176, 0.290196, 1)
-
 [sub_resource type="TextMesh" id="TextMesh_7aprx"]
-material = SubResource("StandardMaterial3D_l0ioq")
-text = "5 c"
+material = ExtResource("21_dw6ml")
 horizontal_alignment = 0
 vertical_alignment = 2
 
@@ -242,20 +233,8 @@ gravity = Vector3(0, 0, 0)
 [sub_resource type="QuadMesh" id="QuadMesh_5v314"]
 size = Vector2(0.2, 0.2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8x6s4"]
-transparency = 1
-blend_mode = 2
-albedo_color = Color(1, 1, 1, 0.498039)
-albedo_texture = ExtResource("22_ct83y")
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 0.1
-emission_texture = ExtResource("11_aqwcp")
-uv1_scale = Vector3(36, 4, 327)
-texture_filter = 0
-
-[sub_resource type="BoxMesh" id="BoxMesh_d8i0d"]
-material = SubResource("StandardMaterial3D_8x6s4")
+[sub_resource type="BoxMesh" id="BoxMesh_o2usd"]
+material = ExtResource("20_pkh00")
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2by0e"]
 panorama = ExtResource("23_wj0ex")
@@ -450,13 +429,13 @@ script = ExtResource("4_kjjsv")
 visible = false
 mesh = SubResource("TextMesh_nq84k")
 skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("5_sgs8b")
+surface_material_override/0 = ExtResource("17_1g54b")
 
 [node name="go" type="MeshInstance3D" parent="Camera3D/CountDownLabels"]
 visible = false
 mesh = SubResource("TextMesh_j5h7i")
 skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("5_sgs8b")
+surface_material_override/0 = ExtResource("17_1g54b")
 
 [node name="Ping" type="AudioStreamPlayer" parent="Camera3D/CountDownLabels"]
 stream = ExtResource("6_8jhb8")
@@ -465,7 +444,7 @@ stream = ExtResource("6_8jhb8")
 transform = Transform3D(0.52, 0, 0, 0, 0.395411, -0.337713, 0, 0.337713, 0.395411, 0, 0.517, -0.792)
 cast_shadow = 0
 mesh = SubResource("TextMesh_aiufe")
-surface_material_override/0 = ExtResource("5_sgs8b")
+surface_material_override/0 = ExtResource("17_1g54b")
 script = ExtResource("13_2k2q3")
 
 [node name="TotalInfoLabel" type="MeshInstance3D" parent="Camera3D"]
@@ -486,6 +465,25 @@ lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_kaa3a")
 draw_pass_1 = SubResource("QuadMesh_5v314")
 
+[node name="ShaderCache" type="Node3D" parent="Camera3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.161411)
+
+[node name="mat1" type="MeshInstance3D" parent="Camera3D/ShaderCache"]
+mesh = SubResource("BoxMesh_o2usd")
+skeleton = NodePath("../..")
+
+[node name="mat2" type="MeshInstance3D" parent="Camera3D/ShaderCache"]
+mesh = SubResource("BoxMesh_o2usd")
+skeleton = NodePath("../..")
+
+[node name="mat3" type="MeshInstance3D" parent="Camera3D/ShaderCache"]
+mesh = ExtResource("23_xolec")
+skeleton = NodePath("../..")
+
+[node name="mat4" type="MeshInstance3D" parent="Camera3D/ShaderCache"]
+mesh = SubResource("BoxMesh_o2usd")
+skeleton = NodePath("../..")
+
 [node name="TheGame" type="Node" parent="." node_paths=PackedStringArray("player", "count_down_label")]
 script = ExtResource("8_115im")
 player = NodePath("../Sled")
@@ -500,7 +498,7 @@ script = ExtResource("7_1fp6q")
 [node name="GoalDebugVisu" type="MeshInstance3D" parent="TheGame/GoalArea"]
 cast_shadow = 0
 gi_mode = 0
-mesh = SubResource("BoxMesh_d8i0d")
+mesh = ExtResource("23_xolec")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TheGame/GoalArea"]
 shape = ExtResource("12_0b2l2")

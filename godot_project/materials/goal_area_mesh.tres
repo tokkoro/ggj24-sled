@@ -1,0 +1,6 @@
+[gd_resource type="BoxMesh" load_steps=2 format=3 uid="uid://csd6084d4rwrr"]
+
+[ext_resource type="Material" uid="uid://crlitiqarv3pi" path="res://materials/goal_area_mat.tres" id="1_pm3vi"]
+
+[resource]
+material = ExtResource("1_pm3vi")
