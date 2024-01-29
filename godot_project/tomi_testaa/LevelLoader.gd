@@ -16,7 +16,7 @@ var props = [
 	preload("res://level1_propsit.tscn"),
 	preload("res://level2_propsit.tscn"),
 	preload("res://level3_propsit.tscn"),
-	preload("res://level3_propsit.tscn"),
+	preload("res://level4_propsit.tscn"),
 ]
 var root_level = preload("res://tomi_testaa/hill_area.tscn")
 
