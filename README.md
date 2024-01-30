@@ -1,7 +1,7 @@
 # ggj24-sled
 
-## ![Play online](https://tokkoro.github.io/ggj24-sled/html5/index.html)
-![Global game jam page for the game](https://globalgamejam.org/games/2024/sled-2)
+## [Play online](https://tokkoro.github.io/ggj24-sled/html5/index.html)
+[Global game jam page for the game](https://globalgamejam.org/games/2024/sled-2)
 
 _"Downhill fun. On a sled!"_
 
