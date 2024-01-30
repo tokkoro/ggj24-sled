@@ -52,6 +52,7 @@ func _input(event):
 			clean_old_and_load_current_level()
 
 func _ready():
+	print("v1.0.1")
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	current_level = start_level
 	clean_old_and_load_current_level()

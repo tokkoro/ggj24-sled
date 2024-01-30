@@ -200,10 +200,7 @@ horizontal_alignment = 0
 vertical_alignment = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_essa0"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-blend_mode = 1
+transparency = 1
 cull_mode = 2
 albedo_texture = ExtResource("10_081dr")
 emission_enabled = true
