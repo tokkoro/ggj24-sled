@@ -1,12 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://vlvll4u6ygwk"]
+[gd_scene load_steps=7 format=3 uid="uid://vlvll4u6ygwk"]
 
 [ext_resource type="Script" path="res://rikun_kansio/coin.gd" id="1_tr7ya"]
 [ext_resource type="AudioStream" uid="uid://cg67r5wg6cjs5" path="res://sounds/ping.ogg" id="2_mfyo1"]
+[ext_resource type="Texture2D" uid="uid://dj0d3b1ahut7u" path="res://tomi_testaa/rop2.png" id="2_q3acq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ge1cp"]
+albedo_color = Color(0.988235, 0.545098, 0, 1)
+metallic = 0.52
+metallic_texture = ExtResource("2_q3acq")
+metallic_texture_channel = 4
 emission_enabled = true
 emission = Color(1, 0.694118, 0.309804, 1)
-emission_energy_multiplier = 1.93
+emission_energy_multiplier = 0.9
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ek6om"]
 material = SubResource("StandardMaterial3D_ge1cp")

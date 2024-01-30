@@ -1,7 +1,7 @@
 extends Node3D
 class_name LevelLoader
 
-var SAVE_FILE_NAME = "secrets.dat"
+var SAVE_FILE_NAME = "user://secrets.save"
 var current_level = 0
 var start_level = 0
 var level_count = 3
@@ -76,6 +76,7 @@ func _process(delta):
 			clean_old_and_load_current_level()
 
 func clean_old_and_load_current_level():
+	wait_for_next_level = false
 	clean_old_level()
 	level_scene_ref = levels[current_level].instantiate()
 	add_child(level_scene_ref)
@@ -125,13 +126,17 @@ func on_level_ended(time_s):
 		load_next_level_timer = 7
 
 func get_info_label_str(want_the_most_bestests: bool):
+	var levels_compelete = 0
+	for t in most_better_than_any:
+		if t > 1:
+			levels_compelete += 1
 	var result = ""
-	if not has_betterments and want_the_most_bestests:
+	if levels_compelete < 4 and want_the_most_bestests:
 			return ""
 	if want_the_most_bestests:
 		result = "THE MOST SWIFTNESSEST:\n"
 	else:
-		if has_betterments:
+		if levels_compelete >= 4:
 			result = "TIMES, CURRENT RUN:\n"
 		else:
 			result = "TIMES:\n"
@@ -228,33 +233,49 @@ func coin_collected(c_pos:Vector3):
 func save_bests():
 	if OS.is_userfs_persistent():
 		print("can save!")
-		var save_data = SaveData.new()
-		save_data.level0_time = most_better_than_any[0]
-		save_data.level1_time = most_better_than_any[1]
-		save_data.level2_time = most_better_than_any[2]
-		save_data.level3_time = most_better_than_any[3]
-		save_data.level4_time = most_better_than_any[4]
-		save_data.has_betterments = has_betterments
 		#save
-		var result = ResourceSaver.save(save_data, SAVE_FILE_NAME)
-		assert(result == OK)
+		var f = FileAccess.open(SAVE_FILE_NAME, FileAccess.WRITE)
+		var data = get_save_data()
+		var json_string = JSON.stringify(data)
+		f.store_line(json_string)
 	else:
 		print("Cannot save persistent data! Check settings.")
 
 func load_bests():
 	if OS.is_userfs_persistent():
-		if ResourceLoader.exists(SAVE_FILE_NAME):
-			var save_data = ResourceLoader.load(SAVE_FILE_NAME)
-			if save_data is SaveData:
-				most_better_than_any[0] = save_data.level0_time
-				most_better_than_any[1] = save_data.level1_time
-				most_better_than_any[2] = save_data.level2_time
-				most_better_than_any[3] = save_data.level3_time
-				most_better_than_any[4] = save_data.level4_time
-				has_betterments = save_data.has_betterments
+		if FileAccess.file_exists(SAVE_FILE_NAME):
+			var save_data = FileAccess.open(SAVE_FILE_NAME, FileAccess.READ)
+			var json_string = save_data.get_line()
+			var json = JSON.new()
+			var parse_result = json.parse(json_string)
+			if not parse_result == OK:
+				print("bad save file", json_string)
+			elif not json.get_data() is Dictionary:
+				print("data is not dict ", json_string)
 			else:
-				print("Save file in bad format!")
+				var save_dict = json.get_data()
+				load_from_dict(save_dict)
 		else:
 			print("no save file")
 	else:
 		print("Cannot load persistent data! Check settings.")
+		
+func get_save_data():
+	var save_dict = {
+		"level0_time": most_better_than_any[0],
+		"level1_time": most_better_than_any[1],
+		"level2_time": most_better_than_any[2],
+		"level3_time": most_better_than_any[3],
+		"level4_time": most_better_than_any[4],
+		"has_betterments": has_betterments,
+	}
+	return save_dict
+	
+func load_from_dict(dict:Dictionary):
+	most_better_than_any[0] = int(dict["level0_time"])
+	most_better_than_any[1] = int(dict["level1_time"])
+	most_better_than_any[2] = int(dict["level2_time"])
+	most_better_than_any[3] = int(dict["level3_time"])
+	most_better_than_any[4] = int(dict["level4_time"])
+	has_betterments = bool(dict["has_betterments"])
+	print("Loaded.")
