@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3gddncqur21y"]
+[gd_scene load_steps=8 format=3 uid="uid://c3gddncqur21y"]
 
-[ext_resource type="Material" path="res://tomi_testaa/count_down_label_material.tres" id="1_1wgll"]
+[ext_resource type="Material" uid="uid://bdqffmtj76632" path="res://tomi_testaa/count_down_label_material.tres" id="1_1wgll"]
 [ext_resource type="Script" path="res://congratulations.gd" id="1_pnd4d"]
-[ext_resource type="PackedScene" uid="uid://vlvll4u6ygwk" path="res://rikun_kansio/coin.tscn" id="3_d1aht"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfvah"]
 emission_enabled = true
@@ -18,8 +17,10 @@ text = "Press ctrl+1/2/3/4
 to choose a level"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pmhm8"]
+size = Vector3(4.8, 0.1, 5.9)
 
 [sub_resource type="BoxMesh" id="BoxMesh_hyx7i"]
+size = Vector3(4.8, 0.1, 5.9)
 
 [node name="Node3D" type="Node3D"]
 
@@ -39,13 +40,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.1, -28.1264)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(4.8, 0, 0, 0, 0.1, 0, 0, 0, 5.9, 0, -1.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_pmhm8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_hyx7i")
-
-[node name="Coin" parent="." instance=ExtResource("3_d1aht")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 2)
