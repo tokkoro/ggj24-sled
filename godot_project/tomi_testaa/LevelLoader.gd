@@ -44,43 +44,44 @@ func _input(event):
 			current_level = 4
 		else:
 			return
-		load_level()
+		clean_old_and_load_current_level()
 
 	if event is InputEventScreenTouch:
 		if event.pressed and event.index == 4:
 			current_level = (current_level + 1) % 5
-			load_level()
+			clean_old_and_load_current_level()
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	current_level = start_level
-	load_level()
+	clean_old_and_load_current_level()
 
 func _process(delta):
 	if wait_for_next_level:
 		load_next_level_timer -= delta
 		if load_next_level_timer < 0:
 			wait_for_next_level = false
-			load_level()
+			current_level += 1 
+			clean_old_and_load_current_level()
 
-func load_level():
-	var level_num=current_level
+func clean_old_and_load_current_level():
+	clean_old_level()
+	level_scene_ref = levels[current_level].instantiate()
+	add_child(level_scene_ref)
+	root_scene_ref = root_level.instantiate()
+	add_child(root_scene_ref)
+	props_scene_ref = props[current_level].instantiate()
+	add_child(props_scene_ref)
+	
+	update_coin_label()
+
+func clean_old_level():
 	if is_instance_valid(root_scene_ref):
 		root_scene_ref.queue_free()
 	if is_instance_valid(level_scene_ref):
 		level_scene_ref.queue_free()
 	if is_instance_valid(props_scene_ref):
 		props_scene_ref.queue_free()
-	
-	level_scene_ref = levels[level_num].instantiate()
-	add_child(level_scene_ref)
-	root_scene_ref = root_level.instantiate()
-	add_child(root_scene_ref)
-	props_scene_ref = props[level_num].instantiate()
-	add_child(props_scene_ref)
-	
-	update_coin_label()
-
 
 var results = [
 	0,
@@ -90,11 +91,11 @@ var results = [
 	0,
 ]
 
-func next_level(time_s):
-	results[current_level] = time_s
-	current_level += 1
-	wait_for_next_level = true
-	load_next_level_timer = 7
+func on_level_ended(time_s):
+	if not wait_for_next_level:
+		results[current_level] = time_s
+		wait_for_next_level = true
+		load_next_level_timer = 7
 
 func get_info_label_str():
 	var result = "TIMES:\n"

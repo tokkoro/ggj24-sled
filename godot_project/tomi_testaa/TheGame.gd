@@ -33,7 +33,7 @@ func on_goal():
 	time_label.start_pulsing()
 	text_mesh.text = time_str + "." + ("%03d" % ms)
 	player.on_victory()
-	level_loader.next_level(duration)
+	level_loader.on_level_ended(duration)
 
 func get_time_str(s: int) -> String:
 	var minutes = floor(s / 60.0)
