@@ -16,7 +16,6 @@
 [ext_resource type="Script" path="res://tomi_testaa/sleder_animator.gd" id="7_q2t7e"]
 [ext_resource type="Script" path="res://tomi_testaa/TheGame.gd" id="8_115im"]
 [ext_resource type="QuadMesh" uid="uid://cmw8r630dumo4" path="res://materials/ground_snow_particle_mesh.tres" id="8_dj3ti"]
-[ext_resource type="Texture2D" uid="uid://dd8wr8w3t34tx" path="res://tomi_testaa/snowflake.png" id="10_081dr"]
 [ext_resource type="AudioStream" uid="uid://l71a2758d1k7" path="res://sounds/humm.ogg" id="10_aqsud"]
 [ext_resource type="Texture2D" uid="uid://dj0d3b1ahut7u" path="res://tomi_testaa/rop2.png" id="11_aqwcp"]
 [ext_resource type="Shape3D" uid="uid://c6dwwlfow03tf" path="res://tomi_testaa/goal_box_shape.tres" id="12_0b2l2"]
@@ -29,6 +28,7 @@
 [ext_resource type="Script" path="res://tomi_testaa/EnvironmentChanger.gd" id="23_gggsl"]
 [ext_resource type="Texture2D" uid="uid://dxwqbfr5gya2m" path="res://skies/sky0.png" id="23_wj0ex"]
 [ext_resource type="BoxMesh" uid="uid://csd6084d4rwrr" path="res://materials/goal_area_mesh.tres" id="23_xolec"]
+[ext_resource type="Texture2D" uid="uid://dqlqspljqp147" path="res://tomi_testaa/Snow_flake.svg" id="24_ao7aj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sh2yx"]
 friction = 0.13
@@ -200,9 +200,11 @@ horizontal_alignment = 0
 vertical_alignment = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_essa0"]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_texture = ExtResource("10_081dr")
+albedo_texture = ExtResource("24_ao7aj")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 
