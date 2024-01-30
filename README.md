@@ -5,7 +5,7 @@
 
 _"Downhill fun. On a sled!"_
 
-_"Who's the fastest sleder? Who collects all coins? A surprise might wait you if get all the way down!"_
+_"Who's the fastest sledder? Who can collect every coin? A surprise might await you at the bottom of the hill!"_
 
 _"Try it out in web browser! Note that the desktop versions run and look **a lot** better."_
 
