@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=59 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="Script" path="res://sled/sled.gd" id="2_nu8po"]
@@ -15,6 +15,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cwvs5nmtf1tfb" path="res://romppeet/romppeet_laskija.res" id="7_dk5io"]
 [ext_resource type="Script" path="res://tomi_testaa/sleder_animator.gd" id="7_q2t7e"]
 [ext_resource type="Script" path="res://tomi_testaa/TheGame.gd" id="8_115im"]
+[ext_resource type="QuadMesh" uid="uid://cmw8r630dumo4" path="res://materials/ground_snow_particle_mesh.tres" id="8_dj3ti"]
 [ext_resource type="Texture2D" uid="uid://dd8wr8w3t34tx" path="res://tomi_testaa/snowflake.png" id="10_081dr"]
 [ext_resource type="AudioStream" uid="uid://l71a2758d1k7" path="res://sounds/humm.ogg" id="10_aqsud"]
 [ext_resource type="Texture2D" uid="uid://dj0d3b1ahut7u" path="res://tomi_testaa/rop2.png" id="11_aqwcp"]
@@ -77,20 +78,6 @@ gravity = Vector3(0, 0.2, 0)
 scale_max = 5.0
 scale_curve = SubResource("CurveTexture_mb20e")
 turbulence_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16x2q"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-blend_mode = 1
-cull_mode = 2
-albedo_texture = ExtResource("10_081dr")
-emission_enabled = true
-emission = Color(0.662745, 0.745098, 1, 1)
-
-[sub_resource type="QuadMesh" id="QuadMesh_1pxp5"]
-material = SubResource("StandardMaterial3D_16x2q")
-size = Vector2(0.1, 0.1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_w8pyg"]
 _surfaces = [{
@@ -327,7 +314,7 @@ lifetime = 2.0
 randomness = 0.5
 collision_base_size = 0.0
 process_material = SubResource("ParticleProcessMaterial_2bf5s")
-draw_pass_1 = SubResource("QuadMesh_1pxp5")
+draw_pass_1 = ExtResource("8_dj3ti")
 
 [node name="r_hand" type="MeshInstance3D" parent="Sled/SledModel/SledVisual/Pulkkailija_origo/laskija/body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.170935, 0.376162, -0.0314398)
@@ -349,7 +336,7 @@ lifetime = 2.0
 randomness = 0.5
 collision_base_size = 0.0
 process_material = SubResource("ParticleProcessMaterial_2bf5s")
-draw_pass_1 = SubResource("QuadMesh_1pxp5")
+draw_pass_1 = ExtResource("8_dj3ti")
 
 [node name="Ninjarope" type="MeshInstance3D" parent="Sled/SledModel/SledVisual/Pulkkailija_origo/laskija/body/r_hand" node_paths=PackedStringArray("hook_rest_pos", "hook", "pointer", "audio_player_3d") groups=["Player"]]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.309718, -0.0513265, -0.0209839)
@@ -482,6 +469,10 @@ skeleton = NodePath("../..")
 
 [node name="mat4" type="MeshInstance3D" parent="Camera3D/ShaderCache"]
 mesh = SubResource("BoxMesh_o2usd")
+skeleton = NodePath("../..")
+
+[node name="mat5" type="MeshInstance3D" parent="Camera3D/ShaderCache"]
+mesh = ExtResource("8_dj3ti")
 skeleton = NodePath("../..")
 
 [node name="TheGame" type="Node" parent="." node_paths=PackedStringArray("player", "count_down_label")]
