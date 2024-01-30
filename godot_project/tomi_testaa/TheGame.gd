@@ -6,6 +6,7 @@ class_name TheGame
 @onready var time_label = $"../Camera3D/time"
 @onready var level_loader = $"../.."
 @onready var info_label = $"../Camera3D/TotalInfoLabel"
+@onready var best_label = $"../Camera3D/BestTimesLabel"
 @onready var coin_label = $"../Camera3D/CoinCount"
 
 var start_node: Node3D
@@ -92,7 +93,8 @@ func game_start():
 	if !count_down_label:
 		count_down_label = get_node("..").find_child("CountDownLabels")
 	count_down_label.set_label(1)
-	info_label.mesh.text = level_loader.get_info_label_str()
+	info_label.mesh.text = level_loader.get_info_label_str(false)
+	best_label.mesh.text = level_loader.get_info_label_str(true)
 
 	if not end_node:
 		return # game over

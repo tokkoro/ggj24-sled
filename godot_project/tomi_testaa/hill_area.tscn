@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=60 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="Script" path="res://sled/sled.gd" id="2_nu8po"]
@@ -193,6 +193,12 @@ SPACE to jump
 MOUSE to hook"
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[sub_resource type="TextMesh" id="TextMesh_36sl2"]
+material = ExtResource("20_pkh00")
+text = "THE MOST SWIFTNESSEST:"
+horizontal_alignment = 2
+vertical_alignment = 0
 
 [sub_resource type="TextMesh" id="TextMesh_7aprx"]
 material = ExtResource("21_dw6ml")
@@ -437,6 +443,11 @@ script = ExtResource("13_2k2q3")
 transform = Transform3D(0.153059, 0.0811063, -0.183027, 0, 0.230392, 0.102096, 0.200192, -0.0620105, 0.139935, 0.905, -0.566, -0.792)
 cast_shadow = 0
 mesh = SubResource("TextMesh_tht3x")
+
+[node name="BestTimesLabel" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.153059, -0.0811063, -0.183027, 0, 0.230392, -0.102096, 0.200192, 0.0620105, 0.139935, 0.905, 0.566, -0.792)
+cast_shadow = 0
+mesh = SubResource("TextMesh_36sl2")
 
 [node name="CoinCount" type="MeshInstance3D" parent="Camera3D"]
 transform = Transform3D(0.153059, -0.0811061, 0.183027, 0, 0.230392, 0.102096, -0.200192, -0.0620104, 0.139935, -0.825, -0.566, -0.792)

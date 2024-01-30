@@ -1,6 +1,7 @@
 extends Node3D
 class_name LevelLoader
 
+var SAVE_FILE_NAME = "secrets.dat"
 var current_level = 0
 var start_level = 0
 var level_count = 3
@@ -44,16 +45,25 @@ func _input(event):
 			current_level = 4
 		else:
 			return
+			
+		# Clean current run if soft cheating
+		for i in range(len(current_run_times)):
+			current_run_times[i] = 0
 		clean_old_and_load_current_level()
 
 	if event is InputEventScreenTouch:
 		if event.pressed and event.index == 4:
 			current_level = (current_level + 1) % 5
+			# Clean current run if soft cheating
+			for i in range(len(current_run_times)):
+				current_run_times[i] = 0
 			clean_old_and_load_current_level()
 
 func _ready():
-	print("v1.0.2")
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	print("v1.0.3")
+	if OS.get_name() != "Web":
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	load_bests()
 	current_level = start_level
 	clean_old_and_load_current_level()
 
@@ -73,7 +83,6 @@ func clean_old_and_load_current_level():
 	add_child(root_scene_ref)
 	props_scene_ref = props[current_level].instantiate()
 	add_child(props_scene_ref)
-	
 	update_coin_label()
 
 func clean_old_level():
@@ -84,7 +93,17 @@ func clean_old_level():
 	if is_instance_valid(props_scene_ref):
 		props_scene_ref.queue_free()
 
-var results = [
+var has_betterments = false
+
+var most_better_than_any = [
+	0,
+	0,
+	0,
+	0,
+	0,
+]
+
+var current_run_times = [
 	0,
 	0,
 	0,
@@ -93,17 +112,37 @@ var results = [
 ]
 
 func on_level_ended(time_s):
+	current_run_times[current_level] = time_s
 	if not wait_for_next_level:
-		results[current_level] = time_s
+		if most_better_than_any[current_level] == 0:
+			most_better_than_any[current_level] = time_s
+		else:
+			if time_s < most_better_than_any[current_level]:
+				has_betterments = true
+				most_better_than_any[current_level] = time_s
+		save_bests()
 		wait_for_next_level = true
 		load_next_level_timer = 7
 
-func get_info_label_str():
-	var result = "TIMES:\n"
+func get_info_label_str(want_the_most_bestests: bool):
+	var result = ""
+	if not has_betterments and want_the_most_bestests:
+			return ""
+	if want_the_most_bestests:
+		result = "THE MOST SWIFTNESSEST:\n"
+	else:
+		if has_betterments:
+			result = "TIMES, CURRENT RUN:\n"
+		else:
+			result = "TIMES:\n"
+			
 	var has_times = false
 	var total = 0
-	for i in range(len(results)):
-		var duration = results[i]
+	var list = current_run_times
+	if want_the_most_bestests:
+		list = most_better_than_any
+	for i in range(len(list)):
+		var duration = list[i]
 		if duration > 1:
 			has_times = true
 			var s = floor(duration / 1000.0)
@@ -186,4 +225,36 @@ func coin_collected(c_pos:Vector3):
 	coins_per_level[current_level][index] = true
 	update_coin_label()
 
+func save_bests():
+	if OS.is_userfs_persistent():
+		print("can save!")
+		var save_data = SaveData.new()
+		save_data.level0_time = most_better_than_any[0]
+		save_data.level1_time = most_better_than_any[1]
+		save_data.level2_time = most_better_than_any[2]
+		save_data.level3_time = most_better_than_any[3]
+		save_data.level4_time = most_better_than_any[4]
+		save_data.has_betterments = has_betterments
+		#save
+		var result = ResourceSaver.save(save_data, SAVE_FILE_NAME)
+		assert(result == OK)
+	else:
+		print("Cannot save persistent data! Check settings.")
 
+func load_bests():
+	if OS.is_userfs_persistent():
+		if ResourceLoader.exists(SAVE_FILE_NAME):
+			var save_data = ResourceLoader.load(SAVE_FILE_NAME)
+			if save_data is SaveData:
+				most_better_than_any[0] = save_data.level0_time
+				most_better_than_any[1] = save_data.level1_time
+				most_better_than_any[2] = save_data.level2_time
+				most_better_than_any[3] = save_data.level3_time
+				most_better_than_any[4] = save_data.level4_time
+				has_betterments = save_data.has_betterments
+			else:
+				print("Save file in bad format!")
+		else:
+			print("no save file")
+	else:
+		print("Cannot load persistent data! Check settings.")
