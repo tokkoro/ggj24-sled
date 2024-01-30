@@ -1,0 +1,2 @@
+4x skyboxes originals: https://github.com/rpgwhitelock/AllSkyFree_Godot.git
+Snow flake original: https://commons.wikimedia.org/wiki/File:Snow_flake.svg
