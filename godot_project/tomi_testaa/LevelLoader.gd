@@ -60,7 +60,8 @@ func _input(event):
 			clean_old_and_load_current_level()
 
 func _ready():
-	print("v1.0.3")
+	var version = ProjectSettings.get("application/config/version")
+	print(version)
 	if OS.get_name() != "Web":
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	load_bests()
