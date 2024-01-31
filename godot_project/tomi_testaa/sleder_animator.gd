@@ -24,7 +24,14 @@ var is_in_air := true
 var falling_speed := -5.0
 var holding_hook := false
 
+var force_emit_time = 0.35
+var is_prewarm_emit = true
+
 func _process(delta):
+	if force_emit_time > 0:
+		force_emit_time -= delta
+	else:
+		is_prewarm_emit = false
 	
 	# hook holding
 	if not victory_pos and holding_hook:
@@ -43,14 +50,14 @@ func _process(delta):
 		if current_turning > 0:
 			l_arm_target = deg_to_rad(lerp(hand_idle_angle, hand_turn_angle, current_turning))
 			r_arm_target = -deg_to_rad(hand_idle_angle)
-			right_parti.emitting = false
-			left_parti.emitting = not is_in_air and current_turning > 0.4
+			right_parti.emitting = is_prewarm_emit
+			left_parti.emitting = (not is_in_air and current_turning > 0.4) or is_prewarm_emit
 		else:
 			var t = -current_turning
 			l_arm_target = deg_to_rad(hand_idle_angle)
 			r_arm_target = deg_to_rad(lerp(-hand_idle_angle, -hand_turn_angle, t))
-			left_parti.emitting = false
-			right_parti.emitting = not is_in_air and current_turning < -0.4
+			left_parti.emitting = is_prewarm_emit
+			right_parti.emitting = (not is_in_air and current_turning < -0.4) or is_prewarm_emit
 
 	# hands in the air
 	if victory_pos or is_in_air:
@@ -59,9 +66,7 @@ func _process(delta):
 		var f : float = clamp(-falling_speed * 0.2, -0.9, 1.0) * 0.5 + 0.5
 		l_arm_target = deg_to_rad(lerp(hand_idle_angle, -hand_idle_angle, f))
 		r_arm_target = deg_to_rad(lerp(-hand_idle_angle, hand_idle_angle, f))
-		#left_parti.emitting = false
-		#right_parti.emitting = false
-
+		
 	var lerp_t = 1.0 - pow(0.0001, delta)
 	l_arm.rotation.z = lerp(l_arm.rotation.z, l_arm_target, lerp_t)
 	r_arm.rotation.z = lerp(r_arm.rotation.z, r_arm_target, lerp_t)

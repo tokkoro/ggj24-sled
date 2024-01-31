@@ -79,7 +79,6 @@ curve = SubResource("Curve_uviy0")
 gravity = Vector3(0, 0.2, 0)
 scale_max = 5.0
 scale_curve = SubResource("CurveTexture_mb20e")
-turbulence_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_w8pyg"]
 _surfaces = [{

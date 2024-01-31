@@ -13,7 +13,7 @@ config_version=5
 config/name="Sled It Now"
 config/description="A game for the Global Game Jam 2024
 https://globalgamejam.org/games/2024/sled-2/"
-config/version="1.0.4"
+config/version="1.0.5"
 run/main_scene="res://tomi_testaa/level_loader_scene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(0.0588235, 0.164706, 0.25098, 1)
