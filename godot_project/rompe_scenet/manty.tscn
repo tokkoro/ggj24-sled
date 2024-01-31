@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4vi176m4qad2"]
 
-[ext_resource type="ArrayMesh" uid="uid://deq7eg6xbil7w" path="res://romppeet/romppeet_manty.res" id="1_vuvxl"]
+[ext_resource type="ArrayMesh" uid="uid://cfah7l2eibuef" path="res://romppeet/romppeet_manty.res" id="1_vuvxl"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h4plb"]
 points = PackedVector3Array(0.425429, 3.55418, 0.0666529, -0.543, 3.63997, -0.100358, -0.49702, 3.49984, 0.120936, 0.208257, -0.0271311, -0.204552, -0.225639, -0.0271311, 0.229503, 0.693425, 3.71427, -0.337375, 0.208257, -0.0271311, 0.229503, -0.225639, -0.0271311, -0.204552, 0.153937, 3.55418, 0.175167)
