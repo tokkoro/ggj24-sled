@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dh56abykmvv3x"]
+[gd_scene load_steps=66 format=3 uid="uid://dh56abykmvv3x"]
 
 [ext_resource type="Script" path="res://tomi_testaa/esc_to_exit.gd" id="1_i4vgj"]
 [ext_resource type="Script" path="res://sled/sled.gd" id="2_nu8po"]
@@ -25,10 +25,12 @@
 [ext_resource type="Material" uid="uid://ckase4k86h8gi" path="res://materials/count_down_label_mat.tres" id="17_1g54b"]
 [ext_resource type="Material" uid="uid://pasugfmxbjjy" path="res://materials/time_info_mat.tres" id="20_pkh00"]
 [ext_resource type="Material" uid="uid://c08yybsxblm7v" path="res://materials/coin_count_mat.tres" id="21_dw6ml"]
+[ext_resource type="Material" uid="uid://crlitiqarv3pi" path="res://materials/goal_area_mat.tres" id="23_4hs1w"]
 [ext_resource type="Script" path="res://tomi_testaa/EnvironmentChanger.gd" id="23_gggsl"]
 [ext_resource type="Texture2D" uid="uid://dxwqbfr5gya2m" path="res://skies/sky0.png" id="23_wj0ex"]
 [ext_resource type="BoxMesh" uid="uid://csd6084d4rwrr" path="res://materials/goal_area_mesh.tres" id="23_xolec"]
 [ext_resource type="Texture2D" uid="uid://dqlqspljqp147" path="res://tomi_testaa/Snow_flake.svg" id="24_ao7aj"]
+[ext_resource type="Material" uid="uid://bnnp6ebkubm2g" path="res://materials/ground_snow_particle_mat.tres" id="24_k8plx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sh2yx"]
 friction = 0.13
@@ -225,8 +227,21 @@ gravity = Vector3(0, 0, 0)
 [sub_resource type="QuadMesh" id="QuadMesh_5v314"]
 size = Vector2(0.2, 0.2)
 
-[sub_resource type="BoxMesh" id="BoxMesh_o2usd"]
+[sub_resource type="BoxMesh" id="BoxMesh_lkbiu"]
 material = ExtResource("20_pkh00")
+
+[sub_resource type="BoxMesh" id="BoxMesh_5xi7u"]
+material = ExtResource("20_pkh00")
+
+[sub_resource type="BoxMesh" id="BoxMesh_qfsth"]
+material = ExtResource("23_4hs1w")
+
+[sub_resource type="BoxMesh" id="BoxMesh_rx8rn"]
+material = ExtResource("20_pkh00")
+
+[sub_resource type="QuadMesh" id="QuadMesh_0k3h4"]
+material = ExtResource("24_k8plx")
+size = Vector2(0.1, 0.1)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2by0e"]
 panorama = ExtResource("23_wj0ex")
@@ -466,27 +481,27 @@ draw_pass_1 = SubResource("QuadMesh_5v314")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.161411)
 
 [node name="mat1" type="MeshInstance3D" parent="Camera3D/ShaderCache"]
-mesh = SubResource("BoxMesh_o2usd")
+mesh = SubResource("BoxMesh_lkbiu")
 skeleton = NodePath("../..")
 
 [node name="mat2" type="MeshInstance3D" parent="Camera3D/ShaderCache"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-mesh = SubResource("BoxMesh_o2usd")
+mesh = SubResource("BoxMesh_5xi7u")
 skeleton = NodePath("../..")
 
 [node name="mat3" type="MeshInstance3D" parent="Camera3D/ShaderCache"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-mesh = ExtResource("23_xolec")
+mesh = SubResource("BoxMesh_qfsth")
 skeleton = NodePath("../..")
 
 [node name="mat4" type="MeshInstance3D" parent="Camera3D/ShaderCache"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
-mesh = SubResource("BoxMesh_o2usd")
+mesh = SubResource("BoxMesh_rx8rn")
 skeleton = NodePath("../..")
 
 [node name="mat5" type="MeshInstance3D" parent="Camera3D/ShaderCache"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-mesh = ExtResource("8_dj3ti")
+mesh = SubResource("QuadMesh_0k3h4")
 skeleton = NodePath("../..")
 
 [node name="TheGame" type="Node" parent="." node_paths=PackedStringArray("player", "count_down_label")]
