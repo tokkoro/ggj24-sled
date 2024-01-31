@@ -61,7 +61,7 @@ func _input(event):
 
 func _ready():
 	var version = ProjectSettings.get("application/config/version")
-	print(version)
+	print("version", version)
 	if OS.get_name() != "Web":
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	load_bests()
